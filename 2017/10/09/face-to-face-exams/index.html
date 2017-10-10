@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>first blog | Jackey丶S Blog</title>
+    <title>face to face exams | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="这是我的第一篇博客">
+    <meta name="description" content="java后端面试  校招面试面试官注重的点：  1.基础  2.编程能力 1.String StringBuffer和StringBuilder的区别   (1)在执行速度上，String">
 <meta property="og:type" content="article">
-<meta property="og:title" content="first blog">
-<meta property="og:url" content="http://yoursite.com/2017/09/30/first-blog/index.html">
+<meta property="og:title" content="face to face exams">
+<meta property="og:url" content="http://yoursite.com/2017/10/09/face-to-face-exams/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="这是我的第一篇博客">
+<meta property="og:description" content="java后端面试  校招面试面试官注重的点：  1.基础  2.编程能力 1.String StringBuffer和StringBuilder的区别   (1)在执行速度上，String">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-30T07:29:52.760Z">
+<meta property="og:updated_time" content="2017-10-10T10:26:22.296Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="first blog">
-<meta name="twitter:description" content="这是我的第一篇博客">
+<meta name="twitter:title" content="face to face exams">
+<meta name="twitter:description" content="java后端面试  校招面试面试官注重的点：  1.基础  2.编程能力 1.String StringBuffer和StringBuilder的区别   (1)在执行速度上，String">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/09/30/first-blog/" title="first blog" itemprop="url">first blog</a>
+      <a href="/2017/10/09/face-to-face-exams/" title="face to face exams" itemprop="url">face to face exams</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-09-30T07:21:51.000Z" itemprop="datePublished"> 发表于 2017-09-30</time>
+    <time datetime="2017-10-09T13:07:11.000Z" itemprop="datePublished"> 发表于 2017-10-09</time>
     
   </p>
 </header>
@@ -101,7 +101,9 @@
 		
 		</div>
 		
-		<p>  生命中总是有很多的第一次，这是我第一次公开的有了自己的个人博客，以前的学习内容总是记录在自己的笔记本(NotePad)上面的，很多的好东西也没有和大家一起来分享，也有很多的错误可能存在于笔记里面(自认为是对的)，现在开始我就开始慢慢整理，贴出来与大家分享，大神勿喷。。。</p>
+		<p> java后端面试<br>  校招面试面试官注重的点：<br>  1.基础<br>  2.编程能力</p>
+<p>1.String StringBuffer和StringBuilder的区别<br>   (1)在执行速度上，String<stringbuffer<stringbuilder 原因：string:字符串常量="" stringbuffer:字符串变量="" stringbuilder:字符串变量="" 上面可以看到string是字符串常量，其他的两个是字符串变量，我们可以看下面一个列子：="" string="" s="abcd;" +="" 1;="" system.out.println(s);="" result="abcd1" 可以看到，s的值是变化了的，但是jvm是这样解析这段代码的：首先创建一个变量s，在给它赋值为abcd,然后在创建变量来执行第二段代码，这样就是说，每次改变string，都需要重新创建对象，而以前的对象会被gc作为垃圾回收，而stringbuffer,stringbuilder是字符串变量，它可以改变变量，每次改变变量也不用重新创建对象，所以string<stringbuffer<stringbuilder.="" 那么我们在看下面这段代码="" "only="" a"="" "fun";="" stringbuffer="" buffer="new" stringbuffer("this="" is")="" .append("only="" a").append("fun");="" 执行后发现="" 速度=""> buffer<br>  其实这是JVM耍的一个把戏  String s = “this is” + “only a” + “fun”;就等于<br>  String s = “this is only a fun”;<br>  （2）线程安全<br>  StringBuffer:线程安全    StringBuilder:线程不安全<br>  虽然StringBuilder的速度比StringBuffer快，但是JVM不能保证StringBuilder在字符串缓冲区操作是线程安全的，但是大部分单线程下操作字符串缓冲区可以使用StringBuilder</stringbuffer<stringbuilder></p>
+<p>  总结：对于字符串不频繁的操作使用：String<br>   单线程下操作字符串缓冲区使用;StringBuilder<br>   多线程下操作字符串缓冲区使用：StringBuffer</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -114,7 +116,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/09/30/first-blog/" data-title="first blog | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/10/09/face-to-face-exams/" data-title="face to face exams | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -127,14 +129,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/09/30/test/" title="test">
-  <strong>上一篇：</strong><br/>
-  <span>
-  test</span>
+
+<div class="next">
+<a href="/2017/10/03/JavaScript1/"  title="JavaScript">
+ <strong>下一篇：</strong><br/> 
+ <span>JavaScript
+</span>
 </a>
 </div>
-
 
 </nav>
 
