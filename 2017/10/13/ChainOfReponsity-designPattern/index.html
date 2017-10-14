@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="责任联设计模式 概念：为请求创建一个接收者对象的链(引用自w3school)   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)    下面我以一个处理网站敏感字的列子来说明责任联模式   先以传统的方式处理   public class Main(){   public Static void main(String args[]){   String msg">
+    <meta name="description" content="责任联设计模式 概念：为请求创建一个接收者对象的链(引用自w3school)   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)    下面我以一个处理网站敏感字的列子来说明责任联模式   先以传统的方式处理   &amp;lt;!-moer-&amp;gt;   public class Main(){   public Static void main(String arg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ChainOfReponsity designPattern">
 <meta property="og:url" content="http://yoursite.com/2017/10/13/ChainOfReponsity-designPattern/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="责任联设计模式 概念：为请求创建一个接收者对象的链(引用自w3school)   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)    下面我以一个处理网站敏感字的列子来说明责任联模式   先以传统的方式处理   public class Main(){   public Static void main(String args[]){   String msg">
+<meta property="og:description" content="责任联设计模式 概念：为请求创建一个接收者对象的链(引用自w3school)   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)    下面我以一个处理网站敏感字的列子来说明责任联模式   先以传统的方式处理   &amp;lt;!-moer-&amp;gt;   public class Main(){   public Static void main(String arg">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-14T12:21:56.689Z">
+<meta property="og:updated_time" content="2017-10-14T12:23:48.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ChainOfReponsity designPattern">
-<meta name="twitter:description" content="责任联设计模式 概念：为请求创建一个接收者对象的链(引用自w3school)   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)    下面我以一个处理网站敏感字的列子来说明责任联模式   先以传统的方式处理   public class Main(){   public Static void main(String args[]){   String msg">
+<meta name="twitter:description" content="责任联设计模式 概念：为请求创建一个接收者对象的链(引用自w3school)   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)    下面我以一个处理网站敏感字的列子来说明责任联模式   先以传统的方式处理   &amp;lt;!-moer-&amp;gt;   public class Main(){   public Static void main(String arg">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Jackey丶S Blog">Jackey丶S Blog</a></h1>
 				<h2 class="blog-motto">生命是一场需要经历酸甜苦辣洗礼的过程</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -88,21 +88,22 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-13T11:39:54.000Z" itemprop="datePublished"> Published 2017-10-13</time>
+    <time datetime="2017-10-13T11:39:54.000Z" itemprop="datePublished"> 发表于 2017-10-13</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			
 		
 		</div>
 		
 		<p> 责任联设计模式<br> 概念：为请求创建一个接收者对象的链(引用自w3school)<br>   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)</p>
-<p>   下面我以一个处理网站敏感字的列子来说明责任联模式<br>   先以传统的方式处理<br>   public class Main(){<br>   public Static void main(String args[]){<br>   String msg = “<script>,敏感，不就业”;<br>  &lt;!-moer-&gt;<br>   msgProcessor mp = new msgProcessor();<br>   mp.setMsg(msg);<br>   String result = mp.process();<br>   System.out.println(result);//result结果为”[script],敏感，不就业”<br>   }</p>
+<p>   下面我以一个处理网站敏感字的列子来说明责任联模式<br>   先以传统的方式处理<br>   &lt;!-moer-&gt;<br>   public class Main(){<br>   public Static void main(String args[]){<br>   String msg = “<script>,敏感，不就业”;</p>
+<p>   msgProcessor mp = new msgProcessor();<br>   mp.setMsg(msg);<br>   String result = mp.process();<br>   System.out.println(result);//result结果为”[script],敏感，不就业”<br>   }</p>
 <p>   }</p>
 <p>public class msgProcessor{<br> private String msg ;<br> public void setMsg(String msg){<br> this.msg = msg;<br> }<br> public String getMsg(){<br> return msg;<br> }</p>
 <p> public String process(){<br> //这是处理敏感信息的方法<br>  String r = msg.replace(“&lt;”,”[“)<br>  .replace(“&gt;”,”]”);<br> }<br>}<br> 这样的话我们就用写法完成了对网站敏感字的处理，但是如果我们还要把网站里的敏感去掉，那么我们就需要再去改动原来的方法，在msgProcessor里面改写process方法，显然，对于设计模式的思想：对扩展开放，对修改关闭的思想是背道而驰的，<br> 下面介绍利用责任联模式完成对网站敏感字的处理</p>
@@ -206,17 +207,17 @@ this.responseStr = responseStr;
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -227,7 +228,7 @@ this.responseStr = responseStr;
   
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -249,11 +250,11 @@ this.responseStr = responseStr;
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -480,7 +481,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
