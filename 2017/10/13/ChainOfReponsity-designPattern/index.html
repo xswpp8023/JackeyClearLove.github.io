@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Jackey丶S Blog">
 <meta property="og:description" content="责任联设计模式 概念：为请求创建一个接收者对象的链(引用自w3school)   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)    下面我以一个处理网站敏感字的列子来说明责任联模式   先以传统的方式处理   public class Main(){   public Static void main(String args[]){   String msg">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-13T13:26:33.554Z">
+<meta property="og:updated_time" content="2017-10-14T01:33:12.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ChainOfReponsity designPattern">
 <meta name="twitter:description" content="责任联设计模式 概念：为请求创建一个接收者对象的链(引用自w3school)   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)    下面我以一个处理网站敏感字的列子来说明责任联模式   先以传统的方式处理   public class Main(){   public Static void main(String args[]){   String msg">
@@ -118,7 +118,55 @@
 <p>}<br>/<em>
  </em>测试<br> /<br>public class Main(){</p>
 <p>public Static void main(){<br>String msg = “<Script>,敏感,不就业”;<br>msgProcessor mp =new msgProcessor();<br>mp.setMsg(msg);<br>String result = mp.proces();//result为[Script],就业<br>System.out.println(result);<br>}<br>}</p>
-<p> 好了，到此一个简单的责任联模式已经形成了，大神勿喷，请多多指教。</p>
+<p>上面的是责任链的一个简单的列子，下面我们将对上面的代码进行进一步的优化<br>  优化思想：定义一个Filter接口,然后把Filter的实现类和处理逻辑都放在FilterChain类里面，这样的话，我们更有利于我们程序的扩展。(这里面举的列子是模仿Struts2里面分别对客户端和服务端发送的请求进行处理)<br>   代码如下：<br>   //先定义两个类分别为Request和Response<br>   public class Request{<br>     private Sting requestStr;<br>     public String getRequestStr(){</p>
+<pre><code>  return requestStr;
+}
+public void setRequestStr(String requestStr){
+this.requestStr = requestStr;
+}
+</code></pre><p>   }</p>
+<pre><code>public class Response{
+private Sting responseStr;
+public String getResponseStr(){
+
+  return responseStr;
+}
+public void setRequestStr(String responseStr){
+this.responseStr = responseStr;
+}
+</code></pre><p>   }<br>   //接口<br>   public interface Filter{<br>    public void doFilter(Request request,Response response);</p>
+<p>   }</p>
+<p> //实现类1<br> Public class HTMLFilter implments Filter{</p>
+<p> @Override<br> public void doFilter(Request request,Response response){<br> request.requestStr = request.requestStr.replace(“&lt;”,”[]”).replace(“&gt;”,”]”);</p>
+<p> }<br> }</p>
+<p> //实现类2<br> Public class HTMLFilter implments Filter{</p>
+<p> @Override<br> public void doFilter(Request request,Response response){<br> request.requestStr = request.requestStr.replace(“敏感”,””).replace(“不就业”,”就业”);</p>
+<p> }<br> }</p>
+<p>//FilterChain<br>//我们可以把FilterChain看作为一个黑盒或者是一个大的Filter<br>public class FilterChain implments Filter{</p>
+<p>List<Filter> filters =new ArrayList<Filter>();<br>//把Filter添加到list里面<br>public void addFilter(Filter f){<br>filters.add(f);</p>
+<p>}</p>
+<p>@Override<br>public void doFilter(Request request,Reponse reponse){<br>for(Filter filter:filters){<br>filter.doFilter();</p>
+<p>}<br>}</p>
+<p>}</p>
+<p> //客户端<br> public class Main{<br> String msg = “<script>,敏感,不就业,早恋”;<br> Request request = new Request();<br> request.setRequest(msg);<br> Response response =new Response();<br> response.setResponse(“response”);</p>
+<p> FilterChain fliters =new FilterChain();<br> filters.addFilter(new HTMLFilter());<br> filter.addFilter(new SensiTiveFilter());</p>
+<p> filters.doFilter(request,response);</p>
+<p> System.out.println(request.getRequestStr);<br> System.out.println(response.getResponseStr);<br> }</p>
+<p> 这样客户端就完成了<br> 但是服务端发来的请求我们上面的代码不不能处理的，因为FIlter从客户端处理的时候是按1，2，3来处理的，但是服务端的请求是按3，2，1倒过来处理的，所以要实现同时对客户端和服务端的处理，就需要重新改进我们的代码：<br> 现在我把上面需要改的代码贴在下面</p>
+<p> }<br>   //接口<br>   public interface Filter{<br>    public void doFilter(Request request,Response response,FilterChain chain);</p>
+<p>   }<br>  //实现类1<br> Public class HTMLFilter implments Filter{</p>
+<p> @Override<br> public void doFilter(Request request,Response response,FilterChain chain){<br> request.requestStr = request.requestStr.replace(“&lt;”,”[]”).replace(“&gt;”,”]”);<br> chain.doFilter(Request request,Response response,FilterChain chain);<br> response.responseStr += “HTMLFilter”;</p>
+<p> }<br> }</p>
+<p> //实现类2<br> Public class HTMLFilter implments Filter{</p>
+<p> @Override<br> public void doFilter(Request request,Response response,FilterChain chain){<br> request.requestStr = request.requestStr.replace(“敏感”,””).replace(“不就业”,”就业”);<br> chain.doFilter(Request request,Response response,FilterChain chain);<br> response.responseStr +=”SensitiveFilter”;<br> }<br> }</p>
+<p>//FilterChain<br>//我们可以把FilterChain看作为一个黑盒或者是一个大的Filter<br>public class FilterChain implments Filter{</p>
+<p>List<Filter> filters =new ArrayList<Filter>();<br>int index =0;<br>//把Filter添加到list里面<br>public void addFilter(Filter f){<br>filters.add(f);</p>
+<p>}</p>
+<p>@Override<br>public void doFilter(Request request,Reponse reponse,FilterChain chain){<br>if(index == filters.size()) return ;</p>
+<p>Filter f = filters.get(index);<br>index++;<br>f.doFilter(Request request,Reponse reponse,FilterChain chain);</p>
+<p>}</p>
+<p>}<br> 当然客户端里面我们传值也需要加上FilterChain ;</p>
+<p> 到此 ，我们的责任联模式已经分析完成了。</p>
 </script></p>  
 	</div>
 		<footer class="article-footer clearfix">
