@@ -96,8 +96,7 @@
     <div class="article-content">
         
         <p> 责任联设计模式<br> 概念：为请求创建一个接收者对象的链(引用自w3school)<br>   当你想要让一个以上的对象处理你的请求就用责任链模式(引用自head first)</p>
-<p>   下面我以一个处理网站敏感字的列子来说明责任联模式<br>   先以传统的方式处理<br>   public class Main(){<br>   public Static void main(String args[]){<br>   String msg = “<script>,敏感，不就业”;</p>
-<p>   msgProcessor mp = new msgProcessor();<br>   mp.setMsg(msg);<br>   String result = mp.process();<br>   System.out.println(result);//result结果为”[script],敏感，不就业”<br>   }</p>
+<p>   下面我以一个处理网站敏感字的列子来说明责任联模式<br>   先以传统的方式处理<br>   public class Main(){<br>   public Static void main(String args[]){<br>   String msg = “<script>,敏感，不就业”;<br>  &lt;!-moer-&gt;<br>   msgProcessor mp = new msgProcessor();<br>   mp.setMsg(msg);<br>   String result = mp.process();<br>   System.out.println(result);//result结果为”[script],敏感，不就业”<br>   }</p>
 <p>   }</p>
 <p>public class msgProcessor{<br> private String msg ;<br> public void setMsg(String msg){<br> this.msg = msg;<br> }<br> public String getMsg(){<br> return msg;<br> }</p>
 <p> public String process(){<br> //这是处理敏感信息的方法<br>  String r = msg.replace(“&lt;”,”[“)<br>  .replace(“&gt;”,”]”);<br> }<br>}<br> 这样的话我们就用写法完成了对网站敏感字的处理，但是如果我们还要把网站里的敏感去掉，那么我们就需要再去改动原来的方法，在msgProcessor里面改写process方法，显然，对于设计模式的思想：对扩展开放，对修改关闭的思想是背道而驰的，<br> 下面介绍利用责任联模式完成对网站敏感字的处理</p>
