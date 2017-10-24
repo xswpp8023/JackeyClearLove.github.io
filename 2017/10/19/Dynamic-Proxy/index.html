@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="设计模式之动态代理模式(Dynadic Proxy)  定义：为其他对象创建一个代理以控制对这个对象的访问  接下来，我们将模仿JDK里面的代理来理解动态代理设计模式  说到动态代理，那肯定还有静态代理  我的理解：静态代理使用聚合的方式来实现的，本blog的实列都是通过在编辑器上亲自实践的，如果大家有不同的意见，可以提出来，共同学习。   接口   public interface Mova">
+    <meta name="description" content="设计模式之动态代理模式(Dynadic Proxy)  定义：为其他对象创建一个代理以控制对这个对象的访问  接下来，我们将模仿JDK里面的代理来理解动态代理设计模式  说到动态代理，那肯定还有静态代理  我的理解：静态代理使用聚合的方式来实现的，本blog的实列都是通过在编辑器上亲自实践的，如果大家有不同的意见，可以提出来，共同学习。  &amp;lt;–more–&amp;gt;   接口   publi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dynamic Proxy">
 <meta property="og:url" content="http://yoursite.com/2017/10/19/Dynamic-Proxy/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="设计模式之动态代理模式(Dynadic Proxy)  定义：为其他对象创建一个代理以控制对这个对象的访问  接下来，我们将模仿JDK里面的代理来理解动态代理设计模式  说到动态代理，那肯定还有静态代理  我的理解：静态代理使用聚合的方式来实现的，本blog的实列都是通过在编辑器上亲自实践的，如果大家有不同的意见，可以提出来，共同学习。   接口   public interface Mova">
+<meta property="og:description" content="设计模式之动态代理模式(Dynadic Proxy)  定义：为其他对象创建一个代理以控制对这个对象的访问  接下来，我们将模仿JDK里面的代理来理解动态代理设计模式  说到动态代理，那肯定还有静态代理  我的理解：静态代理使用聚合的方式来实现的，本blog的实列都是通过在编辑器上亲自实践的，如果大家有不同的意见，可以提出来，共同学习。  &amp;lt;–more–&amp;gt;   接口   publi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-24T00:54:46.874Z">
+<meta property="og:updated_time" content="2017-10-24T00:57:36.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamic Proxy">
-<meta name="twitter:description" content="设计模式之动态代理模式(Dynadic Proxy)  定义：为其他对象创建一个代理以控制对这个对象的访问  接下来，我们将模仿JDK里面的代理来理解动态代理设计模式  说到动态代理，那肯定还有静态代理  我的理解：静态代理使用聚合的方式来实现的，本blog的实列都是通过在编辑器上亲自实践的，如果大家有不同的意见，可以提出来，共同学习。   接口   public interface Mova">
+<meta name="twitter:description" content="设计模式之动态代理模式(Dynadic Proxy)  定义：为其他对象创建一个代理以控制对这个对象的访问  接下来，我们将模仿JDK里面的代理来理解动态代理设计模式  说到动态代理，那肯定还有静态代理  我的理解：静态代理使用聚合的方式来实现的，本blog的实列都是通过在编辑器上亲自实践的，如果大家有不同的意见，可以提出来，共同学习。  &amp;lt;–more–&amp;gt;   接口   publi">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Jackey丶S Blog">Jackey丶S Blog</a></h1>
 				<h2 class="blog-motto">生命是一场需要经历酸甜苦辣洗礼的过程</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -69,7 +69,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -92,20 +92,20 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-18T20:16:01.000Z" itemprop="datePublished"> Published 2017-10-19</time>
+    <time datetime="2017-10-18T20:16:01.000Z" itemprop="datePublished"> 发表于 2017-10-19</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			
 		
 		</div>
 		
-		<p>  设计模式之动态代理模式(Dynadic Proxy)<br>  定义：为其他对象创建一个代理以控制对这个对象的访问<br>  接下来，我们将模仿JDK里面的代理来理解动态代理设计模式<br>  说到动态代理，那肯定还有静态代理<br>  我的理解：静态代理使用聚合的方式来实现的，本blog的实列都是通过在编辑器上亲自实践的，如果大家有不同的意见，可以提出来，共同学习。<br>   接口<br>   public interface Movable{</p>
+		<p>  设计模式之动态代理模式(Dynadic Proxy)<br>  定义：为其他对象创建一个代理以控制对这个对象的访问<br>  接下来，我们将模仿JDK里面的代理来理解动态代理设计模式<br>  说到动态代理，那肯定还有静态代理<br>  我的理解：静态代理使用聚合的方式来实现的，本blog的实列都是通过在编辑器上亲自实践的，如果大家有不同的意见，可以提出来，共同学习。<br>  &lt;–more–&gt;<br>   接口<br>   public interface Movable{</p>
 <p>   void start() throw Exception;<br>   }<br>   实现类<br>   public Tank implements Movable{<br>   @Override<br>   public void start()throw Exception{<br>   System.out.println(“Tank Moving….”);<br>   }<br>   }<br>   实现类2<br>   public Tank implements Movable{<br>   Movable m;<br>   //构造函数<br>   public Tank(Movable m){<br>   this.m = m;<br>   }<br>   //对父类的重写<br>   @Override<br>   public void start()throw Exception{<br>   String start = System.currentTimeMillis();<br>   System.out.println(“Tank Moving….”);<br>   m.start();<br>   Thred.sleep(1000);<br>   String end =System.currentTimeMillis();<br>   System.out.println(“Tank 移动的时间为 ：” + end - start);<br>   }<br>   }<br>   测试类<br>   publio class Client{<br>   public static void main(String args[])<br>   Tank t = new Tank();<br>   Movable m =new Tank1( t );<br>   m.start();<br>   }<br>   //运行结果  moving….. 1001<br>   上面是用聚合实现的静态代理，当然我们也可以用继承去实现<br>   但是，继承会造成我们的类爆炸，也就是没换一个功能，就需要创建一个新的类出来<br>   所以，聚合是优于继承的。</p>
 <p>   现在说动态代理<br>   1.实现InvocationHandler接口，创建自己的处理方法<br>   2.创建动态代理类<br>   3.通过反射机制获取动态代理类里面的构造函数<br>   4.通过构造函数创建动态代理类实列，此时需要将创建的处理器作为参数传入newInstance()方法之中。在调用proxy的newInstance的时候实际上是调用了invoke也就是处理器里面的invoke()方法<br> 下面的代码都是我模仿JDK里面的实现机制写的，也就是简易版的动态代理，与真实的动态代理只是少了写细节的东西，但是实现机制基本都讲清楚了<br> InvocationHandler接口<br> import java.lang.reflect.Method;</p>
 <p>public interface InvocationHandler {<br>    public void invoke(Object o, Method m);<br>}<br>处理器的实现<br>import java.lang.reflect.InvocationTargetException;<br>import java.lang.reflect.Method;</p>
@@ -265,17 +265,17 @@ public void move() {
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -286,7 +286,7 @@ public void move() {
   
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -308,11 +308,11 @@ public void move() {
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -539,7 +539,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
