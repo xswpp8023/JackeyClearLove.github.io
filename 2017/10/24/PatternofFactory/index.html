@@ -1,0 +1,645 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>PatternofFactory | Jackey丶S Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Jackey">
+    
+
+    
+    <meta name="description" content="设计模式之工厂模式学习的时候先学思想，在研究细节，思想永远是不变的，配置的一些东西，都是可以在网上找到的，多写几次就熟练了。接下来将模仿spring Bean工厂来理解工厂模式，理解了BeanFactory那么就理解spring Ioc了，所以研究一些思想，理解之后，它一辈子都是你的了，框架之中的东西，都是用这些思想去实现的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PatternofFactory">
+<meta property="og:url" content="http://yoursite.com/2017/10/24/PatternofFactory/index.html">
+<meta property="og:site_name" content="Jackey丶S Blog">
+<meta property="og:description" content="设计模式之工厂模式学习的时候先学思想，在研究细节，思想永远是不变的，配置的一些东西，都是可以在网上找到的，多写几次就熟练了。接下来将模仿spring Bean工厂来理解工厂模式，理解了BeanFactory那么就理解spring Ioc了，所以研究一些思想，理解之后，它一辈子都是你的了，框架之中的东西，都是用这些思想去实现的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-26T02:47:20.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PatternofFactory">
+<meta name="twitter:description" content="设计模式之工厂模式学习的时候先学思想，在研究细节，思想永远是不变的，配置的一些东西，都是可以在网上找到的，多写几次就熟练了。接下来将模仿spring Bean工厂来理解工厂模式，理解了BeanFactory那么就理解spring Ioc了，所以研究一些思想，理解之后，它一辈子都是你的了，框架之中的东西，都是用这些思想去实现的。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Jackey丶S Blog" title="Jackey丶S Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Jackey丶S Blog">Jackey丶S Blog</a></h1>
+				<h2 class="blog-motto">生命是一场需要经历酸甜苦辣洗礼的过程</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">tags</a></li>
+					
+						<li><a href="/categories">categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/10/24/PatternofFactory/" title="PatternofFactory" itemprop="url">PatternofFactory</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-10-24T01:06:00.000Z" itemprop="datePublished"> Published 2017-10-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
+		<p>设计模式之工厂模式<br>学习的时候先学思想，在研究细节，思想永远是不变的，配置的一些东西，都是可以在网上找到的，多写几次就熟练了。<br>接下来将模仿spring Bean工厂来理解工厂模式，理解了BeanFactory那么就理解spring Ioc了，所以研究一些思想，理解之后，它一辈子都是你的了，框架之中的东西，都是用这些思想去实现的。<br><a id="more"></a><br>介绍点：工厂，抽象工厂，用最简单的方式模仿Spring ioc容器<br>普通工厂类<br>首先以老张开车去东北，现在，我需要给老张提供多种的交通工具去东北，举个栗子，老张开着飞机去东北，老张开着拖拉机去东北，Ok,这些都是老张去东北的交通工具。那可以想象，可以创建一个交通工具的工厂，去生产老张要使用的交通工具，OK下面用代码去实现这个栗子<br>Moveable.java</p>
+<p>public interface Moveable {<br>    void run();</p>
+<p>}</p>
+<p>plan.java</p>
+<p>public class Plan implements Moveable{</p>
+<pre><code>@Override
+public void run() {
+    // TODO Auto-generated method stub
+    System.out.println(&quot;小飞机，哒哒哒....&quot;);
+
+}
+</code></pre><p>}</p>
+<p>Car.java<br>public class Car implements Moveable{</p>
+<pre><code>@Override
+public void run() {
+    // TODO Auto-generated method stub
+    System.out.println(&quot;小卡车，咔咔咔....&quot;);
+
+}
+</code></pre><p>}</p>
+<p>VigecleFactory.java</p>
+<p>public abstract class Vihecle {<br>    abstract Moveable creat();<br>}</p>
+<p>PlanFactory.java</p>
+<p>public class PlanFactory extends Vihecle{</p>
+<pre><code>@Override
+Moveable creat() {
+    // TODO Auto-generated method stub
+    return new Plan();
+}
+</code></pre><p>}</p>
+<p>CarFactory.java<br>public class CarFactory extends Vihecle{</p>
+<pre><code>@Override
+Moveable creat() {
+    // TODO Auto-generated method stub
+    return new Car();
+}
+</code></pre><p>}</p>
+<p>测试程序</p>
+<p>public class Test {</p>
+<pre><code>public static void main(String args[]){
+
+Vihecle v =new PlanFactory();
+Moveable m = v.creat();
+m.run();
+}
+</code></pre><p>}</p>
+<p>下面来看抽象工厂<br>抽象工厂是产生一系列产品，下来直接上代码，看完你就明白了<br>交通工具类<br>Vihecle.java</p>
+<p>public abstract class Vihecle {<br>    abstract void creat();<br>}</p>
+<p>Car.java<br>public class Car extends Vihecle{</p>
+<pre><code>@Override
+void creat() {
+    System.out.println(&quot;小卡车，嘀嘀嘀....&quot;);
+
+}
+</code></pre><p>}</p>
+<p>Plan.java</p>
+<p>public class Plan extends Vihecle{</p>
+<pre><code>@Override
+void creat() {
+    System.out.println(&quot;小飞机，哒哒哒....&quot;);
+
+}
+</code></pre><p>}</p>
+<p>食物类<br>Food.java<br>public abstract class Food{</p>
+<p>  abstract void eat(); </p>
+<p>}</p>
+<p>orange.java<br>public class orange extends Food{</p>
+<pre><code>@Override
+void eat() {
+    System.out.println(&quot;嘤嘤嘤...我要吃橘子&quot;);
+
+}
+</code></pre><p>}</p>
+<p>apple.java<br>public class apple extends Food{</p>
+<pre><code>@Override
+void eat() {
+    System.out.println(&quot;嘤嘤嘤...我要吃苹果&quot;);
+
+}
+</code></pre><p>}</p>
+<p>抽象工厂<br>abstractFactory.java<br>public abstract class abstractFactory {</p>
+<pre><code>abstract Food creatFood();
+abstract Vihecle creatVihecle();
+</code></pre><p>}</p>
+<p>2个系列工厂<br>factory1.java<br>public class factory1 extends abstractFactory{</p>
+<pre><code>@Override
+Food creatFood() {
+
+    return new apple();
+}
+
+@Override
+Vihecle creatVihecle() {
+
+    return new Car();
+}
+</code></pre><p>}</p>
+<p>factory2.java<br>public class factory2 extends abstractFactory{</p>
+<pre><code>@Override
+Food creatFood() {
+
+    return new orange();
+}
+
+@Override
+Vihecle creatVihecle() {
+
+    return new Plan();
+}
+</code></pre><p>}</p>
+<p>测试程序<br>Test.java<br>public class Test {</p>
+<pre><code>public static void main(String[] args) {
+    abstractFactory a= new factory2();
+    a.creatFood().eat();
+    a.creatVihecle().creat();
+
+}
+</code></pre><p>}<br>在测试程序里面可以看到，我们可以随意更换factory1和factory2，每个系列产生都产品都是交通工具和食物系列，若要增加，那么就需要在抽象类里增加，如果一系列的产品都定好，那么更换的时候只需要更换1.2.3.。。。等等一系列的工厂就可以了</p>
+<p>ok,接下来模仿spring ioc<br>相信大家都使用过spring,没有的话，也可以看完再去学spring也会让你的思路清晰很多<br>  先用.properties文件来代替spring里面的xml文件</p>
+<p>Moveable接口</p>
+<p>public interface Moveable {<br>    void run();</p>
+<p>}  </p>
+<p>Train实现类<br>public class Train implements Moveable{</p>
+<pre><code>@Override
+public void run() {
+    // TODO Auto-generated method stub
+    System.out.println(&quot;小火车，呜呜呜....&quot;);
+
+}
+</code></pre><p>}</p>
+<p>.properties文件</p>
+<p>Vihecle=com.bl.spring.factory.Train</p>
+<p>测试程序</p>
+<p>public class Test {</p>
+<pre><code>public static void main(String[] args) throws Exception {
+    // TODO Auto-generated method stub
+    //加载properties属性文件
+    Properties prop =new Properties();
+    prop.load(Test.class.getClassLoader().
+            getResourceAsStream(&quot;com/bl/spring/factory/Spring.properties&quot;));
+    String vihecle = prop.getProperty(&quot;Vihecle&quot;);
+    System.out.println(vihecle);
+    //利用反射得到 vihecle 的里面的value的实列
+    Object o = Class.forName(vihecle).newInstance();
+    //强转为Moveable接口
+    Moveable m =(Moveable)o;
+    m.run();
+
+}
+</code></pre><p>}<br>ok,这是一个把xml换成properties的模仿，可以把properties里面的【Vihecle=com.bl.spring.factory.Train】当作key-value</p>
+<p> 有了这个小列子，离ioc已经更近一步了，下来真正的模仿spring ioc开始了，虽然是最最简单的，但是这出了模仿，也算是工厂在框里面的应用了<br> 贴代码<br> public interface Moveable {<br>    void run();<br>}</p>
+<p>public class Car implements Moveable{</p>
+<pre><code>public void run() {
+    System.out.println(&quot;冒着烟奔跑中car.......&quot;);
+}
+</code></pre><p>}</p>
+<p>public class Train implements Moveable{</p>
+<pre><code>@Override
+public void run() {
+    System.out.println(&quot;小火车呜呜呜&quot;);
+}
+</code></pre><p>}</p>
+<p>(上面的前面已经写了很多了，就不说明了)</p>
+<p> xml文件（模仿的）<br> &lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br> beans<br>  bean id=”v” class=”com/bl/spring/factory/Car.java”<br>  /bean<br>beans<br>(很奇怪，上面带单书名号都可以显示，下面就不可以了，符号自动脑补吧)</p>
+<p> beanFactory工厂<br> public interface BeanFactory {<br>    Object getBean(String id);</p>
+<p>}</p>
+<p>ClassPathXmlApplicationContext（这个是beanFactory的一个子类）<br>public class ClassPathXmlApplicationContext implements BeanFactory  {<br> //把xml中解析的id和反射后的实例按照key-value形式put进hashMap<br>    private Map<string, object=""> container = new HashMap<string, object="">();</string,></string,></p>
+<pre><code>public ClassPathXmlApplicationContext(String fileName) throws Exception{
+ //利用JDOM解析XML文件
+    SAXBuilder sb = new SAXBuilder();
+      Document doc = sb.build(this.getClass().getClassLoader()
+              .getResourceAsStream(fileName));
+      Element root = doc.getRootElement();
+      List list = XPath.selectNodes(root, &quot;/beans/bean&quot;);
+      System.out.println(list.size());
+
+      for (int i = 0; i &lt; list.size(); i++) { 
+       Element bean = (Element) list.get(i);
+       String id = bean.getAttributeValue(&quot;id&quot;);
+       String clazz = bean.getAttributeValue(&quot;class&quot;);
+       Object o = Class.forName(clazz).newInstance();
+       container.put(id, o);
+       System.out.println(id + &quot; &quot; + clazz);
+      }
+
+}
+
+@Override
+public Object getBean(String id) {
+
+    return container.get(id);
+}
+</code></pre><p>}</p>
+<p>测试<br>public class Test {</p>
+<pre><code>/**
+ * @param args
+ * @throws IOException 
+ */
+public static void main(String[] args) throws Exception {
+    BeanFactory f = new ClassPathXmlApplicationContext(&quot;com/bjsxt/spring/factory/applicationContext.xml&quot;);
+    Object o = f.getBean(&quot;v&quot;);
+    Moveable m = (Moveable)o;
+    m.run();
+}
+</code></pre><p>}</p>
+<p>是不是和真实的spring ioc 看起来一样的呀，哈哈<br>上面的代码都是经过测试的,可以正常运行<br>注意：如果你要用JDOM（文中解析XML的方式），那么需要导入JDOM里面的lib里面的jar和Build里面的一个jar</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2017/10/24/PatternofFactory/" data-title="PatternofFactory | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/10/19/Dynamic-Proxy/"  title="Dynamic Proxy">
+ <strong>下一篇：</strong><br/> 
+ <span>Dynamic Proxy
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Jackey">Jackey</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
