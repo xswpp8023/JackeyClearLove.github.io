@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Exception | Jackey丶S Blog</title>
+    <title>IOStream | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="Exception定义：运行期间出现的错误异常是java提供的一种处理程序错误的一种机制抛出异常：如果程序运行期间出现的异常，可以生成一个异常对象，这个异常对象封装了异常对象的信息并提交给java系统,这个过程称为异常的抛出捕获异常：当java运行时系统发现异常,会寻找能处理这个异常的代码并把异常交给它处理，这个过程称为异常的捕获。异常的树形图1.异常的分类Throwable : Error,Ex">
+    <meta name="description" content="IOStream理解IO流包括：字节流 （InputStream,OutputStream） 字符流：（Writer,Reader） 处理流： (BufferReader,BufferWriter) 1.流是单向的，输入流（InputStream）只能用于读（Reader）     输出流（OutputStream）只能用于写(Writer) 2.字节流只能一个字节一个字节的读或者写(不能读写中文">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Exception">
-<meta property="og:url" content="http://yoursite.com/2017/10/29/Exception/index.html">
+<meta property="og:title" content="IOStream">
+<meta property="og:url" content="http://yoursite.com/2017/11/02/IOStream/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="Exception定义：运行期间出现的错误异常是java提供的一种处理程序错误的一种机制抛出异常：如果程序运行期间出现的异常，可以生成一个异常对象，这个异常对象封装了异常对象的信息并提交给java系统,这个过程称为异常的抛出捕获异常：当java运行时系统发现异常,会寻找能处理这个异常的代码并把异常交给它处理，这个过程称为异常的捕获。异常的树形图1.异常的分类Throwable : Error,Ex">
+<meta property="og:description" content="IOStream理解IO流包括：字节流 （InputStream,OutputStream） 字符流：（Writer,Reader） 处理流： (BufferReader,BufferWriter) 1.流是单向的，输入流（InputStream）只能用于读（Reader）     输出流（OutputStream）只能用于写(Writer) 2.字节流只能一个字节一个字节的读或者写(不能读写中文">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-31T14:24:58.664Z">
+<meta property="og:updated_time" content="2017-11-02T15:42:05.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Exception">
-<meta name="twitter:description" content="Exception定义：运行期间出现的错误异常是java提供的一种处理程序错误的一种机制抛出异常：如果程序运行期间出现的异常，可以生成一个异常对象，这个异常对象封装了异常对象的信息并提交给java系统,这个过程称为异常的抛出捕获异常：当java运行时系统发现异常,会寻找能处理这个异常的代码并把异常交给它处理，这个过程称为异常的捕获。异常的树形图1.异常的分类Throwable : Error,Ex">
+<meta name="twitter:title" content="IOStream">
+<meta name="twitter:description" content="IOStream理解IO流包括：字节流 （InputStream,OutputStream） 字符流：（Writer,Reader） 处理流： (BufferReader,BufferWriter) 1.流是单向的，输入流（InputStream）只能用于读（Reader）     输出流（OutputStream）只能用于写(Writer) 2.字节流只能一个字节一个字节的读或者写(不能读写中文">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/10/29/Exception/" title="Exception" itemprop="url">Exception</a>
+      <a href="/2017/11/02/IOStream/" title="IOStream" itemprop="url">IOStream</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-29T02:00:48.000Z" itemprop="datePublished"> Published 2017-10-29</time>
+    <time datetime="2017-11-02T02:43:38.000Z" itemprop="datePublished"> Published 2017-11-02</time>
     
   </p>
 </header>
@@ -105,10 +105,46 @@
 		
 		</div>
 		
-		<p>Exception<br>定义：运行期间出现的错误<br>异常是java提供的一种处理程序错误的一种机制<br>抛出异常：如果程序运行期间出现的异常，可以生成一个异常对象，这个异常对象封装了异常对象的信息并提交给java系统,这个过程称为异常的抛出<br>捕获异常：当java运行时系统发现异常,会寻找能处理这个异常的代码并把异常交给它处理，这个过程称为异常的捕获。<br>异常的树形图<br>1.异常的分类<br>Throwable : Error,Exception<br>Error表示JVM虚拟机里面的错误，程序员处理不了<br>Exception : 其他的异常，RuntimeException<br>RuntimeException:表示一些经常出现的异常，如 除以0，数组下标越界，等，可以对其不进行处理，当然也可以对其进行处理<br>其他的异常 ： 表示必须要处理的异常 ， 入 IOException<br>2.try{<br> …可能出现异常的代码块<br>}catch(some1Exception e){</p>
-<p>e.printStackTrance();//打印出错的和出错相关的堆栈信息<br>e.getMessage();//得到有关异常的信息<br>//一般来说使用printStackTrance的比较多</p>
-<p>}catch(some2Exception e){</p>
-<p>e.printStackTrance();<br>}finally{<br>//无论是否有异常，都会执行finally里面的代码,<br>//finally里面通常执行的是文件流的关闭，数据库的回滚等等进行资源的清除工作<br>}</p>
+		<p>IOStream理解<br>IO流包括：字节流 （InputStream,OutputStream）<br> 字符流：（Writer,Reader）<br> 处理流： (BufferReader,BufferWriter)<br> 1.流是单向的，输入流（InputStream）只能用于读（Reader）<br>     输出流（OutputStream）只能用于写(Writer)<br> 2.字节流只能一个字节一个字节的读或者写(不能读写中文)，字符流(一个字符的读写，一个字符等于两个字节，可以读写中文)，他们的返回值都是INT类型的，输出的时候需要强转为字符串类型<br> 3.InputStream,OutputStream,Reader,Writer是所有流的祖宗，所有流都是继承他们（如：FileInputStream,FileOutputStream）<br> 4.BufferReader(Writer)相当于给原来的流（管道）上在包装了一层管道，因为BufferReader里面的readline方法很好用（直接读写一行），并且可以提升读写的效率。<br>  下面看看代码再来理解一下<br>  <a id="more"></a><br>  public class IOTest{<br>  public static void main(String args[]){<br>  int b;<br>  File f =new File(“d://src/test.java”);<br>  File f1 =new File(“d://src/test1.java”);<br>  FileOutputStram fos =new FileOutputStream(f1);<br>  FileInputStream fis =new FileInputStream(f);<br>  while((b = fis.read()) != -1){<br>  //把test里面的内容读出来<br>   System.out.print(b);<br>   //把test里面读出来的内容写入test1里面<br>   fos.write(b);<br>  }<br>  }<br>  }<br>  这个是字节流的读写<br>  现在看用bufferReader包装之后的流<br>  public class testIo {</p>
+<pre><code>public static void main(String args[]) throws Exception{
+    int b;
+    File f= new File(&quot;C:\\Users\\BaiLu\\Desktop\\test.java&quot;); 
+    FileInputStream fis =new FileInputStream(f);
+    //这个是在InputStram外包裹了一个BufferInputStream
+    BufferedInputStream bis = new BufferedInputStream(fis);
+    while((b = bis.read())  != -1){
+        System.out.print((char)b);
+    }
+</code></pre><p>   }<br> //同理BufferOutputStream也是这样使用的。</p>
+<p> public class testIo {</p>
+<pre><code>public static void main(String args[]) throws Exception{
+    int b;
+    File f= new File(&quot;C:\\Users\\BaiLu\\Desktop\\test.java&quot;); 
+</code></pre><p>//        FileInputStream fis =new FileInputStream(f);<br>//        InputStreamReader isr =new InputStreamReader(fis);<br>        FileReader fr =new FileReader(f);<br>        BufferedReader br = new BufferedReader(fr);<br>       String rl =null;<br>        while((rl = br.readLine()) !=null){<br>            System.out.print(br.readLine());<br>        }</p>
+<p>   }<br>//读文件<br>//InputStreamReader是转换流，把InputStream转换为Reader<br>//同理输出流也一样<br>//Buffered(oUT)InputStream()是包装字节流的<br>//Buffered(Writer)Reader是包装字符流的</p>
+<p>//字节流与字符流并不能完美的解决所有的问题，比如，现在要向内存里面写一个Double类型的数字，当然,把Double转换为字节字符流也是可以实现，但是一个Double或是一个lOng类型的，比如Long占8个字节，那么意味着把long转换为字节要占8个内存，这样一直转很多的long类型的数字那么后果是不堪设想的, 现在就来了解了解DataInputStream和DataOutputStream<br>//DataInputStream和DataOutputStream是为java原始类型提供存储的流，他存储long(524254254)就是直接把这个数字放到一块内存里面就ok，在不用想字节里面占那么大的内存了，下面看实现的代码<br> public static void main(String args[]) throws Exception{<br>        ByteArrayOutputStream bos = new ByteArrayOutputStream();<br>        DataOutputStream dos =new DataOutputStream(bos);<br>      try{<br>          dos.writeDouble(Math.random());<br>          dos.writeBoolean(true);<br>          ByteArrayInputStream bis =new ByteArrayInputStream(bos.toByteArray());<br>          DataInputStream dis =new DataInputStream(bis);<br>          System.out.println(dis.available());<br>          System.out.println(dis.readDouble());<br>          System.out.println(dis.readBoolean());</p>
+<pre><code>    dos.close();
+    dis.close();
+}catch(Exception e){
+    e.printStackTrace();
+}    
+</code></pre><p>   }<br>   //运行结果<br>   9<br>0.3342098651358444<br>true<br>//先把double和boolean类型写进去，在把它从内存中读出来<br>//ByteArrayOutputStream外包了一层DataOutputStream，用DataOutputStream的方法写入数据,<br>//然后ByteArrayInputStream从ByteArrayOutputStream里面读数据，下一步就是向ByteArrayInputStream外包一层DataInputStream，然后利用DataInputStream里面的方法读数据出来</p>
+<p>//下来看打印流PrintStream,PrintWrite<br>public class testIo {</p>
+<pre><code>public static void main(String args[]) throws Exception{
+    String s= null;
+    System.out.println(&quot;请输入:&quot;);
+    BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
+    File f =new File(&quot;C:\\Users\\BaiLu\\Desktop\\test1.java&quot;);
+    FileWriter fw =new FileWriter(f);
+    PrintWriter pw =new PrintWriter(fw);
+    while((s = br.readLine()) !=null){
+        if(s.equalsIgnoreCase(&quot;exit&quot;)) break;
+        pw.println(s.toUpperCase());
+        pw.flush();
+    }        
+}
+</code></pre><p>}<br>//这个的功能是会把我们键盘上输入的内容打印到指定的目录文件里面<br>//printWriter用的场景很适合做日志<br>//printWriter不会抛出异常，会自动的flush()</p>
+<p>//ObjectInputStream()  直接写一个对象进去<br>//Serilizable(标记化接口)，JDK里面就一个接口，没有实现方法，它的意思是：标记这个类需要序列化,JVM编译的时候看到Serilizable这个接口，就会为你的类序列化，至于怎么实现的，操作者是看不见的。<br>//Externalizable 这个接口：如果你想要控制你的序列化实现，那么你可以实现这个接口<br>Public class IOTest{<br>  public static void mian(){<br>  T t=new T();<br>  t.k = 10;<br>  t.j = 20;<br>   OutputStreamReader osr =new OutputStreamReader(“d:\src\text.java”);<br>   ObjectOutputStream oop =new ObjectOutputStream(osr);<br>   oop.writeObject(t);<br>    InputStreamReader isr =new InputStreamReader(“d:\src\text.java”);<br>    ObjectInputStream ois =new ObjectInputStream(isr);<br>    T t =(T)ois.readObject();<br>    System.out.print(t.k + “ “ + t.j );<br>  }<br>}<br>//运行结果 10 20<br>//ok这样就可以把一个对象写进去并可以读出来了</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -121,7 +157,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/10/29/Exception/" data-title="Exception | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/02/IOStream/" data-title="IOStream | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -134,19 +170,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/02/IOStream/" title="IOStream">
-  <strong>上一篇：</strong><br/>
-  <span>
-  IOStream</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/10/27/object-oriented/"  title="object-oriented">
+<a href="/2017/10/29/Exception/"  title="Exception">
  <strong>下一篇：</strong><br/> 
- <span>object-oriented
+ <span>Exception
 </span>
 </a>
 </div>
