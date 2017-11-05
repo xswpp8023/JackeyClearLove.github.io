@@ -86,6 +86,135 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/11/04/tomcat-1/" title="tomcat-1" itemprop="url">tomcat-1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-04T13:26:27.000Z" itemprop="datePublished"> Published 2017-11-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>bootstarp.jar //tomcat内核<br>startup.bat startup.sh shutdown.bat shutdown.sh分别我iwindows和linux下的启动批处理文件<br> 批处理：在.bat的文件里面编写的一些windows的命令（跳转，等），以后只要执行一次.bat文件,就可以把里面的内容全部执行完成而不用逐个的执行每个命令</p>
+<ol>
+<li>echo off -&gt; 执行命令的时候，不要在命令窗口显示命令本身  单句的用@也可以<br>比如<br>@dir<br>@ping localhost<br>等于<br>@echo off<br>dir<br>ping localhost<br>2.if[NOT] ERRORLEVEL number command 如果最后运行的程序返回一个等于或大于指定数字的退出代码，则执行后面的命令<br>if[NOT] string1==string2 command 如果指定的字符串匹配，那么就执行后面的命令<br>if[NOT] EXIST filename command 如果filename存在 就执行后面的命令<br>比如： if “%OS%”==“Windows_NT” setlocal<br>意思是如果OS等于Windows_NT的话，就执行setlocal命令<br>3.rem命令<br>对命令的注释或者对命令的功能的注释，以便于阅读，被rem注释的命令批处理文件不会运行<br>4.echo %0 %1 %2 表示命令行想批处理文件传递参数 %0 %1 %2分别代表这第1，2，3个参数<br>比如： echo aa bb cc 执行后为 aa bb cc 一直可以到9%<br>那么要取第十个怎么办？  我们可以利用shift命令<br>shift表示把参数后移一个位置 那么0%就可以代表1%的参数，以此推断，9%就可以代表第十个参数，还要秋后面的参数，可以继续执行shift命令<br>shift<br>echo %0 %1 %2<br>6.goto label 跳转到 label<br>在下面定义 :label 标签名随便定义 跳转后执行:label ，程序将执行下一行的命令</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/11/03/MultiThread/" title="MultiThread" itemprop="url">MultiThread</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-02T16:02:43.000Z" itemprop="datePublished"> Published 2017-11-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>进程是一个静态概念<br>比如：系统中运行的应用程序就是一个进程，每个进程在内存中都有自己独立的内存空间，一个进程可以包含多个线程<br>   线程：线程是程序执行流的最小的单位，线程就是进程中的一个执行流程<br>   现在以代码和概念对比的理解<br>   public class thread{<br>   public static void mian(String args[]){<br>   thread tt=new thread();<br>   tt.m();<br>   thread1 t= new thread1();<br>   t.start();<br>    for(int j=0;j&lt;10;j++){<br>   System.out.println(“线程main” + j);<br>   }</p>
+<p>   public void m(){<br>   System.out.println(“我是m方法”);<br>   }</p>
+<p>   }</p>
+<p>   public class thread1  implements Runnable{</p>
+<p>   public void run(){<br>   for(int i=0;i<10;i++){ system.out.println("线程thread"="" +="" i);="" }="" <!--more--=""><br>  //现在这样的解释，在我们的程序中有两个线程，分别为main主线程和Thread1线程<br>  //main方法的执行流程   调用m()方法  然后执行thread1线程，但是thread1线程执行的时候,main线程不会停止，继续向下执行for循环语句<br>  //thread1线程就是执行thread1里面的方法<br>  //注意：线程的启动是调用start()方法，而不是run,虽然start之后还是调用run方法<br>  //如果直接thread1.run()的的话，那么JVM会认为这是一个方法调用,而不是一个线程<br>  //如实线程，那么就是轮流执行，若是方法调用，那么就会按照main线程里面的顺序执行</10;i++){></p>
+<p>  //线程  start –就绪 –运行状态 ——死亡<br>                  |       |<br>                 激活-  ——阻塞<br> //还有就是线程的休眠，isAlive,interrupter等的一些方法参考JDK API<br> //join  （相当于方法调用，）合并线程，把jion的线程与当前线程合并，（就是等我Join的这个线程执行完了,在执行你的线程,就算join的线程休眠，被合并的线程也要等着我join的线程执行完了在执行你被合并的线程）<br>  //yeild  让出cpu(但是只是让出以瞬间)  在线程执行到某个点 比如 if(i/10 == 0) thread.yrild  也就是循环的时候,每当满足了i/10 == 0这个点，那么当前被执行的线程就yeild<br>  在线程里面最难的是线程同步<br>  线程同步一个经典的案例就是银行取款的问题<br>  eg:老爸老妈在同一时间去取款机取款，卡里余额有3000，老爸去了2000，因为在同一时间，还没有来得及扣，老妈也取了2000，那么本来是不足以让老爸老马来取这么多钱的，但是因为机器的问题，导致老爸老妈取了大于银行卡里面的钱，银行亏损了，查出来老爸老妈也是难免其责，对社会也是造成了很不好的影响啊。现在以程序来演示上面的问题<br>  //线程要访问的方法<br>  public class timer {<br>    private static int num = 0;<br>    public void add(String name){<br>        num ++;<br>        try{</p>
+<pre><code>    }catch(Exception e){
+        e.printStackTrace();
+    }
+    System.out.println(name + &quot;是第&quot;+ num +&quot;个执行timer的add方法&quot;);
+
+}
+</code></pre><p>}</p>
+<p>//线程<br>public class threadTest implements Runnable{<br>timer t =new timer();<br> public static void main(String args[]){<br>     threadTest tr =new threadTest();<br>        Thread t1 = new Thread(tr);<br>        Thread t2 = new Thread(tr);<br>        t1.setName(“t1”);<br>        t2.setName(“t2”);<br>        t1.start();<br>        t2.start();<br> }<br>    @Override<br>    public void run() {<br>        t.add(Thread.currentThread().getName());<br>    }</p>
+<p>}<br>//result  t1是第2个执行timer的add方法<br>t2是第2个执行timer的add方法<br>那么我们模仿的这个就是t1,t2线程同时访问timer对象的add()方法，可以看出他们打印的结果一样，因为本来我们与其的结果是 ： t1是第1个执行timer的add方法<br>t2是第2个执行timer的add方法<br>  程序的执行：当t1线程访问timer的add()方法时,num=1,然后t1休眠的1秒,然后t2开始访问，这时num=2,所以我们看到了上面重复的结果</p>
+<p>  解决方案：<br>  public class timer {<br>    private static int num = 0;<br>    public void add(String name){<br>    Synchronized(this){<br>        num ++;<br>        try{</p>
+<pre><code>    }catch(Exception e){
+        e.printStackTrace();
+    }
+    System.out.println(name + &quot;是第&quot;+ num +&quot;个执行timer的add方法&quot;);
+
+    }
+
+}
+</code></pre><p>}<br>为执行的方法包一个关键字Synchronized(this)互斥锁<br>这个this表示的是锁定当前对象(这个也是面试中常问的问题),锁到我Synchronized里面包的代码执行完了，才去释放锁，让其他的线程来执行<br>ok，在运行 结果为  t1是第1个执行timer的add方法<br>t2是第2个执行timer的add方法</p>
+<p>死锁<br>这个基本都是应用在系统级的程序里面，平常也算是很难遇到<br>死锁：A运行需要B，B运行需要A，但是A运行的时候B被占着，同理B也是一样<br>著名的问题是 ：哲学家吃饭的问题，5个哲学家围城一圈吃饭，每个人都只有一支筷子，都在右手上拿着，他们需要吃饭，就必须拿到左手的筷子，但是哲学家都不互让，最后看着餐桌饿死。<br>  程序表达<br>  Object a =new Object(); b = new Object();<br>  if(flag == 0){<br>   Synchronized(a){<br>    try{<br>     Thread.sleep(50);<br>    }catch(Exception e){<br>    e.printStackTrace();<br>    }<br>    Synchronized(b);<br>    System.out.println(“a-b”);<br>   }<br>  }</p>
+<p>  if(flag == 1){<br>   Synchronized(b){<br>    try{<br>     Thread.sleep(50);<br>    }catch(Exception e){<br>    e.printStackTrace();<br>    }<br>    Synchronized(a);<br>    System.out.println(“b-a”);<br>   }<br>  }<br>  //上面的程序表明了死锁，意思是a运行需要b，b运行需要a，但是当a运行的时候b被锁着,b运行需要a的时候a被锁着，导致a,b都无法运行，造成死锁。<br>  解决方案1.增大粒度（就是把锁定的对象粒度增大，从a,b增大到Object上就可以了）</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/11/02/IOStream/" title="IOStream" itemprop="url">IOStream</a>
   </h1>
   <p class="article-author">By
@@ -461,108 +590,6 @@
         <p> java后端面试<br>  校招面试面试官注重的点：<br>  1.基础<br>  2.编程能力</p>
 <p>1.String StringBuffer和StringBuilder的区别<br>   (1)在执行速度上，String<stringbuffer<stringbuilder 原因：string:字符串常量="" stringbuffer:字符串变量="" stringbuilder:字符串变量="" 上面可以看到string是字符串常量，其他的两个是字符串变量，我们可以看下面一个列子：="" string="" s="abcd;" +="" 1;="" system.out.println(s);="" result="abcd1" 可以看到，s的值是变化了的，但是jvm是这样解析这段代码的：首先创建一个变量s，在给它赋值为abcd,然后在创建变量来执行第二段代码，这样就是说，每次改变string，都需要重新创建对象，而以前的对象会被gc作为垃圾回收，而stringbuffer,stringbuilder是字符串变量，它可以改变变量，每次改变变量也不用重新创建对象，所以string<stringbuffer<stringbuilder.="" 那么我们在看下面这段代码="" "only="" a"="" "fun";="" stringbuffer="" buffer="new" stringbuffer("this="" is")="" .append("only="" a").append("fun");="" 执行后发现="" 速度=""> buffer<br>  其实这是JVM耍的一个把戏  String s = “this is” + “only a” + “fun”;就等于<br>  String s = “this is only a fun”;<br>  （2）线程安全<br>  StringBuffer:线程安全    StringBuilder:线程不安全<br>  虽然StringBuilder的速度比StringBuffer快，但是JVM不能保证StringBuilder在字符串缓冲区操作是线程安全的，但是大部分单线程下操作字符串缓冲区可以使用StringBuilder</stringbuffer<stringbuilder></p>
 <p>  总结：对于字符串不频繁的操作使用：String<br>   单线程下操作字符串缓冲区使用;StringBuilder<br>   多线程下操作字符串缓冲区使用：StringBuffer</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/10/03/JavaScript1/" title="JavaScript" itemprop="url">JavaScript</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-10-03T07:54:48.000Z" itemprop="datePublished"> Published 2017-10-03</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>JavaScript–JQuery</p>
-<p>JQuery基本选择器<br>类选择器<br>$(function(){<br>  $(“.class”).click(function(){<br>  $(“#id”).css(“Background”,”#000000”);<br>  $(“yuansu”).css(“Background”,”#000000”);<br>  })</p>
-<p>})</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/09/30/test/" title="test" itemprop="url">test</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-09-30T08:20:19.000Z" itemprop="datePublished"> Published 2017-09-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Test  Test</p>
 
         
         

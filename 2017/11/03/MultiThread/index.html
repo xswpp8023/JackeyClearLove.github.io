@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>IOStream | Jackey丶S Blog</title>
+    <title>MultiThread | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="IOStream理解IO流包括：字节流 （InputStream,OutputStream） 字符流：（Writer,Reader） 处理流： (BufferReader,BufferWriter) 1.流是单向的，输入流（InputStream）只能用于读（Reader）     输出流（OutputStream）只能用于写(Writer) 2.字节流只能一个字节一个字节的读或者写(不能读写中文">
+    <meta name="description" content="进程是一个静态概念比如：系统中运行的应用程序就是一个进程，每个进程在内存中都有自己独立的内存空间，一个进程可以包含多个线程   线程：线程是程序执行流的最小的单位，线程就是进程中的一个执行流程   现在以代码和概念对比的理解   public class thread{   public static void mian(String args[]){   thread tt=new thread">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IOStream">
-<meta property="og:url" content="http://yoursite.com/2017/11/02/IOStream/index.html">
+<meta property="og:title" content="MultiThread">
+<meta property="og:url" content="http://yoursite.com/2017/11/03/MultiThread/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="IOStream理解IO流包括：字节流 （InputStream,OutputStream） 字符流：（Writer,Reader） 处理流： (BufferReader,BufferWriter) 1.流是单向的，输入流（InputStream）只能用于读（Reader）     输出流（OutputStream）只能用于写(Writer) 2.字节流只能一个字节一个字节的读或者写(不能读写中文">
+<meta property="og:description" content="进程是一个静态概念比如：系统中运行的应用程序就是一个进程，每个进程在内存中都有自己独立的内存空间，一个进程可以包含多个线程   线程：线程是程序执行流的最小的单位，线程就是进程中的一个执行流程   现在以代码和概念对比的理解   public class thread{   public static void mian(String args[]){   thread tt=new thread">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T15:42:05.443Z">
+<meta property="og:updated_time" content="2017-11-03T18:55:41.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IOStream">
-<meta name="twitter:description" content="IOStream理解IO流包括：字节流 （InputStream,OutputStream） 字符流：（Writer,Reader） 处理流： (BufferReader,BufferWriter) 1.流是单向的，输入流（InputStream）只能用于读（Reader）     输出流（OutputStream）只能用于写(Writer) 2.字节流只能一个字节一个字节的读或者写(不能读写中文">
+<meta name="twitter:title" content="MultiThread">
+<meta name="twitter:description" content="进程是一个静态概念比如：系统中运行的应用程序就是一个进程，每个进程在内存中都有自己独立的内存空间，一个进程可以包含多个线程   线程：线程是程序执行流的最小的单位，线程就是进程中的一个执行流程   现在以代码和概念对比的理解   public class thread{   public static void mian(String args[]){   thread tt=new thread">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/02/IOStream/" title="IOStream" itemprop="url">IOStream</a>
+      <a href="/2017/11/03/MultiThread/" title="MultiThread" itemprop="url">MultiThread</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-02T02:43:38.000Z" itemprop="datePublished"> Published 2017-11-02</time>
+    <time datetime="2017-11-02T16:02:43.000Z" itemprop="datePublished"> Published 2017-11-03</time>
     
   </p>
 </header>
@@ -105,46 +105,33 @@
 		
 		</div>
 		
-		<p>IOStream理解<br>IO流包括：字节流 （InputStream,OutputStream）<br> 字符流：（Writer,Reader）<br> 处理流： (BufferReader,BufferWriter)<br> 1.流是单向的，输入流（InputStream）只能用于读（Reader）<br>     输出流（OutputStream）只能用于写(Writer)<br> 2.字节流只能一个字节一个字节的读或者写(不能读写中文)，字符流(一个字符的读写，一个字符等于两个字节，可以读写中文)，他们的返回值都是INT类型的，输出的时候需要强转为字符串类型<br> 3.InputStream,OutputStream,Reader,Writer是所有流的祖宗，所有流都是继承他们（如：FileInputStream,FileOutputStream）<br> 4.BufferReader(Writer)相当于给原来的流（管道）上在包装了一层管道，因为BufferReader里面的readline方法很好用（直接读写一行），并且可以提升读写的效率。<br>  下面看看代码再来理解一下<br>  <a id="more"></a><br>  public class IOTest{<br>  public static void main(String args[]){<br>  int b;<br>  File f =new File(“d://src/test.java”);<br>  File f1 =new File(“d://src/test1.java”);<br>  FileOutputStram fos =new FileOutputStream(f1);<br>  FileInputStream fis =new FileInputStream(f);<br>  while((b = fis.read()) != -1){<br>  //把test里面的内容读出来<br>   System.out.print(b);<br>   //把test里面读出来的内容写入test1里面<br>   fos.write(b);<br>  }<br>  }<br>  }<br>  这个是字节流的读写<br>  现在看用bufferReader包装之后的流<br>  public class testIo {</p>
-<pre><code>public static void main(String args[]) throws Exception{
-    int b;
-    File f= new File(&quot;C:\\Users\\BaiLu\\Desktop\\test.java&quot;); 
-    FileInputStream fis =new FileInputStream(f);
-    //这个是在InputStram外包裹了一个BufferInputStream
-    BufferedInputStream bis = new BufferedInputStream(fis);
-    while((b = bis.read())  != -1){
-        System.out.print((char)b);
+		<p>进程是一个静态概念<br>比如：系统中运行的应用程序就是一个进程，每个进程在内存中都有自己独立的内存空间，一个进程可以包含多个线程<br>   线程：线程是程序执行流的最小的单位，线程就是进程中的一个执行流程<br>   现在以代码和概念对比的理解<br>   public class thread{<br>   public static void mian(String args[]){<br>   thread tt=new thread();<br>   tt.m();<br>   thread1 t= new thread1();<br>   t.start();<br>    for(int j=0;j&lt;10;j++){<br>   System.out.println(“线程main” + j);<br>   }</p>
+<p>   public void m(){<br>   System.out.println(“我是m方法”);<br>   }</p>
+<p>   }</p>
+<p>   public class thread1  implements Runnable{</p>
+<p>   public void run(){<br>   for(int i=0;i<10;i++){ system.out.println("线程thread"="" +="" i);="" }="" <!--more--=""><br>  //现在这样的解释，在我们的程序中有两个线程，分别为main主线程和Thread1线程<br>  //main方法的执行流程   调用m()方法  然后执行thread1线程，但是thread1线程执行的时候,main线程不会停止，继续向下执行for循环语句<br>  //thread1线程就是执行thread1里面的方法<br>  //注意：线程的启动是调用start()方法，而不是run,虽然start之后还是调用run方法<br>  //如果直接thread1.run()的的话，那么JVM会认为这是一个方法调用,而不是一个线程<br>  //如实线程，那么就是轮流执行，若是方法调用，那么就会按照main线程里面的顺序执行</10;i++){></p>
+<p>  //线程  start –就绪 –运行状态 ——死亡<br>                  |       |<br>                 激活-  ——阻塞<br> //还有就是线程的休眠，isAlive,interrupter等的一些方法参考JDK API<br> //join  （相当于方法调用，）合并线程，把jion的线程与当前线程合并，（就是等我Join的这个线程执行完了,在执行你的线程,就算join的线程休眠，被合并的线程也要等着我join的线程执行完了在执行你被合并的线程）<br>  //yeild  让出cpu(但是只是让出以瞬间)  在线程执行到某个点 比如 if(i/10 == 0) thread.yrild  也就是循环的时候,每当满足了i/10 == 0这个点，那么当前被执行的线程就yeild<br>  在线程里面最难的是线程同步<br>  线程同步一个经典的案例就是银行取款的问题<br>  eg:老爸老妈在同一时间去取款机取款，卡里余额有3000，老爸去了2000，因为在同一时间，还没有来得及扣，老妈也取了2000，那么本来是不足以让老爸老马来取这么多钱的，但是因为机器的问题，导致老爸老妈取了大于银行卡里面的钱，银行亏损了，查出来老爸老妈也是难免其责，对社会也是造成了很不好的影响啊。现在以程序来演示上面的问题<br>  //线程要访问的方法<br>  public class timer {<br>    private static int num = 0;<br>    public void add(String name){<br>        num ++;<br>        try{</p>
+<pre><code>    }catch(Exception e){
+        e.printStackTrace();
     }
-</code></pre><p>   }<br> //同理BufferOutputStream也是这样使用的。</p>
-<p> public class testIo {</p>
-<pre><code>public static void main(String args[]) throws Exception{
-    int b;
-    File f= new File(&quot;C:\\Users\\BaiLu\\Desktop\\test.java&quot;); 
-</code></pre><p>//        FileInputStream fis =new FileInputStream(f);<br>//        InputStreamReader isr =new InputStreamReader(fis);<br>        FileReader fr =new FileReader(f);<br>        BufferedReader br = new BufferedReader(fr);<br>       String rl =null;<br>        while((rl = br.readLine()) !=null){<br>            System.out.print(br.readLine());<br>        }</p>
-<p>   }<br>//读文件<br>//InputStreamReader是转换流，把InputStream转换为Reader<br>//同理输出流也一样<br>//Buffered(oUT)InputStream()是包装字节流的<br>//Buffered(Writer)Reader是包装字符流的</p>
-<p>//字节流与字符流并不能完美的解决所有的问题，比如，现在要向内存里面写一个Double类型的数字，当然,把Double转换为字节字符流也是可以实现，但是一个Double或是一个lOng类型的，比如Long占8个字节，那么意味着把long转换为字节要占8个内存，这样一直转很多的long类型的数字那么后果是不堪设想的, 现在就来了解了解DataInputStream和DataOutputStream<br>//DataInputStream和DataOutputStream是为java原始类型提供存储的流，他存储long(524254254)就是直接把这个数字放到一块内存里面就ok，在不用想字节里面占那么大的内存了，下面看实现的代码<br> public static void main(String args[]) throws Exception{<br>        ByteArrayOutputStream bos = new ByteArrayOutputStream();<br>        DataOutputStream dos =new DataOutputStream(bos);<br>      try{<br>          dos.writeDouble(Math.random());<br>          dos.writeBoolean(true);<br>          ByteArrayInputStream bis =new ByteArrayInputStream(bos.toByteArray());<br>          DataInputStream dis =new DataInputStream(bis);<br>          System.out.println(dis.available());<br>          System.out.println(dis.readDouble());<br>          System.out.println(dis.readBoolean());</p>
-<pre><code>    dos.close();
-    dis.close();
-}catch(Exception e){
-    e.printStackTrace();
-}    
-</code></pre><p>   }<br>   //运行结果<br>   9<br>0.3342098651358444<br>true<br>//先把double和boolean类型写进去，在把它从内存中读出来<br>//ByteArrayOutputStream外包了一层DataOutputStream，用DataOutputStream的方法写入数据,<br>//然后ByteArrayInputStream从ByteArrayOutputStream里面读数据，下一步就是向ByteArrayInputStream外包一层DataInputStream，然后利用DataInputStream里面的方法读数据出来</p>
-<p>//下来看打印流PrintStream,PrintWrite<br>public class testIo {</p>
-<pre><code>public static void main(String args[]) throws Exception{
-    String s= null;
-    System.out.println(&quot;请输入:&quot;);
-    BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
-    File f =new File(&quot;C:\\Users\\BaiLu\\Desktop\\test1.java&quot;);
-    FileWriter fw =new FileWriter(f);
-    PrintWriter pw =new PrintWriter(fw);
-    while((s = br.readLine()) !=null){
-        if(s.equalsIgnoreCase(&quot;exit&quot;)) break;
-        pw.println(s.toUpperCase());
-        pw.flush();
-    }        
+    System.out.println(name + &quot;是第&quot;+ num +&quot;个执行timer的add方法&quot;);
+
 }
-</code></pre><p>}<br>//这个的功能是会把我们键盘上输入的内容打印到指定的目录文件里面<br>//printWriter用的场景很适合做日志<br>//printWriter不会抛出异常，会自动的flush()</p>
-<p>//ObjectInputStream()  直接写一个对象进去<br>//Serilizable(标记化接口)，JDK里面就一个接口，没有实现方法，它的意思是：标记这个类需要序列化,JVM编译的时候看到Serilizable这个接口，就会为你的类序列化，至于怎么实现的，操作者是看不见的。<br>//Externalizable 这个接口：如果你想要控制你的序列化实现，那么你可以实现这个接口<br>Public class IOTest{<br>  public static void mian(){<br>  T t=new T();<br>  t.k = 10;<br>  t.j = 20;<br>   OutputStreamReader osr =new OutputStreamReader(“d:\src\text.java”);<br>   ObjectOutputStream oop =new ObjectOutputStream(osr);<br>   oop.writeObject(t);<br>    InputStreamReader isr =new InputStreamReader(“d:\src\text.java”);<br>    ObjectInputStream ois =new ObjectInputStream(isr);<br>    T t =(T)ois.readObject();<br>    System.out.print(t.k + “ “ + t.j );<br>  }<br>}<br>//运行结果 10 20<br>//ok这样就可以把一个对象写进去并可以读出来了</p>
+</code></pre><p>}</p>
+<p>//线程<br>public class threadTest implements Runnable{<br>timer t =new timer();<br> public static void main(String args[]){<br>     threadTest tr =new threadTest();<br>        Thread t1 = new Thread(tr);<br>        Thread t2 = new Thread(tr);<br>        t1.setName(“t1”);<br>        t2.setName(“t2”);<br>        t1.start();<br>        t2.start();<br> }<br>    @Override<br>    public void run() {<br>        t.add(Thread.currentThread().getName());<br>    }</p>
+<p>}<br>//result  t1是第2个执行timer的add方法<br>t2是第2个执行timer的add方法<br>那么我们模仿的这个就是t1,t2线程同时访问timer对象的add()方法，可以看出他们打印的结果一样，因为本来我们与其的结果是 ： t1是第1个执行timer的add方法<br>t2是第2个执行timer的add方法<br>  程序的执行：当t1线程访问timer的add()方法时,num=1,然后t1休眠的1秒,然后t2开始访问，这时num=2,所以我们看到了上面重复的结果</p>
+<p>  解决方案：<br>  public class timer {<br>    private static int num = 0;<br>    public void add(String name){<br>    Synchronized(this){<br>        num ++;<br>        try{</p>
+<pre><code>    }catch(Exception e){
+        e.printStackTrace();
+    }
+    System.out.println(name + &quot;是第&quot;+ num +&quot;个执行timer的add方法&quot;);
+
+    }
+
+}
+</code></pre><p>}<br>为执行的方法包一个关键字Synchronized(this)互斥锁<br>这个this表示的是锁定当前对象(这个也是面试中常问的问题),锁到我Synchronized里面包的代码执行完了，才去释放锁，让其他的线程来执行<br>ok，在运行 结果为  t1是第1个执行timer的add方法<br>t2是第2个执行timer的add方法</p>
+<p>死锁<br>这个基本都是应用在系统级的程序里面，平常也算是很难遇到<br>死锁：A运行需要B，B运行需要A，但是A运行的时候B被占着，同理B也是一样<br>著名的问题是 ：哲学家吃饭的问题，5个哲学家围城一圈吃饭，每个人都只有一支筷子，都在右手上拿着，他们需要吃饭，就必须拿到左手的筷子，但是哲学家都不互让，最后看着餐桌饿死。<br>  程序表达<br>  Object a =new Object(); b = new Object();<br>  if(flag == 0){<br>   Synchronized(a){<br>    try{<br>     Thread.sleep(50);<br>    }catch(Exception e){<br>    e.printStackTrace();<br>    }<br>    Synchronized(b);<br>    System.out.println(“a-b”);<br>   }<br>  }</p>
+<p>  if(flag == 1){<br>   Synchronized(b){<br>    try{<br>     Thread.sleep(50);<br>    }catch(Exception e){<br>    e.printStackTrace();<br>    }<br>    Synchronized(a);<br>    System.out.println(“b-a”);<br>   }<br>  }<br>  //上面的程序表明了死锁，意思是a运行需要b，b运行需要a，但是当a运行的时候b被锁着,b运行需要a的时候a被锁着，导致a,b都无法运行，造成死锁。<br>  解决方案1.增大粒度（就是把锁定的对象粒度增大，从a,b增大到Object上就可以了）</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -157,7 +144,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/02/IOStream/" data-title="IOStream | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/03/MultiThread/" data-title="MultiThread | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -171,18 +158,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/11/03/MultiThread/" title="MultiThread">
+ <a href="/2017/11/04/tomcat-1/" title="tomcat-1">
   <strong>上一篇：</strong><br/>
   <span>
-  MultiThread</span>
+  tomcat-1</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/10/29/Exception/"  title="Exception">
+<a href="/2017/11/02/IOStream/"  title="IOStream">
  <strong>下一篇：</strong><br/> 
- <span>Exception
+ <span>IOStream
 </span>
 </a>
 </div>

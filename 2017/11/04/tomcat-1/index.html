@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>IOStream | Jackey丶S Blog</title>
+    <title>tomcat-1 | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="IOStream理解IO流包括：字节流 （InputStream,OutputStream） 字符流：（Writer,Reader） 处理流： (BufferReader,BufferWriter) 1.流是单向的，输入流（InputStream）只能用于读（Reader）     输出流（OutputStream）只能用于写(Writer) 2.字节流只能一个字节一个字节的读或者写(不能读写中文">
+    <meta name="description" content="bootstarp.jar //tomcat内核startup.bat startup.sh shutdown.bat shutdown.sh分别我iwindows和linux下的启动批处理文件 批处理：在.bat的文件里面编写的一些windows的命令（跳转，等），以后只要执行一次.bat文件,就可以把里面的内容全部执行完成而不用逐个的执行每个命令  echo off -&amp;gt; 执行命令的时候">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IOStream">
-<meta property="og:url" content="http://yoursite.com/2017/11/02/IOStream/index.html">
+<meta property="og:title" content="tomcat-1">
+<meta property="og:url" content="http://yoursite.com/2017/11/04/tomcat-1/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="IOStream理解IO流包括：字节流 （InputStream,OutputStream） 字符流：（Writer,Reader） 处理流： (BufferReader,BufferWriter) 1.流是单向的，输入流（InputStream）只能用于读（Reader）     输出流（OutputStream）只能用于写(Writer) 2.字节流只能一个字节一个字节的读或者写(不能读写中文">
+<meta property="og:description" content="bootstarp.jar //tomcat内核startup.bat startup.sh shutdown.bat shutdown.sh分别我iwindows和linux下的启动批处理文件 批处理：在.bat的文件里面编写的一些windows的命令（跳转，等），以后只要执行一次.bat文件,就可以把里面的内容全部执行完成而不用逐个的执行每个命令  echo off -&amp;gt; 执行命令的时候">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T15:42:05.443Z">
+<meta property="og:updated_time" content="2017-11-05T16:17:45.202Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IOStream">
-<meta name="twitter:description" content="IOStream理解IO流包括：字节流 （InputStream,OutputStream） 字符流：（Writer,Reader） 处理流： (BufferReader,BufferWriter) 1.流是单向的，输入流（InputStream）只能用于读（Reader）     输出流（OutputStream）只能用于写(Writer) 2.字节流只能一个字节一个字节的读或者写(不能读写中文">
+<meta name="twitter:title" content="tomcat-1">
+<meta name="twitter:description" content="bootstarp.jar //tomcat内核startup.bat startup.sh shutdown.bat shutdown.sh分别我iwindows和linux下的启动批处理文件 批处理：在.bat的文件里面编写的一些windows的命令（跳转，等），以后只要执行一次.bat文件,就可以把里面的内容全部执行完成而不用逐个的执行每个命令  echo off -&amp;gt; 执行命令的时候">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/02/IOStream/" title="IOStream" itemprop="url">IOStream</a>
+      <a href="/2017/11/04/tomcat-1/" title="tomcat-1" itemprop="url">tomcat-1</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-02T02:43:38.000Z" itemprop="datePublished"> Published 2017-11-02</time>
+    <time datetime="2017-11-04T13:26:27.000Z" itemprop="datePublished"> Published 2017-11-04</time>
     
   </p>
 </header>
@@ -105,46 +105,10 @@
 		
 		</div>
 		
-		<p>IOStream理解<br>IO流包括：字节流 （InputStream,OutputStream）<br> 字符流：（Writer,Reader）<br> 处理流： (BufferReader,BufferWriter)<br> 1.流是单向的，输入流（InputStream）只能用于读（Reader）<br>     输出流（OutputStream）只能用于写(Writer)<br> 2.字节流只能一个字节一个字节的读或者写(不能读写中文)，字符流(一个字符的读写，一个字符等于两个字节，可以读写中文)，他们的返回值都是INT类型的，输出的时候需要强转为字符串类型<br> 3.InputStream,OutputStream,Reader,Writer是所有流的祖宗，所有流都是继承他们（如：FileInputStream,FileOutputStream）<br> 4.BufferReader(Writer)相当于给原来的流（管道）上在包装了一层管道，因为BufferReader里面的readline方法很好用（直接读写一行），并且可以提升读写的效率。<br>  下面看看代码再来理解一下<br>  <a id="more"></a><br>  public class IOTest{<br>  public static void main(String args[]){<br>  int b;<br>  File f =new File(“d://src/test.java”);<br>  File f1 =new File(“d://src/test1.java”);<br>  FileOutputStram fos =new FileOutputStream(f1);<br>  FileInputStream fis =new FileInputStream(f);<br>  while((b = fis.read()) != -1){<br>  //把test里面的内容读出来<br>   System.out.print(b);<br>   //把test里面读出来的内容写入test1里面<br>   fos.write(b);<br>  }<br>  }<br>  }<br>  这个是字节流的读写<br>  现在看用bufferReader包装之后的流<br>  public class testIo {</p>
-<pre><code>public static void main(String args[]) throws Exception{
-    int b;
-    File f= new File(&quot;C:\\Users\\BaiLu\\Desktop\\test.java&quot;); 
-    FileInputStream fis =new FileInputStream(f);
-    //这个是在InputStram外包裹了一个BufferInputStream
-    BufferedInputStream bis = new BufferedInputStream(fis);
-    while((b = bis.read())  != -1){
-        System.out.print((char)b);
-    }
-</code></pre><p>   }<br> //同理BufferOutputStream也是这样使用的。</p>
-<p> public class testIo {</p>
-<pre><code>public static void main(String args[]) throws Exception{
-    int b;
-    File f= new File(&quot;C:\\Users\\BaiLu\\Desktop\\test.java&quot;); 
-</code></pre><p>//        FileInputStream fis =new FileInputStream(f);<br>//        InputStreamReader isr =new InputStreamReader(fis);<br>        FileReader fr =new FileReader(f);<br>        BufferedReader br = new BufferedReader(fr);<br>       String rl =null;<br>        while((rl = br.readLine()) !=null){<br>            System.out.print(br.readLine());<br>        }</p>
-<p>   }<br>//读文件<br>//InputStreamReader是转换流，把InputStream转换为Reader<br>//同理输出流也一样<br>//Buffered(oUT)InputStream()是包装字节流的<br>//Buffered(Writer)Reader是包装字符流的</p>
-<p>//字节流与字符流并不能完美的解决所有的问题，比如，现在要向内存里面写一个Double类型的数字，当然,把Double转换为字节字符流也是可以实现，但是一个Double或是一个lOng类型的，比如Long占8个字节，那么意味着把long转换为字节要占8个内存，这样一直转很多的long类型的数字那么后果是不堪设想的, 现在就来了解了解DataInputStream和DataOutputStream<br>//DataInputStream和DataOutputStream是为java原始类型提供存储的流，他存储long(524254254)就是直接把这个数字放到一块内存里面就ok，在不用想字节里面占那么大的内存了，下面看实现的代码<br> public static void main(String args[]) throws Exception{<br>        ByteArrayOutputStream bos = new ByteArrayOutputStream();<br>        DataOutputStream dos =new DataOutputStream(bos);<br>      try{<br>          dos.writeDouble(Math.random());<br>          dos.writeBoolean(true);<br>          ByteArrayInputStream bis =new ByteArrayInputStream(bos.toByteArray());<br>          DataInputStream dis =new DataInputStream(bis);<br>          System.out.println(dis.available());<br>          System.out.println(dis.readDouble());<br>          System.out.println(dis.readBoolean());</p>
-<pre><code>    dos.close();
-    dis.close();
-}catch(Exception e){
-    e.printStackTrace();
-}    
-</code></pre><p>   }<br>   //运行结果<br>   9<br>0.3342098651358444<br>true<br>//先把double和boolean类型写进去，在把它从内存中读出来<br>//ByteArrayOutputStream外包了一层DataOutputStream，用DataOutputStream的方法写入数据,<br>//然后ByteArrayInputStream从ByteArrayOutputStream里面读数据，下一步就是向ByteArrayInputStream外包一层DataInputStream，然后利用DataInputStream里面的方法读数据出来</p>
-<p>//下来看打印流PrintStream,PrintWrite<br>public class testIo {</p>
-<pre><code>public static void main(String args[]) throws Exception{
-    String s= null;
-    System.out.println(&quot;请输入:&quot;);
-    BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
-    File f =new File(&quot;C:\\Users\\BaiLu\\Desktop\\test1.java&quot;);
-    FileWriter fw =new FileWriter(f);
-    PrintWriter pw =new PrintWriter(fw);
-    while((s = br.readLine()) !=null){
-        if(s.equalsIgnoreCase(&quot;exit&quot;)) break;
-        pw.println(s.toUpperCase());
-        pw.flush();
-    }        
-}
-</code></pre><p>}<br>//这个的功能是会把我们键盘上输入的内容打印到指定的目录文件里面<br>//printWriter用的场景很适合做日志<br>//printWriter不会抛出异常，会自动的flush()</p>
-<p>//ObjectInputStream()  直接写一个对象进去<br>//Serilizable(标记化接口)，JDK里面就一个接口，没有实现方法，它的意思是：标记这个类需要序列化,JVM编译的时候看到Serilizable这个接口，就会为你的类序列化，至于怎么实现的，操作者是看不见的。<br>//Externalizable 这个接口：如果你想要控制你的序列化实现，那么你可以实现这个接口<br>Public class IOTest{<br>  public static void mian(){<br>  T t=new T();<br>  t.k = 10;<br>  t.j = 20;<br>   OutputStreamReader osr =new OutputStreamReader(“d:\src\text.java”);<br>   ObjectOutputStream oop =new ObjectOutputStream(osr);<br>   oop.writeObject(t);<br>    InputStreamReader isr =new InputStreamReader(“d:\src\text.java”);<br>    ObjectInputStream ois =new ObjectInputStream(isr);<br>    T t =(T)ois.readObject();<br>    System.out.print(t.k + “ “ + t.j );<br>  }<br>}<br>//运行结果 10 20<br>//ok这样就可以把一个对象写进去并可以读出来了</p>
+		<p>bootstarp.jar //tomcat内核<br>startup.bat startup.sh shutdown.bat shutdown.sh分别我iwindows和linux下的启动批处理文件<br> 批处理：在.bat的文件里面编写的一些windows的命令（跳转，等），以后只要执行一次.bat文件,就可以把里面的内容全部执行完成而不用逐个的执行每个命令</p>
+<ol>
+<li>echo off -&gt; 执行命令的时候，不要在命令窗口显示命令本身  单句的用@也可以<br>比如<br>@dir<br>@ping localhost<br>等于<br>@echo off<br>dir<br>ping localhost<br>2.if[NOT] ERRORLEVEL number command 如果最后运行的程序返回一个等于或大于指定数字的退出代码，则执行后面的命令<br>if[NOT] string1==string2 command 如果指定的字符串匹配，那么就执行后面的命令<br>if[NOT] EXIST filename command 如果filename存在 就执行后面的命令<br>比如： if “%OS%”==“Windows_NT” setlocal<br>意思是如果OS等于Windows_NT的话，就执行setlocal命令<br>3.rem命令<br>对命令的注释或者对命令的功能的注释，以便于阅读，被rem注释的命令批处理文件不会运行<br>4.echo %0 %1 %2 表示命令行想批处理文件传递参数 %0 %1 %2分别代表这第1，2，3个参数<br>比如： echo aa bb cc 执行后为 aa bb cc 一直可以到9%<br>那么要取第十个怎么办？  我们可以利用shift命令<br>shift表示把参数后移一个位置 那么0%就可以代表1%的参数，以此推断，9%就可以代表第十个参数，还要秋后面的参数，可以继续执行shift命令<br>shift<br>echo %0 %1 %2<br>6.goto label 跳转到 label<br>在下面定义 :label 标签名随便定义 跳转后执行:label ，程序将执行下一行的命令</li>
+</ol>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -157,7 +121,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/02/IOStream/" data-title="IOStream | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/04/tomcat-1/" data-title="tomcat-1 | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -170,19 +134,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/03/MultiThread/" title="MultiThread">
-  <strong>上一篇：</strong><br/>
-  <span>
-  MultiThread</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/10/29/Exception/"  title="Exception">
+<a href="/2017/11/03/MultiThread/"  title="MultiThread">
  <strong>下一篇：</strong><br/> 
- <span>Exception
+ <span>MultiThread
 </span>
 </a>
 </div>
