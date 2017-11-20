@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>collection | Jackey丶S Blog</title>
+    <title>javassist | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="集合connection : list(arraylist , LinkedList) , Map(HashMap),Set(HashSet) arraylist: 是List的实现类，底层用数组实现，LinkedList : 是List的实现类 ，底层用链表实现HashMap : 是Map的实现类,底层用 数组+链表实现">
+    <meta name="description" content="切记 ： 一定要动手做，才能体会其中的乐趣//java操作字节码文件java操作字节码文件和反射在开源框架里面是很常见的，所以理解反射和字节码操作是很必要的、字节码操作比反射的效率高如今得到认可的操作字节码的开源技术ASM,CGLIB,javassistASM是基于底层的，效率高，学习起来比较难，需要了解JVM指令CGLIB是基于ASM的，效率逼CGLIB低javassist(东京大学开发)，效率">
 <meta property="og:type" content="article">
-<meta property="og:title" content="collection">
-<meta property="og:url" content="http://yoursite.com/2017/11/09/collection/index.html">
+<meta property="og:title" content="javassist">
+<meta property="og:url" content="http://yoursite.com/2017/11/20/javassist/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="集合connection : list(arraylist , LinkedList) , Map(HashMap),Set(HashSet) arraylist: 是List的实现类，底层用数组实现，LinkedList : 是List的实现类 ，底层用链表实现HashMap : 是Map的实现类,底层用 数组+链表实现">
+<meta property="og:description" content="切记 ： 一定要动手做，才能体会其中的乐趣//java操作字节码文件java操作字节码文件和反射在开源框架里面是很常见的，所以理解反射和字节码操作是很必要的、字节码操作比反射的效率高如今得到认可的操作字节码的开源技术ASM,CGLIB,javassistASM是基于底层的，效率高，学习起来比较难，需要了解JVM指令CGLIB是基于ASM的，效率逼CGLIB低javassist(东京大学开发)，效率">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-12T18:57:04.348Z">
+<meta property="og:updated_time" content="2017-11-20T08:21:49.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="collection">
-<meta name="twitter:description" content="集合connection : list(arraylist , LinkedList) , Map(HashMap),Set(HashSet) arraylist: 是List的实现类，底层用数组实现，LinkedList : 是List的实现类 ，底层用链表实现HashMap : 是Map的实现类,底层用 数组+链表实现">
+<meta name="twitter:title" content="javassist">
+<meta name="twitter:description" content="切记 ： 一定要动手做，才能体会其中的乐趣//java操作字节码文件java操作字节码文件和反射在开源框架里面是很常见的，所以理解反射和字节码操作是很必要的、字节码操作比反射的效率高如今得到认可的操作字节码的开源技术ASM,CGLIB,javassistASM是基于底层的，效率高，学习起来比较难，需要了解JVM指令CGLIB是基于ASM的，效率逼CGLIB低javassist(东京大学开发)，效率">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/09/collection/" title="collection" itemprop="url">collection</a>
+      <a href="/2017/11/20/javassist/" title="javassist" itemprop="url">javassist</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-08T16:17:52.000Z" itemprop="datePublished"> Published 2017-11-09</time>
+    <time datetime="2017-11-20T00:17:37.000Z" itemprop="datePublished"> Published 2017-11-20</time>
     
   </p>
 </header>
@@ -105,39 +105,47 @@
 		
 		</div>
 		
-		<p>集合<br>connection : list(arraylist , LinkedList) , Map(HashMap),Set(HashSet)</p>
-<p>arraylist: 是List的实现类，底层用数组实现，<br>LinkedList : 是List的实现类 ，底层用链表实现<br>HashMap : 是Map的实现类,底层用 数组+链表实现<br><a id="more"></a><br>1.模仿JDK的ArrayList，写自定义的ArrayList<br> public class ArrayList{</p>
-<p>  public ArrayList(){<br>  this(10);<br>  }</p>
-<p>  //有参构造函数<br>    public testArray(int initArrayLength){<br>        if(initArrayLength &lt; 0){<br>            try{<br>                System.out.println(“数组长度不能小于0”);<br>            }catch(Exception w){<br>                w.printStackTrace();<br>            }<br>        }<br>        obj = new Object[initArrayLength];</p>
-<pre><code>}
-</code></pre><p>  public size;</p>
-<p>  //返回数组的大小<br>  public int size(){<br>   return size;<br>  }</p>
-<p>  //数组的添加<br>  public void add(Object o){<br>   if(obj.size() == size){<br>   Object[] newArray = new Object[size*2+1];<br>   //把数组objy从第0个位置开始copy,copy obj.length 个元素到newArray<br>   System.arraycopy(obj,0,newArray,0,obj.length);<br>   obj = newArray<br>   }<br>   obj[size++] = o;<br>   ;<br>  }<br>  //通过索引得到数组的值</p>
-<p>  public Object get(int index){<br>   if(index &gt; size || index &lt; 0){<br>     try{<br>     new Exception();<br>     }catch(Exception w){<br>     w.printstackTrace();<br>     }<br>   }<br>   return obj[index];<br>  }</p>
-<p>  //在指定的索引位置插入值<br>  Public void add(Object o,int index){<br>   //判断索引范围的代码在前面的add方法里面有，这里就不重复的去写<br>   //起始位置为Index+1,从index位置开始copy,copysize-index个元素<br>   System.arraycopy(obj,index,obj,index+1,size-index);<br>   obj[index] = obj;<br>   size ++;<br>  }<br> public Static void main(String args[]){<br>    ArrayList aa = new ArrayList();<br>    aa.add(“aaa”);<br>    aa.add(“sfdf”,0);<br>    System.out.println(aa.get(0));<br> }<br> }//result为 sfdf  此处只写了几种常用的方法</p>
-<p>2.模仿JDK的LinkedList来简单的理解LinkedList的底层<br>  现在采用双向链表来作为LinkedList的链表实现<br>  在攥写LinkedList之前，必须先理解双向链表(DoubleList)<br>  双向链表的一个元素由三个部分组成，<br>  1.指向上一个元素 2.值 3.指向下一个元素<br>  双向链表特殊的节点(Node)为第一个和最后一个<br>  第一个节点的第一部分为空<br>  最后一个节点的最后一个部分为空<br>下面用代码帮助理解链表以及LinkedList</p>
-<p>//首先定义一个Node类，表示LinkedList中的节点<br>public class Node{<br> Node previous;<br> Object obj;<br> Node next;<br>//无参构造函数<br> public Node(){</p>
-<p> }<br>//有参构造函数<br>public Node(Node previous, Object obj, Node next) {<br>    super();<br>    this.previous = previous;<br>    this.obj = obj;<br>    this.next = next;<br>}</p>
-<p>//set and get method<br>public Node getPrevious() {<br>    return previous;<br>}</p>
-<p>public void setPrevious(Node previous) {<br>    this.previous = previous;<br>}</p>
-<p>public Object getObj() {<br>    return obj;<br>}</p>
-<p>public void setObj(Object obj) {<br>    this.obj = obj;<br>}</p>
-<p>public Node getNext() {<br>    return next;<br>}</p>
-<p>public void setNext(Node next) {<br>    this.next = next;<br>}</p>
+		<p>切记 ： 一定要动手做，才能体会其中的乐趣<br>//java操作字节码文件<br>java操作字节码文件和反射在开源框架里面是很常见的，所以理解反射和字节码操作是很必要的<br>、<br>字节码操作比反射的效率高<br>如今得到认可的操作字节码的开源技术<br>ASM,CGLIB,javassist<br>ASM是基于底层的，效率高，学习起来比较难，需要了解JVM指令<br>CGLIB是基于ASM的，效率逼CGLIB低<br>javassist(东京大学开发)，效率与CGLIB相似，有基于源码级别的和基于字节码级别的</p>
+<p>demo<br>//在使用javasist之前，需要先导入javassist.jar的包，这个在百度上就可以直接下载到<br><a id="more"></a><br>/*</p>
+<ul>
+<li>java操作字节码文件(ASM,CGLIB,javassist)</li>
+<li>CGLIB是基于ASM的，javassist和CGLIB的效率相似，有源码级别和字节码级别的操作</li>
+<li><p>*/<br>public class testByteCode {</p>
+<p> public static void main(String[] args) throws Exception {<br>  //创建类池</p>
+<pre><code>ClassPool cp =ClassPool.getDefault();
+//创建类
+CtClass cc = cp.makeClass(&quot;com.bl.byteCode.emp&quot;);
+
+//创建属性
+CtField cf1 =CtField.make(&quot;private int empno;&quot;, cc);
+CtField cf2 =CtField.make(&quot;private String ename;&quot;, cc);
+cc.addField(cf1);
+cc.addField(cf2);
+
+//创建方法
+CtMethod cm1 = CtMethod.make(&quot;public int getEmpno() {return empno;}&quot;, cc);
+CtMethod cm2 =CtMethod.make(&quot;public void setEmpno(int empno) {this.empno = empno;}&quot;, cc);
+CtMethod cm3 =CtMethod.make(&quot;public String getEname() {return ename;}&quot;, cc);
+CtMethod cm4 =CtMethod.make(&quot;public void setEname(String ename) {this.ename = ename;}&quot;, cc);
+//添加方法到ctClass中
+cc.addMethod(cm1);
+cc.addMethod(cm2);
+cc.addMethod(cm3);
+cc.addMethod(cm4);
+
+//创建构造方法
+//cp.get(&quot;java.lang.String&quot;)其中String是引用类型，不能直接用ctClass.**Type
+CtConstructor ctConstructor = new CtConstructor(new CtClass[]{CtClass.intType,cp.get(&quot;java.lang.String&quot;)}, cc);
+ctConstructor.setBody(&quot;{this.empno = empno;this.ename = ename;}&quot;);
+cc.addConstructor(ctConstructor);
+//生成字节码文件到指定的磁盘位置
+cc.writeFile(&quot;c:/javaByteCode&quot;);
+System.out.println(&quot;生成字节码文件成功&quot;);
+</code></pre><p> }</p>
+</li>
+</ul>
 <p>}</p>
-<p>//下面实现LinkedList<br>public class LinkedList{<br>public Node firstNode;<br>public Node lastNode;</p>
-<p>//添加节点<br>public void add(Object o){<br>if(first ==null)<br>Node n =new Node();<br>n.setPrevious(null);<br>n.setObj(obj);<br>n.setNext(null);<br>firstNode = o;<br>lastNode = o;<br>}else{<br>   Node n =new Node();<br>   n.setPrevious(last);<br>   n.setObj(obj);<br>   n.setNext(null);</p>
-<p>   last.setNext(n);<br>   last = n;<br>}</p>
-<p>//得到节点<br>public Object get(int index){<br>Object temp = null;<br>temp = first;<br>//这个循环是比较慢的，实际上应该用二分法或者位运算是最快的，JDK里面是用为运算的<br>//&gt;&gt;1向右表示除以2，反之向左一位表示乘以2，这个个二分法原理相似，但是位运算比 “/”运算快<br>for(int i=0;i&lt;index;i++){<br>  temp = temp.next();<br>}<br>return temp;<br>}</p>
-<p>//删除节点<br> public void remove(int inedx){<br>   Object temp = null;<br>temp = first;<br>for(int i=0;i&lt;index;i++){<br>  temp = temp.next();<br>  Node up = temp.previous();<br>  Node down = temp.next();<br>  temp.previous = down;<br>  temp.next = up;<br>}<br> }<br>}</p>
-<p>3.HashMap的实现<br> 实现原理 ： 数组 + 链表<br> HashMap是一个用来存储key-value的对象，他是Map接口的实现类，每个key都对应一个相应的Value,key不允许重复，如果重复，那么重复的key-value覆盖被重复的key-value.<br>  下面来模仿JDK对HashMap的常用方法的实现。<br>  //为了模仿逼真，我们也把类名命名为HashMap</p>
-<p>  public class HashMap{</p>
-<p>  //创建一个链表数组,这里先不考虑数组扩容的问题<br>  LinkedList[] arry =new LinkedList[66];<br>  public int size;</p>
-<p>  //返回数组的容量<br>  public int size(){<br>  return size;<br>  }<br>  public void put(Object key,Object value){</p>
-<p>  //创建一个entry对象<br>  entry ee = new entry(key,value);</p>
-<p>   int a = key.hashcode/arry.length;<br>  //把key的hashcod写进链表中,由于数组的长度是有限的,但是hashcode的值很大，所以在这里要对 //hashcod的值进行处理，当然这个可以根据你的理解处理，并不是固定的<br>  if(arry[a] ==null){<br>  //这个是链表对象，上面定义的是链表数组对象，这个要分清楚，链表数组对象中有arry.size()个 //LinkedList,可以配合逻辑图去理解下<br>  LinkedList list = new LinkedList();<br>  list.add(ee);<br>  arry[a] = list;<br>  }else{<br>  for(int i=0;i&lt;size;i++){}<br>  LinkedList len = arry[a];<br>  entry len=(entry)len.get(i);<br>   if(len.key.equals(key)){<br>     len.vaule = vaule;<br>     return ;<br>   }<br>   }<br>  }</p>
-<p>  arry[size++] = ee;<br>  }</p>
-<p>  //HashMap的get方法<br>  //根据key得到相应的vaule<br>  public Object get(Object key){<br>   int a = key.hashcode/arry.size;<br>   LinkedList len = arry[a];<br>   for(int j=0;j &lt; size;j+){<br>    entry e2 = len.get(j);<br>   return e2.vaule;<br>   }<br>   return null;<br>  }<br>  //这是我自己写出来的,暂时没有看jdk里面的实现，上面的put,get都是类似jdk的，思想是相同的<br>  //就是一些小细节没有实现，比如泛型，一些小异常了，比如数组扩容，数组越界判断等的没有写出来<br>  public void remoce(Object key){<br>   int a = key.hashcode/arry.size;<br>   LinkedList len = arry[a];<br>   for(int k=0;k&lt;size;k++){<br>    entry e3 = (entry) len.get(k);<br>    e3.key = null;<br>    e3.vaule = null;<br>    size –;<br>   }<br>  }<br>  public static void main(String args[]){<br>  //这里写测试代码<br>  }<br>  }<br>  class entry{<br>  Object key;<br>  Object value;<br>  public entry(Object key,Object value){<br>   this.key = key;<br>   this.value =value;<br>  }<br>//好的，HashMap了解了,HashSet就很好理解力额，这里就不实现HashSet了，以上的代码可供简单的理解list,map实现类的底层实现，大神勿喷。</p>
+<p>//上面的是生成字节码文件，javassist还有很多功能,比如得到方法，修改方法，在代码区的多少行添加代码，功能可谓逆天，其实代码的写法也是与上面的代码如出一辙，CtMethod.make改为CtMethod.get,这些其实也很简单，我们只需要查看API的方法就可以写出来，一次，两次就熟悉了，而且也会有自己的一些理解，最后javassist和反射是相辅相成的，他们不是独立的，不要理解为javassist的效率逼反射快，就认为反射可以被javassist取代。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -150,7 +158,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/09/collection/" data-title="collection | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/20/javassist/" data-title="javassist | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -163,19 +171,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/20/javassist/" title="javassist">
-  <strong>上一篇：</strong><br/>
-  <span>
-  javassist</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/06/socket/"  title="socket">
+<a href="/2017/11/09/collection/"  title="collection">
  <strong>下一篇：</strong><br/> 
- <span>socket
+ <span>collection
 </span>
 </a>
 </div>
