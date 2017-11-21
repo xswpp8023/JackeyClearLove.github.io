@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Exception | Jackey丶S Blog</title>
+    <title>classloader | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="Exception定义：运行期间出现的错误异常是java提供的一种处理程序错误的一种机制抛出异常：如果程序运行期间出现的异常，可以生成一个异常对象，这个异常对象封装了异常对象的信息并提交给java系统,这个过程称为异常的抛出捕获异常：当java运行时系统发现异常,会寻找能处理这个异常的代码并把异常交给它处理，这个过程称为异常的捕获。异常的树形图1.异常的分类Throwable : Error,Ex">
+    <meta name="description" content="类加载机制类加载机制的过程加载 —链接 (验证，准备，解析) —- 初始化现在有以下的代码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Exception">
-<meta property="og:url" content="http://yoursite.com/2017/10/29/Exception/index.html">
+<meta property="og:title" content="classloader">
+<meta property="og:url" content="http://yoursite.com/2017/11/20/classloader/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="Exception定义：运行期间出现的错误异常是java提供的一种处理程序错误的一种机制抛出异常：如果程序运行期间出现的异常，可以生成一个异常对象，这个异常对象封装了异常对象的信息并提交给java系统,这个过程称为异常的抛出捕获异常：当java运行时系统发现异常,会寻找能处理这个异常的代码并把异常交给它处理，这个过程称为异常的捕获。异常的树形图1.异常的分类Throwable : Error,Ex">
+<meta property="og:description" content="类加载机制类加载机制的过程加载 —链接 (验证，准备，解析) —- 初始化现在有以下的代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-31T14:24:58.664Z">
+<meta property="og:updated_time" content="2017-11-21T04:25:29.523Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Exception">
-<meta name="twitter:description" content="Exception定义：运行期间出现的错误异常是java提供的一种处理程序错误的一种机制抛出异常：如果程序运行期间出现的异常，可以生成一个异常对象，这个异常对象封装了异常对象的信息并提交给java系统,这个过程称为异常的抛出捕获异常：当java运行时系统发现异常,会寻找能处理这个异常的代码并把异常交给它处理，这个过程称为异常的捕获。异常的树形图1.异常的分类Throwable : Error,Ex">
+<meta name="twitter:title" content="classloader">
+<meta name="twitter:description" content="类加载机制类加载机制的过程加载 —链接 (验证，准备，解析) —- 初始化现在有以下的代码">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/10/29/Exception/" title="Exception" itemprop="url">Exception</a>
+      <a href="/2017/11/20/classloader/" title="classloader" itemprop="url">classloader</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-29T02:00:48.000Z" itemprop="datePublished"> 發表於 2017-10-29</time>
+    <time datetime="2017-11-20T15:43:12.000Z" itemprop="datePublished"> 發表於 2017-11-20</time>
     
   </p>
 </header>
@@ -105,10 +105,101 @@
 		
 		</div>
 		
-		<p>Exception<br>定义：运行期间出现的错误<br>异常是java提供的一种处理程序错误的一种机制<br>抛出异常：如果程序运行期间出现的异常，可以生成一个异常对象，这个异常对象封装了异常对象的信息并提交给java系统,这个过程称为异常的抛出<br>捕获异常：当java运行时系统发现异常,会寻找能处理这个异常的代码并把异常交给它处理，这个过程称为异常的捕获。<br>异常的树形图<br>1.异常的分类<br>Throwable : Error,Exception<br>Error表示JVM虚拟机里面的错误，程序员处理不了<br>Exception : 其他的异常，RuntimeException<br>RuntimeException:表示一些经常出现的异常，如 除以0，数组下标越界，等，可以对其不进行处理，当然也可以对其进行处理<br>其他的异常 ： 表示必须要处理的异常 ， 入 IOException<br>2.try{<br> …可能出现异常的代码块<br>}catch(some1Exception e){</p>
-<p>e.printStackTrance();//打印出错的和出错相关的堆栈信息<br>e.getMessage();//得到有关异常的信息<br>//一般来说使用printStackTrance的比较多</p>
-<p>}catch(some2Exception e){</p>
-<p>e.printStackTrance();<br>}finally{<br>//无论是否有异常，都会执行finally里面的代码,<br>//finally里面通常执行的是文件流的关闭，数据库的回滚等等进行资源的清除工作<br>}</p>
+		<p>类加载机制<br>类加载机制的过程<br>加载 —链接 (验证，准备，解析) —- 初始化<br>现在有以下的代码<br><a id="more"></a><br>public class classLoader {</p>
+<pre><code>public static void main(String[] args) {
+    A a = new A();
+    System.out.println(&quot; &quot;+ a.width);
+
+}
+</code></pre><p>}</p>
+<p>class A{<br>    public static int width = 100;<br>    public A(){<br>        System.out.println(“静态初始化类A”);<br>    }<br>    static{<br>        System.out.println(“A类对象的创建”);<br>        width = 200;<br>    }</p>
+<p>}<br>执行的结果为 ： A类对象创建 静态初始化类A  200</p>
+<p>现在有 栈（stack） 堆 （heap） 方法区（特殊的堆）<br>1.首先加载类classLoader,会把 静态变量 ， 静态代码块 ， 常量池（classLoader,A,等等），类的代码放入方法区<br>2.方法区的结构会在堆里面形成 java.lang.class对象（这就是反射的机制）[反射好比一面镜子，把方法区里面的代码结构照到镜子里面，我们才能用里面的类，变量等]，直到现在，类加载的第一步加载完成</p>
+<ol>
+<li>链接(验证，准备，解析) ，验证和准备都是检查代码的安全性，是否规范等，重要的在解析，解析先从程序的入口main()方法开始，首先是A a = new A(); 会在栈里面存放一个 a = null的字符，然后在堆里面调用A()方法的构造函数初始化类A，这个时候，栈里面的a变量指向了被初始化的类A。</li>
+<li>初始化  ，最后，给width变量赋值（也就是初始化），其实就是把静态域(静态变量合并)</li>
+<li>在类加载的时候，首先先执行静态代码块，在执行类的构造方法</li>
+<li>如果主类(这里是classLoader)有父类，那么先初始化父类对象</li>
+<li>静态代码块只会加载一次，第二次创建对象，就不会再执行静态代码块</li>
+</ol>
+<p>类初始化的时机<br>  类的引用分为主动引用 与 被动引用<br>  主动引用 ; new A();<br>  被动引用 ：<br> 1.调用类的静态内部变量(public static final width = 100)<br> 2.真正声明这个变量的类才会被初始化 (比如：A extends B,B里有变量width,A.width调用则不会初始化A，而会初始化B，因为B才是width的拥有者,A知识继承了B，拥有B里面的变量)<br> 3.通过数组定义(A[] a = new A[10])</p>
+<p>了解了classLoader的基础完，现在深入的分析classLoader<br>1.类加载器的树状层次结构<br>  引导类加载器（bootstrap class loader）用c++编写 他它用来加载JAVA_HOME/jre/lib/rt.jar或 sun.boot.class.path路径下的内容，并不是继承与java.lang.classLoader  ,主要功能是加载 扩展类加载器 和 应用程序类加载器，并指定它们的父类加载器<br>2.扩展类加载器(extensions class loader)<br>  功能 ： 用来加载扩展库(JAVA_HOME/jre/ext/*.jar或 java.ext.dirs路径下的内容)<br>   java虚拟机的实现会提供一个扩展库目录，该类加载器在此目录下查找并加载java类，由sun.misc.Launcher$ExtClassLoader实现<br>3.应用程序类加载器(application class loader)<br>  功能：他根据java应用程序路径(classpath（项目上右击，点击properties里面的resorce下的locations这个路径，在相应的盘里面进去的src,就是值得classpath）,java.class.path类)，一般来说Java应用程序都是由它来加载的。 -由sun.misc.Launacher$ApplicationClassLoader实现</p>
+<ol>
+<li><p>自定义类加载器<br>开发人员可继承java.lang.ClassLoader类的方式实现自己的类加载器，以满足一些特殊的要求</p>
+<p>那么上面的类加载器有什么关系呢，看下面的代码<br>public class classLoader2 {</p>
+<p> public static void main(String[] args) {<br>System.out.println(ClassLoader.getSystemClassLoader());<br>System.out.println(ClassLoader.getSystemClassLoader().getParent());<br>System.out.println(ClassLoader.getSystemClassLoader().getParent().getParent());</p>
+<p> }</p>
+</li>
+</ol>
+<p>}<br>结果为sun.misc.Launcher$AppClassLoader@19a40cfc<br>sun.misc.Launcher$ExtClassLoader@6150818a<br>null<br>第一个 ：表示类加载器的实现类 应用程序类加载器<br>第二个 ： 应用程序类加载器的父类  扩展类加载器<br>第三个 ：并不是用java代码所编写的，是我们的 引导类加载器<br> 类路径(classPath(java.class.path))可以通过System.getProperties(“java.class.path”);来获得</p>
+<p>类加载器的代理模式<br> 代理模式<br>  交给父类（其他的类加载器）来加载指定的类<br> 双亲委托机制<br>  双亲委托机制属于代理模式，就是某个特定的类加载器接到加载类的请求时，首先将加载的任务交给父类，依次追朔，直到爷爷辈，如果父类加载器无法完成此类加载，才由自己去加载。<br>  双亲委托机制就是为了保证java核心库的类型安全。</p>
+<p>  并不是所有的类加载器都是双亲委托模式<br>  tomcat就是得到类的加载请求时，首先自己去加载，自己加载不能完成,才交给父类去完成加载</p>
+<p> classLoader 常用的API<br> LoadClass(String name) – 加载名称为name的类，返回结果为java.lang.class<br>  此方法是在家指定名称的类。首先在已经加载过的类里面查找，如果没有找到，从父类ExtClassLoader中加载，如果没有加载到，则从（findBootStrapClassOrNull方法）中查找，如果还没有找到，则抛出异常ClassNotFoundException</p>
+<p> findClass(String name) –查找名称为name的类，返回结果为java.lang.class<br> findLoadCladd(String name) –查找名称为name的已经被加载过的类，返回结果为java.lang.class<br> defineClass(String name,byte[] b,int off,int len)把字节数组中的内容转换为java类，返回结果为java.lang.class,这个方法声明为final的</p>
+<p> 自定义类加载器<br> 需要继承ClassLoader,并重写父类的findClass方法（以查找文件系统为列子）<br> 自定义类加载器的思路<br> 1.findLoadClass,在已经加载的类中查找我们需要查找的类，找到返回<br> 2.若没有找到this.getParent().LoadClass() ,双亲委托，在父类中查找，找到返回<br> 3.若没有找到，利用IO把输入的路径经过处理为字节数组返回</p>
+<p> 下面是代码实现<br>public class fileSystemClassLoader extends ClassLoader{<br>    //定义一个文件目录名<br>    public String dirName;<br>  public fileSystemClassLoader(String dirName){<br>      this.dirName = dirName;<br>  }</p>
+<p>  //重写父类ClassLoader的findClass方法</p>
+<p>@Override<br>protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {</p>
+<pre><code> //1.查找已经被加载的类中是否存在需要查找的类
+  Class&lt;?&gt; c = findLoadedClass(name);
+  //2.判断被加载的类是否为空，如果不为空，说明需要加载的类已经被加载过，直接返回
+  if(c !=null){
+      return c;
+  }else{
+      ClassLoader parent = this.getParent();
+      try{
+      //如果为空，那么说明没有被加载过，需要从他的父类里面去加载
+
+      c = parent.loadClass(name);
+      }catch(Exception e){
+          e.printStackTrace();
+      }
+      //如果父类没有加载到，那么就有自己加载
+      if(c != null){
+         return c;  
+      }else{
+          byte[] classData = getClassData(name);
+          if(classData ==null){
+              throw new ClassNotFoundException();
+          }else{
+             defineClass(name, classData, 0, classData.length);
+          }
+      }
+  }
+return c;
+</code></pre><p>}</p>
+<p>private byte[] getClassData(String Stringname){<br>    String path =dirName+”/“+ Stringname.replace(“.”, “/“)+”.class”;<br>    ByteArrayOutputStream baos =null;<br>    InputStream is =null;<br>    try{</p>
+<pre><code>is = new FileInputStream(path);
+baos = new ByteArrayOutputStream();
+int temp;
+byte[] buffer = new byte[1024];
+if((temp = is.read(buffer)) !=-1){
+    baos.write(buffer, 0, temp);
+}
+
+
+}catch(Exception e){
+    e.printStackTrace();
+}finally{
+    try{
+baos.close();
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+}
+return baos.toByteArray();
+</code></pre><p>}</p>
+<p>}<br>测试类<br>  public class testClass {</p>
+<pre><code>public static void main(String[] args) throws ClassNotFoundException {
+fileSystemClassLoader fsc = new fileSystemClassLoader(&quot;c:/javaByteCode&quot;);
+Class&lt;?&gt; c = fsc.loadClass(&quot;com.bl.byteCode.emp&quot;);
+System.out.println(c);
+
+}
+</code></pre><p>}<br>//结果为 : class com.bl.byteCode.emp</p>
+<p>注意 ：<br> 1.同一个类加载器加载完成，hashCode相同，证明是同一个对象<br> 2.不同的类加载器加载同一个类，JVM认为是不同的对象，hashCode不同</p>
+<p>ClassLoad默认的机制是双亲委托机制<br>双亲委托机制有个弊端 : 一个文件在扩展类加载器里面，另一个在引导类加载器中，双亲委托机制则会出问题<br>   那么现在可以通过线程上下文类加载器来改变双亲委托机制</p>
+<p>   //得到当前线程的类加载器<br>   Thread.currentThread.getContextClassLoader();<br>   //设置当前线程的类加载器<br>   Thread.currentThread.setContextClassLoader();</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -121,7 +212,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/10/29/Exception/" data-title="Exception | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/20/classloader/" data-title="classloader | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -134,19 +225,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/02/IOStream/" title="IOStream">
-  <strong>上一篇：</strong><br/>
-  <span>
-  IOStream</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/10/27/object-oriented/"  title="object-oriented">
+<a href="/2017/11/20/javassist/"  title="javassist">
  <strong>下一篇：</strong><br/> 
- <span>object-oriented
+ <span>javassist
 </span>
 </a>
 </div>
