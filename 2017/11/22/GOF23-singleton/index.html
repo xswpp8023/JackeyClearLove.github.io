@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>nested class | Jackey丶S Blog</title>
+    <title>GOF23 singleton | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="内部类(public protected private default) 内部类一般是提供给外部类静态内部类public class demo01{//静态内部类private static class staticclass{ }//普通内部类public class ordaryclass{    void sayhello(){     //方法内部类或局域内部类    }} //匿名内部">
+    <meta name="description" content="GOF23 (group of four 23):国外的四人组创建的23种固定套路的思想模式设计模式分为三大层创建型模式(顾名思义是创建一些对象)-单列模式 ，工厂模式，抽象工厂模式，建造者模式，原型模式。 结构型模式 -适配器模式 ， 桥接模式 ， 装饰者模式，组合模式，外观模式，享元模式，代理模式 行为型模式 -模板方法模式 ， 命令模式 ， 迭代器模式 ， 观察者模式 ， 中介者模式 ， 备">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nested class">
-<meta property="og:url" content="http://yoursite.com/2017/11/21/nested-class/index.html">
+<meta property="og:title" content="GOF23 singleton">
+<meta property="og:url" content="http://yoursite.com/2017/11/22/GOF23-singleton/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="内部类(public protected private default) 内部类一般是提供给外部类静态内部类public class demo01{//静态内部类private static class staticclass{ }//普通内部类public class ordaryclass{    void sayhello(){     //方法内部类或局域内部类    }} //匿名内部">
+<meta property="og:description" content="GOF23 (group of four 23):国外的四人组创建的23种固定套路的思想模式设计模式分为三大层创建型模式(顾名思义是创建一些对象)-单列模式 ，工厂模式，抽象工厂模式，建造者模式，原型模式。 结构型模式 -适配器模式 ， 桥接模式 ， 装饰者模式，组合模式，外观模式，享元模式，代理模式 行为型模式 -模板方法模式 ， 命令模式 ， 迭代器模式 ， 观察者模式 ， 中介者模式 ， 备">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-21T14:59:08.730Z">
+<meta property="og:updated_time" content="2017-11-22T16:07:05.810Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nested class">
-<meta name="twitter:description" content="内部类(public protected private default) 内部类一般是提供给外部类静态内部类public class demo01{//静态内部类private static class staticclass{ }//普通内部类public class ordaryclass{    void sayhello(){     //方法内部类或局域内部类    }} //匿名内部">
+<meta name="twitter:title" content="GOF23 singleton">
+<meta name="twitter:description" content="GOF23 (group of four 23):国外的四人组创建的23种固定套路的思想模式设计模式分为三大层创建型模式(顾名思义是创建一些对象)-单列模式 ，工厂模式，抽象工厂模式，建造者模式，原型模式。 结构型模式 -适配器模式 ， 桥接模式 ， 装饰者模式，组合模式，外观模式，享元模式，代理模式 行为型模式 -模板方法模式 ， 命令模式 ， 迭代器模式 ， 观察者模式 ， 中介者模式 ， 备">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/21/nested-class/" title="nested class" itemprop="url">nested class</a>
+      <a href="/2017/11/22/GOF23-singleton/" title="GOF23 singleton" itemprop="url">GOF23 singleton</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-21T13:57:49.000Z" itemprop="datePublished"> Published 2017-11-21</time>
+    <time datetime="2017-11-21T16:11:25.000Z" itemprop="datePublished"> Published 2017-11-22</time>
     
   </p>
 </header>
@@ -105,17 +105,33 @@
 		
 		</div>
 		
-		<p>内部类(public protected private default)<br> 内部类一般是提供给外部类<br>静态内部类<br>public class demo01{<br>//静态内部类<br>private static class staticclass{</p>
-<p>}<br>//普通内部类<br>public class ordaryclass{<br>    void sayhello(){<br>     //方法内部类或局域内部类<br>    }<br>}</p>
-<p>//匿名内部类<br>//两个作用，1.定义了匿名内部类的类体<br>//2.创建了匿名内部类的实体<br>Runnable runnnable = new Runnable{<br>@overrid<br>public void run(){</p>
-<p>}<br>};<br>}<br>非静态内部类</p>
-<p>内部类也会被编译为独立的 .class文件<br>格式为 外部类类名$内部类类名.class(demo01$staticclass)</p>
-<p>内部类的基本用法<br>1.静态内部类中不可以调用外部类的普通属性，方法（static的属性）<br>2.静态内部类和外部类的联系并不大，只是命名空间上的联系<br>3.在不相关的类中，可以直接定义静态内部类，不需要外部类的干涉<br>比如：：<br> class demo02{<br>   publio static void main(String args[]){<br>     //在不想管的类中嗲用内部类<br>     demo01.staticclass ds = new demo01staticclass();<br>     //还可以这样调用<br>     //不过导入包是i这样的 com.*.外部类类名。内部类类名<br>     staticclass ss = new staticclass();</p>
-<p>   }<br> }</p>
-<p> 成员内部类<br> public class demo03{<br>   private int a = 9;<br>   //成员内部类<br>   public class innerclass{<br>    void test(){<br>    System.out.println(a);<br>    }<br>   }<br> }<br> 1.可以使用外部类的成员<br> 2.内部类存在是为了辅助外部类(若被其他的类多次使用，可以直接创建为普通的类)<br> 3.成员内部类中不能有静态属性或者方法、 除了final static的属性<br>  在其他不相关的类中调用成员内部类<br>  只能先new一个外部类，在通过外部类调用成员内部类</p>
-<p>  方法内部类<br>  Public class demo04{<br>   public void aa(){<br>    class methodclass{</p>
-<pre><code>}
-</code></pre><p>   }<br>  }<br>  方法内部类就想在方法里面的成员变量<br>  1.方法内部类只能在方法中使用<br>  2.方法内部只能定义非静态的成员、<br>  3.方法内部类不能访问它定义的方法内的局部变量(只能访问final的局部变量)</p>
+		<p>GOF23 (group of four 23):国外的四人组创建的23种固定套路的思想模式<br>设计模式分为三大层<br>创建型模式(顾名思义是创建一些对象)<br>-单列模式 ，工厂模式，抽象工厂模式，建造者模式，原型模式。</p>
+<p>结构型模式<br> -适配器模式 ， 桥接模式 ， 装饰者模式，组合模式，外观模式，享元模式，代理模式</p>
+<p>行为型模式<br> -模板方法模式 ， 命令模式 ， 迭代器模式 ， 观察者模式 ， 中介者模式 ， 备忘录模式，解释器模式，状态模式 ， 策略模式 ，责任链模式，访问者模式<br><a id="more"></a></p>
+<p>设计模式之 单列模式<br>核心作用 ：一个类只有一个对象，并且提供一个访问该实例的全局访问点<br>常见的应用场景</p>
+<p>1.任务管理器(windows 的Task Manager)<br>2.回收站<br>3.读取配置文件<br>4.应用程序的日志应用（共享的日志文件一只处于打开的状态，否则不好追加）<br>5.数据库连接池（因为数据库的连接是一种数据资源）<br>6.操作系统的文件系统（一个操作系统只能有一个文件系统）<br>7.在spring中，每个bean都默认是单列的<br>8.在servlet编程中，每个servlet也是单列的<br>9.在SpringMVC和struts中控制器也是单列的</p>
+<p>单列的优点<br>由于单列只生成一个实例，减少了系统的开销，<br>如果一个功能的开销大，那么可以在他启动的时候把它设置为单列对象，永久的驻留内存中可解决问题<br> -单列模式可以在系统设置全局访问点，优化共享资源的访问，例如可以设置一个单列类，负责所有数据表的映射处理</p>
+<p> 单列常见的5中实现方式<br> 1.饿汉模式（线程安全，调用效率高，但不能延时加载）<br> 2.懒汉模式（线程安全，调用效率不高，可以延时加载）<br> 3.双重检测锁式：（由于JVM底层内部模型的原因，不推荐使用）<br> 4.静态内部类式（线程安全，调用效率高，可以延时加载）<br> 5.枚举单列（线程安全，调用效率高，但不能延时加载）</p>
+<p>下面写各个实现的代码<br>//饿汉式<br>1.构造器私有化<br>2.变量私有化<br>3.方法共有话<br>  饿汉式的意思是 ，这个单列无论你是否使用，对象都会被加载，所以如果不用的话，那么就会造成资源浪费，所以一般推荐使用懒汉式<br>publio class singleton{<br> private singleton(){</p>
+<p> }<br> private static sigleton s= new singleton();</p>
+<p> public static singleton getInstance(){<br>  return s;<br> }<br>}</p>
+<p>//懒汉式<br>//优点：只有使用的时候才会被new出来对象，不会浪费资源<br>//缺点：由于线程问题，使用了Synchronized,一次只能一个线程进来，所以调用效率不高<br>publio class singleton{<br> private singleton(){</p>
+<p> }<br> private static sigleton s= null;</p>
+<p> public static Synchronized singleton getInstance(){<br>  if(s ==null){<br>  s = new singleton();<br>  return s;<br>  }<br> }<br>}</p>
+<p>//双重检测锁虽然想法很好，但是由于JVM，不推荐使用</p>
+<p>//静态内部类模式<br>//静态内部类不会像饿汉式刚开始就会new对象，而是当调用getInstance()方法的时候才回去new自身的对象，由于new的时候是final的，所以只能被赋值一次，保障了线程的安全。<br>兼并了高并发与延时加载的优势，这个用的也比较多<br>public class singleton{<br> private singleton(){};</p>
+<p> public static class nestedSingleton{<br>  private static final singleton s = new singleton();<br> }</p>
+<p> public sattic singleton getInstance(){<br>  return nestedSingleton.s;<br> }</p>
+<p>}</p>
+<p>//枚举式<br>//枚举本身就是单列的，它可以避免反射和反序列化的漏洞。唯一的缺点就是不能实现懒加载<br>public enum singleton{<br> INSTANCE;<br> //下面可以添加其他的操作</p>
+<p>}</p>
+<p>//测试<br>public class test{</p>
+<p> public static void main(String args[]){<br> singleton s1 = siongleton.getInstance();<br> singleton s3 = siongleton.getInstance();<br> System.out.println(s1.hashcode);<br> System.out.println(s2.hashcode);<br> }<br>}<br>//s1与s2的hashcode值是相同的</p>
+<p>枚举类是通过JVM实现的，并且是单列的，而且可避免反序列化和映射<br>  除了枚举，其他的方式都是可以被反射和反序列话破解的<br>  反射<br>  Class clzz = calss.forName(“全类名”);<br>  clzz.getDeclaredConstruct();<br>  Class c = clzz.setAccessable(ture);//这样就可以访问私有变量了<br>  c.newInstance();//这个就能new出来一个新的对象</p>
+<p>  解决方案<br>  在私有的构造器中做处理，当调用私有构造器的时候，抛出异常<br>  eg:<br>  public **(){<br>   throw runtimeException();<br>  }<br>这样调用构造器的时候，就会抛出异常。</p>
+<p>反序列化是通过IO流<br>OutputStream os = new OutputStream(“d:/myfile.txt”);<br>ObjectOutputStream oos = new ObjectOutputStream(os);<br>oos.writeObject();</p>
+<p>InputStream os = new IntputStream(“d:/myfile.txt”);<br>ObjectIntputStream oos = new ObjectIntputStream(os);<br>oos.readObject();<br>这里都出来的就是一个新的对象</p>
+<p>解决方案<br>在里面增加一个新的方法<br>public Object readResolve throw Exception(){<br> return instance;//这个instance就是我们单列new出来的实例<br>}</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -128,7 +144,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/21/nested-class/" data-title="nested class | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/22/GOF23-singleton/" data-title="GOF23 singleton | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -141,19 +157,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/22/GOF23-singleton/" title="GOF23 singleton">
-  <strong>上一篇：</strong><br/>
-  <span>
-  GOF23 singleton</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/20/classloader/"  title="classloader">
+<a href="/2017/11/21/nested-class/"  title="nested class">
  <strong>下一篇：</strong><br/> 
- <span>classloader
+ <span>nested class
 </span>
 </a>
 </div>
