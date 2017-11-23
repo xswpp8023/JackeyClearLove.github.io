@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Jackey丶S Blog">
 <meta property="og:description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T02:51:57.461Z">
+<meta property="og:updated_time" content="2017-11-23T02:52:52.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GOF23-Builder">
 <meta name="twitter:description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
@@ -106,7 +106,7 @@
 		</div>
 		
 		<p>GOF23设计模式 创建型 之 建造者模式 (Builder)<br>建造者模式经常和工厂模式搭配使用的<br>工厂专门用于生产零件，建造者专门拿零件来装配<br>比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：<br>1.需要组装手机的零件<br>2.需要组装手机的顺序<br>  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品<br>  建造者模式往往用于构造一些复杂的问题<br>  优点：解耦了组合与零件建造</p>
-<p>  下面将以一个飞船的示例来展示来帮厨理解建造者模式<br>  分析：以上面的步骤来说，需要建造飞船组建的接口和组合飞船组件的接口<br>  //以下是飞船需要制造的组件<br>  //飞船引擎<br>  public class Engine {</p>
+<p>  下面将以一个飞船的示例来展示来帮厨理解建造者模式<br>  <a id="more"></a><br>  分析：以上面的步骤来说，需要建造飞船组建的接口和组合飞船组件的接口<br>  //以下是飞船需要制造的组件<br>  //飞船引擎<br>  public class Engine {</p>
 <pre><code>private String name;
 public Engine(String name){
     this.name = name;

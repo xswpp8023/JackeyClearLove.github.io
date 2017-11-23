@@ -100,78 +100,12 @@
     <div class="article-content">
         
         <p>GOF23设计模式 创建型 之 建造者模式 (Builder)<br>建造者模式经常和工厂模式搭配使用的<br>工厂专门用于生产零件，建造者专门拿零件来装配<br>比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：<br>1.需要组装手机的零件<br>2.需要组装手机的顺序<br>  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品<br>  建造者模式往往用于构造一些复杂的问题<br>  优点：解耦了组合与零件建造</p>
-<p>  下面将以一个飞船的示例来展示来帮厨理解建造者模式<br>  分析：以上面的步骤来说，需要建造飞船组建的接口和组合飞船组件的接口<br>  //以下是飞船需要制造的组件<br>  //飞船引擎<br>  public class Engine {</p>
-<pre><code>private String name;
-public Engine(String name){
-    this.name = name;
-}
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
-}
-</code></pre><p>}</p>
-<p>//飞船逃逸舱<br>public class escapeCapsule {</p>
-<pre><code>private String name;
-public escapeCapsule(String name){
-    this.name = name;
-}
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
-}
-</code></pre><p>}</p>
-<p>//飞船轮胎</p>
-<p>public class planTyre {<br>    private String name;<br>    public planTyre(String name){<br>        this.name = name;<br>    }<br>    public String getName() {<br>        return name;<br>    }<br>    public void setName(String name) {<br>        this.name = name;<br>    }</p>
-<p>}</p>
-<p>//飞船的整体部分<br>public class AirShip {<br>Engine engine;<br>escapeCapsule escapecapsule;<br>planTyre plantyre;<br>public Engine getEngine() {<br>    return engine;<br>}<br>public void setEngine(Engine engine) {<br>    this.engine = engine;<br>}<br>public escapeCapsule getEscapecapsule() {<br>    return escapecapsule;<br>}<br>public void setEscapecapsule(escapeCapsule escapecapsule) {<br>    this.escapecapsule = escapecapsule;<br>}<br>public planTyre getPlantyre() {<br>    return plantyre;<br>}<br>public void setPlantyre(planTyre plantyre) {<br>    this.plantyre = plantyre;<br>}</p>
-<p>}</p>
-<p>//飞船组件制造接口<br>public interface AirShipBuilder {<br>    Engine buildeEngine();<br>    escapeCapsule buildeescapeCapsule();<br>    planTyre buildeplanTyre();<br>}</p>
-<p>//飞船组件组合接口<br>public interface AirShipCombination {<br>    AirShip combineAirShip();</p>
-<p>}</p>
-<p>//实现飞船制造接口<br>public class blAirShipBuilder implements AirShipBuilder{</p>
-<pre><code>@Override
-public Engine buildeEngine() {
-    System.out.println(&quot;飞船引擎&quot;);
-    return new Engine(&quot;飞船引擎&quot;);
-}
-
-@Override
-public escapeCapsule buildeescapeCapsule() {
-    System.out.println(&quot;飞船逃逸仓&quot;);
-    return new escapeCapsule(&quot;飞船逃逸仓&quot;);
-}
-
-@Override
-public planTyre buildeplanTyre() {
-    System.out.println(&quot;飞船轮胎&quot;);
-    return new planTyre(&quot;飞船轮胎&quot;);
-}
-</code></pre><p>}</p>
-<p>//实现飞船组合接口<br>//这个就是飞船组装的顺序，由我们自己定义<br>public class blAirShipCombine implements AirShipCombination{<br>    private blAirShipBuilder blAirshipBuilder;<br> public blAirShipCombine(blAirShipBuilder blAirshipBuilder){<br>     this.blAirshipBuilder = blAirshipBuilder;<br> }<br>    @Override<br>    public AirShip combineAirShip() {<br>        Engine engine = blAirshipBuilder.buildeEngine();<br>        escapeCapsule escapecapsule= blAirshipBuilder.buildeescapeCapsule();<br>        planTyre plantyre=blAirshipBuilder.buildeplanTyre();</p>
-<pre><code>    AirShip air = new AirShip();
-    air.setEngine(engine);
-    air.setEscapecapsule(escapecapsule);
-    air.setPlantyre(plantyre);
-    return air;
-}
-</code></pre><p>}</p>
-<p>//测试客户端<br>public class Client {</p>
-<pre><code>public static void main(String[] args) {
-    blAirShipBuilder b1 = new blAirShipBuilder();
-    blAirShipCombine bb= new blAirShipCombine(b1);
-    bb.combineAirShip();
-}
-</code></pre><p>}</p>
-<p>//输出结果<br>飞船引擎<br>飞船逃逸仓<br>飞船轮胎</p>
-<p>这就是我们飞船组装的顺序，先飞船引擎，再飞船逃逸仓，最后飞船轮胎。<br>在这里我们可以随意的指定飞船各个组件的优略性，可以随意的指定飞船组装的顺序<br>性能不一，组装顺序不同，那么制造出来的产品那就不一样。</p>
-
+<p>  下面将以一个飞船的示例来展示来帮厨理解建造者模式<br>
         
         
         <p class="article-more-link">
+          
+            <a href="/2017/11/23/GOF23-Builder/#more">Read More</a>
           
        </p>
     </div>
