@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>GOF23-bridage | Jackey丶S Blog</title>
+    <title>GOF23-composite | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="GOF23-结构型模式-桥接模式一般用于商品分类核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度 案例台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影">
+    <meta name="description" content="GOF23-设计模式-结构型模式-组合模式组合模式和java基础里面的组合是不同的组合是：A类里面定义了B类，那么A类就拥有了B类的属性方法组合模式：把部分和整体的关系用树形来表示结构表示，从而使客户端可以统一的处理部分对象和整体对象。组合的核心 ： 抽象构件（component）角色：定义了叶子和容器构件的共同点，叶子构件角色：无子节点容器构件角色：有容器特征，可以包含子节点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GOF23-bridage">
-<meta property="og:url" content="http://yoursite.com/2017/11/24/GOF23-bridage/index.html">
+<meta property="og:title" content="GOF23-composite">
+<meta property="og:url" content="http://yoursite.com/2017/11/25/GOF23-composite/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="GOF23-结构型模式-桥接模式一般用于商品分类核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度 案例台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影">
+<meta property="og:description" content="GOF23-设计模式-结构型模式-组合模式组合模式和java基础里面的组合是不同的组合是：A类里面定义了B类，那么A类就拥有了B类的属性方法组合模式：把部分和整体的关系用树形来表示结构表示，从而使客户端可以统一的处理部分对象和整体对象。组合的核心 ： 抽象构件（component）角色：定义了叶子和容器构件的共同点，叶子构件角色：无子节点容器构件角色：有容器特征，可以包含子节点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-24T16:59:54.276Z">
+<meta property="og:updated_time" content="2017-11-24T18:41:55.920Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOF23-bridage">
-<meta name="twitter:description" content="GOF23-结构型模式-桥接模式一般用于商品分类核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度 案例台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影">
+<meta name="twitter:title" content="GOF23-composite">
+<meta name="twitter:description" content="GOF23-设计模式-结构型模式-组合模式组合模式和java基础里面的组合是不同的组合是：A类里面定义了B类，那么A类就拥有了B类的属性方法组合模式：把部分和整体的关系用树形来表示结构表示，从而使客户端可以统一的处理部分对象和整体对象。组合的核心 ： 抽象构件（component）角色：定义了叶子和容器构件的共同点，叶子构件角色：无子节点容器构件角色：有容器特征，可以包含子节点">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/24/GOF23-bridage/" title="GOF23-bridage" itemprop="url">GOF23-bridage</a>
+      <a href="/2017/11/25/GOF23-composite/" title="GOF23-composite" itemprop="url">GOF23-composite</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-24T13:44:10.000Z" itemprop="datePublished"> Published 2017-11-24</time>
+    <time datetime="2017-11-24T17:24:38.000Z" itemprop="datePublished"> Published 2017-11-25</time>
     
   </p>
 </header>
@@ -105,44 +105,32 @@
 		
 		</div>
 		
-		<p>GOF23-结构型模式-桥接模式<br>一般用于商品分类<br>核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度</p>
-<p>案例<br>台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑<br>现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影响。<br><a id="more"></a><br>下面用代码实现<br>//品牌<br>public interface brand {<br>void sale();<br>}<br>class lenove implements brand{</p>
-<pre><code>@Override
-public void sale() {
-    System.out.print(&quot;卖联想&quot;);
-
-}
-</code></pre><p>}</p>
-<p>class shenzhou implements brand{</p>
-<pre><code>@Override
-public void sale() {
-    System.out.print(&quot;卖神州&quot;);
-
-
-}
-</code></pre><p>}</p>
-<p>//电脑<br>public class computer{<br>    protected brand b;<br>    public computer(brand b){<br>        this.b = b;<br>    }</p>
-<pre><code>public void sale(){
-    b.sale();
-}
-</code></pre><p>}<br>class destop extends computer{</p>
-<pre><code>public destop(brand b) {
-    super(b);
-    System.out.println(&quot;买台式&quot;);
-}
-</code></pre><p>}</p>
-<p>class latop extends computer{</p>
-<pre><code>public latop(brand b) {
-    super(b);
-    System.out.println(&quot;买笔记本&quot;);
-}
-</code></pre><p>}</p>
-<p>//测试类<br>public class Client {</p>
+		<p>GOF23-设计模式-结构型模式-组合模式<br>组合模式和java基础里面的组合是不同的<br>组合是：A类里面定义了B类，那么A类就拥有了B类的属性方法<br>组合模式：把部分和整体的关系用树形来表示结构表示，从而使客户端可以统一的处理部分对象和整体对象。<br>组合的核心 ： 抽象构件（component）角色：定义了叶子和容器构件的共同点，<br>叶子构件角色：无子节点<br>容器构件角色：有容器特征，可以包含子节点<br><a id="more"></a><br>//这个就是组合模式的一个大概实现思路<br>interface component{<br>void oprate();<br>}</p>
+<p>interface composite extends component{<br>void oprate();<br>void add();<br>void remove();<br>component get(index);<br>}</p>
+<p>interface leaf extends component{<br>void oprate();<br>}</p>
+<p>//下面以杀毒的案列来举例组合模式<br>抽象接口 对应的上面的component<br>public interface abstractFile {<br>    //杀毒<br> void killViues();<br>}<br>//叶子构件<br>public class leafFile implements abstractFile{<br>    //这个使叶子节点，叶子节点下面无节点<br>private String name;<br>public leafFile(String name){<br>    this.name =name;<br>}<br>    @Override<br>    public void killViues() {<br>        System.out.println(“文件”+ name +”正在杀毒….”);</p>
+<pre><code>}
+</code></pre><p>}<br>//容器构件<br>public class compositeFolder implements abstractFile{<br>    List<abstractfile> list = new ArrayList<abstractfile>();<br>    private String name;<br>    public compositeFolder(String name){<br>        this.name = name;<br>    }<br>    @Override<br>    public void killViues() {<br>        System.out.println(“文件” + name +”正在杀毒。。。。”);<br>        for(abstractFile File:list){<br>            File.killViues();<br>        }</abstractfile></abstractfile></p>
+<pre><code>}
+</code></pre><p> public void add(abstractFile file){<br>     list.add(file);<br> }<br> public void remove(abstractFile file){<br>     list.remove(file);<br> }</p>
+<p> public abstractFile get(int index){<br>     return list.get(index);<br> }</p>
+<p>}</p>
+<p>//测试<br>public class Client {</p>
 <pre><code>public static void main(String[] args) {
- computer co= new destop(new lenove());
- co.sale();
+    leafFile f3,f4;
+    compositeFolder c = new compositeFolder(&quot;我的收藏&quot;);
+
+    f3 = new leafFile(&quot;视频软件&quot;);
+    f4 = new leafFile(&quot;看图软件&quot;);
+    c.add(f3);
+    c.add(f4);
+    c.killViues();
 }
-</code></pre><p>}<br>这里就是通过接口brand来把品牌和样式机两个维度连接起来的，这样无论你是添加品牌还是添加电脑类型都对彼此不会有影响，这是组合的方式。。。。</p>
+</code></pre><p>}</p>
+<p>//结果 ：<br>文件我的收藏正在杀毒。。。。<br>文件视频软件正在杀毒….<br>文件看图软件正在杀毒….<br>容器构建里面存在一个天然递归（自己调用自己）</p>
+<p>可以看到，在客户端，只需要调用killViues,就可以完成对容器构建下的叶子的一系列处理</p>
+<p>容器：有节点，由叶子构成<br>叶子：无节点，是容器的组成部分</p>
+<p>开发使用场景<br> 1.操作系统的资源管理器<br> 2.GUI中的容器层次图<br> 3.XML文件解析<br> 4.OA系统中，组织结构的处理哦<br> 5.Junit单元测试框架<br>  Test接口(抽象) TestCase(叶子)  TestUnite(容器);</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -155,7 +143,7 @@ public void sale() {
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/24/GOF23-bridage/" data-title="GOF23-bridage | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/25/GOF23-composite/" data-title="GOF23-composite | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -168,19 +156,11 @@ public void sale() {
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/25/GOF23-composite/" title="GOF23-composite">
-  <strong>上一篇：</strong><br/>
-  <span>
-  GOF23-composite</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/24/GOF23-proxy/"  title="GOF23-proxy">
+<a href="/2017/11/24/GOF23-bridage/"  title="GOF23-bridage">
  <strong>下一篇：</strong><br/> 
- <span>GOF23-proxy
+ <span>GOF23-bridage
 </span>
 </a>
 </div>

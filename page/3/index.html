@@ -86,6 +86,58 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/10/09/face-to-face-exams/" title="face to face exams" itemprop="url">face to face exams</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-10-09T13:07:11.000Z" itemprop="datePublished"> Published 2017-10-09</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p> java后端面试<br>  校招面试面试官注重的点：<br>  1.基础<br>  2.编程能力</p>
+<p>1.String StringBuffer和StringBuilder的区别<br>   (1)在执行速度上，String<stringbuffer<stringbuilder 原因：string:字符串常量="" stringbuffer:字符串变量="" stringbuilder:字符串变量="" 上面可以看到string是字符串常量，其他的两个是字符串变量，我们可以看下面一个列子：="" string="" s="abcd;" +="" 1;="" system.out.println(s);="" result="abcd1" 可以看到，s的值是变化了的，但是jvm是这样解析这段代码的：首先创建一个变量s，在给它赋值为abcd,然后在创建变量来执行第二段代码，这样就是说，每次改变string，都需要重新创建对象，而以前的对象会被gc作为垃圾回收，而stringbuffer,stringbuilder是字符串变量，它可以改变变量，每次改变变量也不用重新创建对象，所以string<stringbuffer<stringbuilder.="" 那么我们在看下面这段代码="" "only="" a"="" "fun";="" stringbuffer="" buffer="new" stringbuffer("this="" is")="" .append("only="" a").append("fun");="" 执行后发现="" 速度=""> buffer<br>  其实这是JVM耍的一个把戏  String s = “this is” + “only a” + “fun”;就等于<br>  String s = “this is only a fun”;<br>  （2）线程安全<br>  StringBuffer:线程安全    StringBuilder:线程不安全<br>  虽然StringBuilder的速度比StringBuffer快，但是JVM不能保证StringBuilder在字符串缓冲区操作是线程安全的，但是大部分单线程下操作字符串缓冲区可以使用StringBuilder</stringbuffer<stringbuilder></p>
+<p>  总结：对于字符串不频繁的操作使用：String<br>   单线程下操作字符串缓冲区使用;StringBuilder<br>   多线程下操作字符串缓冲区使用：StringBuffer</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/10/03/JavaScript1/" title="JavaScript" itemprop="url">JavaScript</a>
   </h1>
   <p class="article-author">By
