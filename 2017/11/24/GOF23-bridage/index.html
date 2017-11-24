@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Jackey丶S Blog">
 <meta property="og:description" content="GOF23-结构型模式-桥接模式一般用于商品分类核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度 案例台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-24T16:57:24.885Z">
+<meta property="og:updated_time" content="2017-11-24T16:57:56.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GOF23-bridage">
 <meta name="twitter:description" content="GOF23-结构型模式-桥接模式一般用于商品分类核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度 案例台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Jackey丶S Blog">Jackey丶S Blog</a></h1>
 				<h2 class="blog-motto">生命是一场需要经历酸甜苦辣洗礼的过程</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -69,7 +69,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -92,22 +92,21 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-24T13:44:10.000Z" itemprop="datePublished"> Published 2017-11-24</time>
+    <time datetime="2017-11-24T13:44:10.000Z" itemprop="datePublished"> 发表于 2017-11-24</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			
 		
 		</div>
 		
 		<p>GOF23-结构型模式-桥接模式<br>一般用于商品分类<br>核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度</p>
-<p>案例<br>台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑<br>现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影响。</p>
-<p>下面用代码实现<br>//品牌<br>public interface brand {<br>void sale();<br>}<br>class lenove implements brand{</p>
+<p>案例<br>台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑<br>现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影响。<br><a id="more"></a><br>下面用代码实现<br>//品牌<br>public interface brand {<br>void sale();<br>}<br>class lenove implements brand{</p>
 <pre><code>@Override
 public void sale() {
     System.out.print(&quot;卖联想&quot;);
@@ -184,17 +183,17 @@ public void sale() {
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -205,7 +204,7 @@ public void sale() {
   
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -227,11 +226,11 @@ public void sale() {
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -458,7 +457,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
