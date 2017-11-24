@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>GOF23-Builder | Jackey丶S Blog</title>
+    <title>GOF23-proxy | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
+    <meta name="description" content="GOF23-设计模式-结构型模式-代理模式代理模式 ：通过代理，控制对 对象的访问初学者对这个定义可能会产生模糊或者混淆，现在我把我的理解与大家分享 案例：场景 ：买鞋  人物对象 ：鞋生产厂商，鞋厂销售，买鞋的人 鞋厂销售就相当于 鞋厂生产厂商的代理 ，鞋厂只需要关注生产鞋子，卖鞋子的问题就可以交给代理，代理把从鞋厂的鞋子拿出去给顾客销售， 这样，鞋厂 就通过 代理（鞋厂销售），完成了对 顾客（">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GOF23-Builder">
-<meta property="og:url" content="http://yoursite.com/2017/11/23/GOF23-Builder/index.html">
+<meta property="og:title" content="GOF23-proxy">
+<meta property="og:url" content="http://yoursite.com/2017/11/24/GOF23-proxy/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
+<meta property="og:description" content="GOF23-设计模式-结构型模式-代理模式代理模式 ：通过代理，控制对 对象的访问初学者对这个定义可能会产生模糊或者混淆，现在我把我的理解与大家分享 案例：场景 ：买鞋  人物对象 ：鞋生产厂商，鞋厂销售，买鞋的人 鞋厂销售就相当于 鞋厂生产厂商的代理 ，鞋厂只需要关注生产鞋子，卖鞋子的问题就可以交给代理，代理把从鞋厂的鞋子拿出去给顾客销售， 这样，鞋厂 就通过 代理（鞋厂销售），完成了对 顾客（">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T02:52:52.457Z">
+<meta property="og:updated_time" content="2017-11-24T13:29:26.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOF23-Builder">
-<meta name="twitter:description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
+<meta name="twitter:title" content="GOF23-proxy">
+<meta name="twitter:description" content="GOF23-设计模式-结构型模式-代理模式代理模式 ：通过代理，控制对 对象的访问初学者对这个定义可能会产生模糊或者混淆，现在我把我的理解与大家分享 案例：场景 ：买鞋  人物对象 ：鞋生产厂商，鞋厂销售，买鞋的人 鞋厂销售就相当于 鞋厂生产厂商的代理 ，鞋厂只需要关注生产鞋子，卖鞋子的问题就可以交给代理，代理把从鞋厂的鞋子拿出去给顾客销售， 这样，鞋厂 就通过 代理（鞋厂销售），完成了对 顾客（">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/23/GOF23-Builder/" title="GOF23-Builder" itemprop="url">GOF23-Builder</a>
+      <a href="/2017/11/24/GOF23-proxy/" title="GOF23-proxy" itemprop="url">GOF23-proxy</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-22T17:06:16.000Z" itemprop="datePublished"> 發表於 2017-11-23</time>
+    <time datetime="2017-11-24T00:21:43.000Z" itemprop="datePublished"> 發表於 2017-11-24</time>
     
   </p>
 </header>
@@ -105,75 +105,99 @@
 		
 		</div>
 		
-		<p>GOF23设计模式 创建型 之 建造者模式 (Builder)<br>建造者模式经常和工厂模式搭配使用的<br>工厂专门用于生产零件，建造者专门拿零件来装配<br>比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：<br>1.需要组装手机的零件<br>2.需要组装手机的顺序<br>  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品<br>  建造者模式往往用于构造一些复杂的问题<br>  优点：解耦了组合与零件建造</p>
-<p>  下面将以一个飞船的示例来展示来帮厨理解建造者模式<br>  <a id="more"></a><br>  分析：以上面的步骤来说，需要建造飞船组建的接口和组合飞船组件的接口<br>  //以下是飞船需要制造的组件<br>  //飞船引擎<br>  public class Engine {</p>
-<pre><code>private String name;
-public Engine(String name){
-    this.name = name;
-}
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
-}
-</code></pre><p>}</p>
-<p>//飞船逃逸舱<br>public class escapeCapsule {</p>
-<pre><code>private String name;
-public escapeCapsule(String name){
-    this.name = name;
-}
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
-}
-</code></pre><p>}</p>
-<p>//飞船轮胎</p>
-<p>public class planTyre {<br>    private String name;<br>    public planTyre(String name){<br>        this.name = name;<br>    }<br>    public String getName() {<br>        return name;<br>    }<br>    public void setName(String name) {<br>        this.name = name;<br>    }</p>
-<p>}</p>
-<p>//飞船的整体部分<br>public class AirShip {<br>Engine engine;<br>escapeCapsule escapecapsule;<br>planTyre plantyre;<br>public Engine getEngine() {<br>    return engine;<br>}<br>public void setEngine(Engine engine) {<br>    this.engine = engine;<br>}<br>public escapeCapsule getEscapecapsule() {<br>    return escapecapsule;<br>}<br>public void setEscapecapsule(escapeCapsule escapecapsule) {<br>    this.escapecapsule = escapecapsule;<br>}<br>public planTyre getPlantyre() {<br>    return plantyre;<br>}<br>public void setPlantyre(planTyre plantyre) {<br>    this.plantyre = plantyre;<br>}</p>
-<p>}</p>
-<p>//飞船组件制造接口<br>public interface AirShipBuilder {<br>    Engine buildeEngine();<br>    escapeCapsule buildeescapeCapsule();<br>    planTyre buildeplanTyre();<br>}</p>
-<p>//飞船组件组合接口<br>public interface AirShipCombination {<br>    AirShip combineAirShip();</p>
-<p>}</p>
-<p>//实现飞船制造接口<br>public class blAirShipBuilder implements AirShipBuilder{</p>
+		<p>GOF23-设计模式-结构型模式-代理模式<br>代理模式 ：通过代理，控制对 对象的访问<br>初学者对这个定义可能会产生模糊或者混淆，现在我把我的理解与大家分享</p>
+<p>案例：场景 ：买鞋  人物对象 ：鞋生产厂商，鞋厂销售，买鞋的人<br> 鞋厂销售就相当于 鞋厂生产厂商的代理 ，鞋厂只需要关注生产鞋子，卖鞋子的问题就可以交给代理，代理把从鞋厂的鞋子拿出去给顾客销售， 这样，鞋厂 就通过 代理（鞋厂销售），完成了对 顾客（访问对象）的控制<br>  这只是一个小列子，可能会有更加简介清晰的列子，学习的人，可以借助这个案列去理解代理模式，而不要依赖这个列子或者死记硬背，每个人都有自己的学习方法，自己总结并理解的东西，才是自己的。<br><a id="more"></a><br>代理： 静态代理，动态代理<br>动态代理的典型案列（spring aop）</p>
+<p>代理中的可信角色<br>1.真实角色 2.代理角色 3.抽象角色 4.客户类<br>  角色之间的联系 ：客户类通过抽象角色（代理角色实现抽象角色）实现对真是角色的访问</p>
+<p>  以上面的列子来理解这个核心的角色 ： 顾客 通过 代理 完成对 鞋厂的访问<br>  将统一的流程放到代理中去实现</p>
+<p>静态代理<br>以歌星唱歌的案列来演示静态代理模式<br>比如：个性唱歌需要这样一套流程<br>1.签约 2.面谈 3.唱歌 4.收款<br> 这一套流程就是我们抽象方法中需要定义的<br> 下面以代码的形式帮助理解<br> //抽象接口<br> public interface abstartInterface {<br>//现在模仿歌星唱歌的一套流程模范<br>    //签约<br>    void sign();<br>    //面谈<br>    void faceToface();<br>    //唱歌<br>    void singSong();<br>    //收款<br>    void payMoney();<br>}</p>
+<p>// 真实歌星<br>public class realStart implements abstartInterface{</p>
 <pre><code>@Override
-public Engine buildeEngine() {
-    System.out.println(&quot;飞船引擎&quot;);
-    return new Engine(&quot;飞船引擎&quot;);
+public void sign() {
+    System.out.println(&quot;代理处理&quot;);
+
+}
+
+
+@Override
+public void faceToface() {
+    System.out.println(&quot;代理处理&quot;);
+
 }
 
 @Override
-public escapeCapsule buildeescapeCapsule() {
-    System.out.println(&quot;飞船逃逸仓&quot;);
-    return new escapeCapsule(&quot;飞船逃逸仓&quot;);
+public void singSong() {
+    System.out.println(&quot;周杰伦唱歌&quot;);
+
 }
 
 @Override
-public planTyre buildeplanTyre() {
-    System.out.println(&quot;飞船轮胎&quot;);
-    return new planTyre(&quot;飞船轮胎&quot;);
+public void payMoney() {
+    System.out.println(&quot;代理处理&quot;);
+
 }
-</code></pre><p>}</p>
-<p>//实现飞船组合接口<br>//这个就是飞船组装的顺序，由我们自己定义<br>public class blAirShipCombine implements AirShipCombination{<br>    private blAirShipBuilder blAirshipBuilder;<br> public blAirShipCombine(blAirShipBuilder blAirshipBuilder){<br>     this.blAirshipBuilder = blAirshipBuilder;<br> }<br>    @Override<br>    public AirShip combineAirShip() {<br>        Engine engine = blAirshipBuilder.buildeEngine();<br>        escapeCapsule escapecapsule= blAirshipBuilder.buildeescapeCapsule();<br>        planTyre plantyre=blAirshipBuilder.buildeplanTyre();</p>
-<pre><code>    AirShip air = new AirShip();
-    air.setEngine(engine);
-    air.setEscapecapsule(escapecapsule);
-    air.setPlantyre(plantyre);
-    return air;
+</code></pre><p> //歌星代理<br> public class startProxy implements abstartInterface{<br>    realStart rs;<br>    public startProxy(realStart rs){<br>        this.rs = rs;<br>    }</p>
+<pre><code>@Override
+public void sign() {
+    System.out.println(&quot;签约&quot;);
+
 }
-</code></pre><p>}</p>
-<p>//测试客户端<br>public class Client {</p>
+
+@Override
+public void faceToface() {
+    System.out.println(&quot;面谈&quot;);
+
+}
+
+@Override
+public void singSong() {
+rs.singSong();
+
+}
+
+@Override
+public void payMoney() {
+    System.out.println(&quot;收款&quot;);
+
+}
+</code></pre><p>//客户类<br>public class Client {</p>
 <pre><code>public static void main(String[] args) {
-    blAirShipBuilder b1 = new blAirShipBuilder();
-    blAirShipCombine bb= new blAirShipCombine(b1);
-    bb.combineAirShip();
+    realStart real = new realStart();
+    startProxy proxy = new startProxy(real);
+    proxy.sign();
+    proxy.faceToface();
+    proxy.singSong();
+    proxy.payMoney();
 }
 </code></pre><p>}</p>
-<p>//输出结果<br>飞船引擎<br>飞船逃逸仓<br>飞船轮胎</p>
-<p>这就是我们飞船组装的顺序，先飞船引擎，再飞船逃逸仓，最后飞船轮胎。<br>在这里我们可以随意的指定飞船各个组件的优略性，可以随意的指定飞船组装的顺序<br>性能不一，组装顺序不同，那么制造出来的产品那就不一样。</p>
+<p>//结果<br>签约<br>面谈<br>周杰伦唱歌<br>收款<br>ok,歌星实际就唱了歌曲，其他的都交给代理去完成</p>
+<p>动态代理<br>动态代理相比于静态代理的优点 ： 动态代理 把 静态代理中的 抽象类（接口类）统一交给了处理器中的一个集中的方法中去处理，这样我们可以更加灵活的处理众多的方法。</p>
+<p>Proxy<br>java.lang.reflect.Proxy<br>作用：动态生成代理类对象<br>InvocationHandler<br>Java.lang.reflect.InvocationHandler<br>可以通过invoke()方法实现对真实角色的访问<br>每通过Proxy代理类创建一个代理对象都要有一个对应的处理器<br> 下面用代码来帮助理解<br> //被代理的接口<br> public interface Start {<br>void singSong();<br>}</p>
+<p> //实现被代理的接口<br> public class realStart implements Start{</p>
+<pre><code>@Override
+public void singSong() {
+
+    System.out.println(&quot;周杰伦唱歌&quot;);
+
+}
+</code></pre><p>}</p>
+<p> //处理器<br> public class StartHandler implements InvocationHandler{<br>    private realStart real;<br>    public StartHandler(realStart real){<br>        this.real = real;<br>    }</p>
+<pre><code>@Override
+public Object invoke(Object proxy, Method method, Object[] args)
+        throws Throwable {
+    System.out.println(&quot;方法执行前&quot;);
+    method.invoke(real, args);
+    System.out.println(&quot;方法执行后&quot;);
+    return null;
+}
+</code></pre><p>}<br> //测试<br>public class test {</p>
+<pre><code>public static void main(String[] args) {
+    realStart real = new realStart();
+    StartHandler startHandler = new StartHandler(real);
+    Start newProxyInstance = (Start)Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(), new Class[]{Start.class}, startHandler);
+    newProxyInstance.singSong();
+}
+</code></pre><p>}<br>//结果</p>
+<p> 方法执行前<br>周杰伦唱歌<br>方法执行后<br>这样在 方法执行前后都可以做处理，这些就是静态代理中，代理帮真是角色做的事情被代替后<br> 开发框架中的应用场景<br>  Struts2中的拦截器<br>  数据库连接池的关闭处理<br>  Hibernate中的延时加载<br>  mybatis中实现拦截器插件<br>  AspectJ的实现<br>  spring aop的实现<br>    日志拦截<br>    声明式事务处理<br>  web service处理<br>  RMI远程方法处理<br> 基本上框架都用的代理模式<br> Proxy中的newProxyInstance()方法<br> 原理：1.把真实的角色类通过javassist(CGLIB)（这个就是类加载器）生成字节码文件到本地<br>     2.通过反射得到生成字节码文件中的方法、<br>     3.在方法的前后做处理<br>    这样就可以实现方法前后做处理<br>当然，JDK里面也是这个原理，但是JDK里面多了很多的细节处理而已</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -186,7 +210,7 @@ public planTyre buildeplanTyre() {
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/23/GOF23-Builder/" data-title="GOF23-Builder | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/24/GOF23-proxy/" data-title="GOF23-proxy | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -199,19 +223,11 @@ public planTyre buildeplanTyre() {
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/23/GOF23-adapter/" title="GOF23-adapter">
-  <strong>上一篇：</strong><br/>
-  <span>
-  GOF23-adapter</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/22/GOF23-singleton/"  title="GOF23 singleton">
+<a href="/2017/11/23/GOF23-adapter/"  title="GOF23-adapter">
  <strong>下一篇：</strong><br/> 
- <span>GOF23 singleton
+ <span>GOF23-adapter
 </span>
 </a>
 </div>
