@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>GOF23-Builder | Jackey丶S Blog</title>
+    <title>GOF23-decorator | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
+    <meta name="description" content="GOF23-设计模式-结构型模式-装饰者模式定义：动态的为对象添加新的功能 装饰者模式是一种用于代替继承的技术。无须通过继承增加子类就能扩展对象的新功能，使用对象的关联关系来代替继承关系，更加灵活，同时避免类型体系的快速膨胀。 比如：一面白色的墙，上面粘了挂钩，它就拥有了挂东西的功能，墙上安装了风扇，它就拥有了提供吹风的功能。 墙就相当于初始的对象，而挂钩，风扇就相当于给墙装饰的新功能。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GOF23-Builder">
-<meta property="og:url" content="http://yoursite.com/2017/11/23/GOF23-Builder/index.html">
+<meta property="og:title" content="GOF23-decorator">
+<meta property="og:url" content="http://yoursite.com/2017/11/25/GOF23-decorator/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
+<meta property="og:description" content="GOF23-设计模式-结构型模式-装饰者模式定义：动态的为对象添加新的功能 装饰者模式是一种用于代替继承的技术。无须通过继承增加子类就能扩展对象的新功能，使用对象的关联关系来代替继承关系，更加灵活，同时避免类型体系的快速膨胀。 比如：一面白色的墙，上面粘了挂钩，它就拥有了挂东西的功能，墙上安装了风扇，它就拥有了提供吹风的功能。 墙就相当于初始的对象，而挂钩，风扇就相当于给墙装饰的新功能。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T02:52:52.457Z">
+<meta property="og:updated_time" content="2017-11-25T02:34:32.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOF23-Builder">
-<meta name="twitter:description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
+<meta name="twitter:title" content="GOF23-decorator">
+<meta name="twitter:description" content="GOF23-设计模式-结构型模式-装饰者模式定义：动态的为对象添加新的功能 装饰者模式是一种用于代替继承的技术。无须通过继承增加子类就能扩展对象的新功能，使用对象的关联关系来代替继承关系，更加灵活，同时避免类型体系的快速膨胀。 比如：一面白色的墙，上面粘了挂钩，它就拥有了挂东西的功能，墙上安装了风扇，它就拥有了提供吹风的功能。 墙就相当于初始的对象，而挂钩，风扇就相当于给墙装饰的新功能。">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/23/GOF23-Builder/" title="GOF23-Builder" itemprop="url">GOF23-Builder</a>
+      <a href="/2017/11/25/GOF23-decorator/" title="GOF23-decorator" itemprop="url">GOF23-decorator</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-22T17:06:16.000Z" itemprop="datePublished"> 發表於 2017-11-23</time>
+    <time datetime="2017-11-25T01:08:52.000Z" itemprop="datePublished"> 發表於 2017-11-25</time>
     
   </p>
 </header>
@@ -105,75 +105,61 @@
 		
 		</div>
 		
-		<p>GOF23设计模式 创建型 之 建造者模式 (Builder)<br>建造者模式经常和工厂模式搭配使用的<br>工厂专门用于生产零件，建造者专门拿零件来装配<br>比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：<br>1.需要组装手机的零件<br>2.需要组装手机的顺序<br>  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品<br>  建造者模式往往用于构造一些复杂的问题<br>  优点：解耦了组合与零件建造</p>
-<p>  下面将以一个飞船的示例来展示来帮厨理解建造者模式<br>  <a id="more"></a><br>  分析：以上面的步骤来说，需要建造飞船组建的接口和组合飞船组件的接口<br>  //以下是飞船需要制造的组件<br>  //飞船引擎<br>  public class Engine {</p>
-<pre><code>private String name;
-public Engine(String name){
-    this.name = name;
-}
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
-}
-</code></pre><p>}</p>
-<p>//飞船逃逸舱<br>public class escapeCapsule {</p>
-<pre><code>private String name;
-public escapeCapsule(String name){
-    this.name = name;
-}
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
-}
-</code></pre><p>}</p>
-<p>//飞船轮胎</p>
-<p>public class planTyre {<br>    private String name;<br>    public planTyre(String name){<br>        this.name = name;<br>    }<br>    public String getName() {<br>        return name;<br>    }<br>    public void setName(String name) {<br>        this.name = name;<br>    }</p>
-<p>}</p>
-<p>//飞船的整体部分<br>public class AirShip {<br>Engine engine;<br>escapeCapsule escapecapsule;<br>planTyre plantyre;<br>public Engine getEngine() {<br>    return engine;<br>}<br>public void setEngine(Engine engine) {<br>    this.engine = engine;<br>}<br>public escapeCapsule getEscapecapsule() {<br>    return escapecapsule;<br>}<br>public void setEscapecapsule(escapeCapsule escapecapsule) {<br>    this.escapecapsule = escapecapsule;<br>}<br>public planTyre getPlantyre() {<br>    return plantyre;<br>}<br>public void setPlantyre(planTyre plantyre) {<br>    this.plantyre = plantyre;<br>}</p>
-<p>}</p>
-<p>//飞船组件制造接口<br>public interface AirShipBuilder {<br>    Engine buildeEngine();<br>    escapeCapsule buildeescapeCapsule();<br>    planTyre buildeplanTyre();<br>}</p>
-<p>//飞船组件组合接口<br>public interface AirShipCombination {<br>    AirShip combineAirShip();</p>
-<p>}</p>
-<p>//实现飞船制造接口<br>public class blAirShipBuilder implements AirShipBuilder{</p>
+		<p>GOF23-设计模式-结构型模式-装饰者模式<br>定义：动态的为对象添加新的功能<br> 装饰者模式是一种用于代替继承的技术。无须通过继承增加子类就能扩展对象的新功能，使用对象的关联关系来代替继承关系，更加灵活，同时避免类型体系的快速膨胀。<br> 比如：一面白色的墙，上面粘了挂钩，它就拥有了挂东西的功能，墙上安装了风扇，它就拥有了提供吹风的功能。 墙就相当于初始的对象，而挂钩，风扇就相当于给墙装饰的新功能。<br> <a id="more"></a><br> 实现细节<br> component(抽象对象)<br> concreateComponent(真实对象)<br> decorate(抽象的装饰)（持有对真实对象的引用）<br> concreateDecorate(真实的给对象装饰的新的功能)<br> eg :<br> component ; ICar<br> concreateComponent: car implement ICar<br> decorate :decorateCar 1.对真实对象Car的引用 2.装饰功能的抽象<br> concreateDecorate ：fly implements decorateCar,warter implements decorateCar</p>
+<p> 下面以实列代码帮助理解<br> ICar接口<br> public interface ICar {<br>void move();<br>}<br>//真实对象<br>public class Car implements ICar{</p>
 <pre><code>@Override
-public Engine buildeEngine() {
-    System.out.println(&quot;飞船引擎&quot;);
-    return new Engine(&quot;飞船引擎&quot;);
-}
+public void move() {
+    System.out.println(&quot;陆地上跑&quot;);
 
-@Override
-public escapeCapsule buildeescapeCapsule() {
-    System.out.println(&quot;飞船逃逸仓&quot;);
-    return new escapeCapsule(&quot;飞船逃逸仓&quot;);
 }
-
+</code></pre><p>}<br>//装饰对象<br>public class decorateCar implements ICar{<br>private ICar car;<br>public decorateCar(ICar car){<br>    this.car = car;<br>}<br>@Override<br>public void move() {<br>    car.move();</p>
+<p>}</p>
+<p>}</p>
+<p>//具体功能<br>//飞的功能<br>public class flyCar extends decorateCar{</p>
+<pre><code>public flyCar(ICar car) {
+    super(car);
+}
+public void fly(){
+    System.out.println(&quot;天上飞&quot;);
+}
 @Override
-public planTyre buildeplanTyre() {
-    System.out.println(&quot;飞船轮胎&quot;);
-    return new planTyre(&quot;飞船轮胎&quot;);
+public void move() {
+    super.move();
+    fly();
+}
+</code></pre><p>}<br>//水里游的功能<br>public class warterCar extends decorateCar{</p>
+<pre><code>public warterCar(ICar car) {
+    super(car);
+    // TODO Auto-generated constructor stub
+}
+public void warter(){
+    System.out.println(&quot;水里游&quot;);
+}
+@Override
+public void move() {
+    super.move();
+    warter();
 }
 </code></pre><p>}</p>
-<p>//实现飞船组合接口<br>//这个就是飞船组装的顺序，由我们自己定义<br>public class blAirShipCombine implements AirShipCombination{<br>    private blAirShipBuilder blAirshipBuilder;<br> public blAirShipCombine(blAirShipBuilder blAirshipBuilder){<br>     this.blAirshipBuilder = blAirshipBuilder;<br> }<br>    @Override<br>    public AirShip combineAirShip() {<br>        Engine engine = blAirshipBuilder.buildeEngine();<br>        escapeCapsule escapecapsule= blAirshipBuilder.buildeescapeCapsule();<br>        planTyre plantyre=blAirshipBuilder.buildeplanTyre();</p>
-<pre><code>    AirShip air = new AirShip();
-    air.setEngine(engine);
-    air.setEscapecapsule(escapecapsule);
-    air.setPlantyre(plantyre);
-    return air;
-}
-</code></pre><p>}</p>
-<p>//测试客户端<br>public class Client {</p>
+<p>//测试类<br>public class Client {</p>
 <pre><code>public static void main(String[] args) {
-    blAirShipBuilder b1 = new blAirShipBuilder();
-    blAirShipCombine bb= new blAirShipCombine(b1);
-    bb.combineAirShip();
+    System.out.println(&quot;原始未装饰的对象&quot;);
+    Car c=new Car();
+    c.move();
+
+    System.out.println(&quot;--装饰了飞的功能--&quot;);
+
+    flyCar f = new flyCar(c);
+    f.move();
+
+    System.out.println(&quot;--装饰了飞和水的功能--&quot;);
+    warterCar w =new warterCar(new flyCar(c));
+    w.move();
 }
 </code></pre><p>}</p>
-<p>//输出结果<br>飞船引擎<br>飞船逃逸仓<br>飞船轮胎</p>
-<p>这就是我们飞船组装的顺序，先飞船引擎，再飞船逃逸仓，最后飞船轮胎。<br>在这里我们可以随意的指定飞船各个组件的优略性，可以随意的指定飞船组装的顺序<br>性能不一，组装顺序不同，那么制造出来的产品那就不一样。</p>
+<p>//运行结果</p>
+<p>原始未装饰的对象<br>陆地上跑<br>–装饰了飞的功能–<br>陆地上跑<br>天上飞<br>–装饰了飞和水的功能–<br>陆地上跑<br>天上飞<br>水里游<br>这样就实现了给car对象装饰多个功能，并且可以随时增加功能扩展car的功能，而不用修改原先的代码，遵循了设计模式的开闭原则</p>
+<p>开发中使用的场景<br>IO流<br>SWing包中图像构件的功能<br>servlet中的request(httpRequstServlet)<br>struts2中对request,response,session的处理</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -186,7 +172,7 @@ public planTyre buildeplanTyre() {
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/23/GOF23-Builder/" data-title="GOF23-Builder | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/25/GOF23-decorator/" data-title="GOF23-decorator | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -199,19 +185,11 @@ public planTyre buildeplanTyre() {
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/23/GOF23-adapter/" title="GOF23-adapter">
-  <strong>上一篇：</strong><br/>
-  <span>
-  GOF23-adapter</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/22/GOF23-singleton/"  title="GOF23 singleton">
+<a href="/2017/11/25/GOF23-composite/"  title="GOF23-composite">
  <strong>下一篇：</strong><br/> 
- <span>GOF23 singleton
+ <span>GOF23-composite
 </span>
 </a>
 </div>
