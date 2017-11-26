@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>GOF23-strategy | Jackey丶S Blog</title>
+    <title>GOF23-observer | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="GOF23-设计模式-行为型-策略模式定义 ： 解决某一个问题的一个算法族，允许用户从该算法族中任选一个算法解决某一问题，同时可以方便的更换算法和添加新的算法，并且有客户端来决定使用哪个算法 案列 ：超市针对不同的客户，优惠不同，比如：老客户大批量购买（7折），新客户大批量购买（8.5浙），老客户小批量购买（8.8浙），新客户小批量购买（不打折）  在这个案例之中，解决的是问题是：得到各种不同客户">
+    <meta name="description" content="GOD23-设计模式-行为型-观察者模式观察者模式也被称为：发布-订阅模式，模型-视图模式，源-收听者模式定义：观察者模式定义了对象间一对多的关系，以便一个对象发生改变的时候，其他的多个对象也要随着更新。 核心subject ；抽象类，定义了发布者可以增加，删除，提醒观察者更新的方法concreateSubject ； 继承抽象类，只有设置状态的字段observer :接口类，只有更新的方法obs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GOF23-strategy">
-<meta property="og:url" content="http://yoursite.com/2017/11/25/GOF23-strategy/index.html">
+<meta property="og:title" content="GOF23-observer">
+<meta property="og:url" content="http://yoursite.com/2017/11/26/GOF23-observer/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="GOF23-设计模式-行为型-策略模式定义 ： 解决某一个问题的一个算法族，允许用户从该算法族中任选一个算法解决某一问题，同时可以方便的更换算法和添加新的算法，并且有客户端来决定使用哪个算法 案列 ：超市针对不同的客户，优惠不同，比如：老客户大批量购买（7折），新客户大批量购买（8.5浙），老客户小批量购买（8.8浙），新客户小批量购买（不打折）  在这个案例之中，解决的是问题是：得到各种不同客户">
+<meta property="og:description" content="GOD23-设计模式-行为型-观察者模式观察者模式也被称为：发布-订阅模式，模型-视图模式，源-收听者模式定义：观察者模式定义了对象间一对多的关系，以便一个对象发生改变的时候，其他的多个对象也要随着更新。 核心subject ；抽象类，定义了发布者可以增加，删除，提醒观察者更新的方法concreateSubject ； 继承抽象类，只有设置状态的字段observer :接口类，只有更新的方法obs">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-25T16:15:20.850Z">
+<meta property="og:updated_time" content="2017-11-26T00:04:40.604Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOF23-strategy">
-<meta name="twitter:description" content="GOF23-设计模式-行为型-策略模式定义 ： 解决某一个问题的一个算法族，允许用户从该算法族中任选一个算法解决某一问题，同时可以方便的更换算法和添加新的算法，并且有客户端来决定使用哪个算法 案列 ：超市针对不同的客户，优惠不同，比如：老客户大批量购买（7折），新客户大批量购买（8.5浙），老客户小批量购买（8.8浙），新客户小批量购买（不打折）  在这个案例之中，解决的是问题是：得到各种不同客户">
+<meta name="twitter:title" content="GOF23-observer">
+<meta name="twitter:description" content="GOD23-设计模式-行为型-观察者模式观察者模式也被称为：发布-订阅模式，模型-视图模式，源-收听者模式定义：观察者模式定义了对象间一对多的关系，以便一个对象发生改变的时候，其他的多个对象也要随着更新。 核心subject ；抽象类，定义了发布者可以增加，删除，提醒观察者更新的方法concreateSubject ； 继承抽象类，只有设置状态的字段observer :接口类，只有更新的方法obs">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/25/GOF23-strategy/" title="GOF23-strategy" itemprop="url">GOF23-strategy</a>
+      <a href="/2017/11/26/GOF23-observer/" title="GOF23-observer" itemprop="url">GOF23-observer</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-25T15:20:50.000Z" itemprop="datePublished"> Published 2017-11-25</time>
+    <time datetime="2017-11-25T16:34:44.000Z" itemprop="datePublished"> Published 2017-11-26</time>
     
   </p>
 </header>
@@ -105,51 +105,50 @@
 		
 		</div>
 		
-		<p>GOF23-设计模式-行为型-策略模式<br>定义 ： 解决某一个问题的一个算法族，允许用户从该算法族中任选一个算法解决某一问题，同时可以方便的更换算法和添加新的算法，并且有客户端来决定使用哪个算法</p>
-<p>案列 ：超市针对不同的客户，优惠不同，比如：老客户大批量购买（7折），新客户大批量购买（8.5浙），老客户小批量购买（8.8浙），新客户小批量购买（不打折）<br>  在这个案例之中，解决的是问题是：得到各种不同客户的最终价格，算法族是：不同的客户，打折的策略不同<br>  <a id="more"></a><br>  下面以代码的方式帮助理解：<br>  核心：<br>  context:调用策略<br>  XXstrategy:定义策略接口<br>  XXX：对策略的实现</p>
-<p>  策略接口<br>  public interface priceStrategy {<br> double getPrice(double price);<br>}<br>实现接口的类<br>1.<br>public class oldCustomMinSale implements priceStrategy{</p>
-<pre><code>@Override
-public double getPrice(double price) {
-    System.out.println(&quot;oldCustomMinSale&quot;);
-    return price*0.88;
+		<p>GOD23-设计模式-行为型-观察者模式<br>观察者模式也被称为：发布-订阅模式，模型-视图模式，源-收听者模式<br>定义：观察者模式定义了对象间一对多的关系，以便一个对象发生改变的时候，其他的多个对象也要随着更新。</p>
+<p>核心<br>subject ；抽象类，定义了发布者可以增加，删除，提醒观察者更新的方法<br>concreateSubject ； 继承抽象类，只有设置状态的字段<br>observer :接口类，只有更新的方法<br>observerA,observerB :实现了观察者类接口，可以有多个<br><a id="more"></a><br>subject</p>
+<p>public abstract class subject {</p>
+<pre><code>List&lt;observer&gt; list = new ArrayList&lt;observer&gt;();
+</code></pre><p>//添加观察者<br>    public void addObserver(observer obs){<br>        list.add(obs);<br>    }<br>//移除观察者<br>    public void removeObserver(observer obs){<br>        list.remove(obs);<br>    }<br>//提醒观察者更新<br>    public void notifyObserver(){<br>        for(observer o :list){<br>            o.update(this);<br>        }<br>    }</p>
+<p>}</p>
+<p>concreateSubject </p>
+<p>public class concreateSubject extends subject{<br>//状态改变的方法<br>    private String state;</p>
+<pre><code>public String getState() {
+    return state;
+}
+
+public void setState(String state) {
+    this.state = state;
 }
 </code></pre><p>}</p>
-<p>2.<br>public class oldCustomMaxSale implements priceStrategy{</p>
-<pre><code>@Override
-public double getPrice(double price) {
-    System.out.println(&quot;oldCustomMaxSale&quot;);
-    return price*0.7;
-}
-</code></pre><p>}</p>
-<p>3<br>public class newCustomMinSale implements priceStrategy{</p>
-<pre><code>@Override
-public double getPrice(double price) {
-    System.out.println(&quot;newCustomMinSale不打折&quot;);
-    return price;
-}
-</code></pre><p>}</p>
-<p>4</p>
-<p>public class newCustomMaxSale implements priceStrategy{</p>
-<pre><code>@Override
-public double getPrice(double price) {
-System.out.println(&quot;newCustomMaxSale&quot;);
-return price*0.85;
-}
-</code></pre><p>}</p>
-<p>context</p>
-<p>public class context {<br>private priceStrategy strategy;<br>public context(priceStrategy strategy){<br>    this.strategy = strategy;<br>}<br> public void printPrice(double s){<br>    System.out.println(“您的报价是：”+ strategy.getPrice(s));<br> }<br>}</p>
-<p>client</p>
-<p>public class client {</p>
+<p>observer</p>
+<p>public interface observer(){<br>void update();<br>}</p>
+<p>observerA</p>
+<p>public class observerA implements observer {<br>    public String getState;<br>//更新方法<br>    @override<br>    public void update(subject sub){<br>      //观察者状态必须和发布者状态保持一致<br>        this.getState = ((concreateSubject)sub).getState();<br>        System.out.println(getState);<br>    }<br>}</p>
+<p>//测试<br>public class Client {</p>
 <pre><code>public static void main(String[] args) {
-    priceStrategy p =new newCustomMaxSale();
-    context c =new context(p);
-    c.printPrice(998);
+observerA o1=new observerA();
+observerA o2=new observerA();
+observerAo3=new observerA();
+
+concreateSubject cs=new concreateSubject();
+cs.addObserver(o1);
+cs.addObserver(o2);
+cs.addObserver(o3);
+
+cs.setState(&quot;所有注册了我的观察者都更新内容&quot;);
+cs.notifyObserver();
+System.out.println(&quot;###########&quot;);
+cs.setState(&quot;你注册了我，不更新也要更新&quot;);
+cs.notifyObserver();
 
 }
 </code></pre><p>}</p>
-<p>测试结果：</p>
-<p>newCustomMaxSale<br>您的报价是：848.3</p>
-<p>1.想拿到新客户小批量购买，只需要更换context里面的对象，<br>2.随时可以添加实现策略的算法</p>
+<p>//结果<br>所有注册了我的观察者都更新内容<br>所有注册了我的观察者都更新内容<br>所有注册了我的观察者都更新内容</p>
+<p>###########<br>你注册了我，不更新也要更新<br>你注册了我，不更新也要更新<br>你注册了我，不更新也要更新</p>
+<p>以结果证明，    发布者更新了状态，观察者也更新了状态</p>
+<p>这里是我们自己写的观察者模式的实现，在JDK里面，java也为我们提供观察者模式的抽象类observerable<br>也就是用observerable代替了我们这里的subject</p>
+<p>在使用观察者模式的时候，推荐使用java提供的，毕竟java写的，考虑的逼我们写的全面，仔细。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -162,7 +161,7 @@ return price*0.85;
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/25/GOF23-strategy/" data-title="GOF23-strategy | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/26/GOF23-observer/" data-title="GOF23-observer | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -175,19 +174,11 @@ return price*0.85;
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/26/GOF23-observer/" title="GOF23-observer">
-  <strong>上一篇：</strong><br/>
-  <span>
-  GOF23-observer</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/25/GOF23-decorator/"  title="GOF23-decorator">
+<a href="/2017/11/25/GOF23-strategy/"  title="GOF23-strategy">
  <strong>下一篇：</strong><br/> 
- <span>GOF23-decorator
+ <span>GOF23-strategy
 </span>
 </a>
 </div>
