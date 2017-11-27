@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>GOF23-bridage | Jackey丶S Blog</title>
+    <title>activiMQ | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="GOF23-结构型模式-桥接模式一般用于商品分类核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度 案例台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影">
+    <meta name="description" content="消息中间件activiMQ为什么消息中间件会出现？CORBA,DCOM.RMI和RPC中间件已经广泛的使用在各个领域，但是，面对规模和复杂度越来越高的分布式，这些技术也显示出了其局限性。 面向消息中间件(Messsage Oriented Middleware)较好的解决了以上的问题，发送者将若干的消息发送给消息服务器，消息服务器将消息存放在若干的队列之中，在合适的时候将消息转发给接收者。 重要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GOF23-bridage">
-<meta property="og:url" content="http://yoursite.com/2017/11/24/GOF23-bridage/index.html">
+<meta property="og:title" content="activiMQ">
+<meta property="og:url" content="http://yoursite.com/2017/11/26/activiMQ/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="GOF23-结构型模式-桥接模式一般用于商品分类核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度 案例台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影">
+<meta property="og:description" content="消息中间件activiMQ为什么消息中间件会出现？CORBA,DCOM.RMI和RPC中间件已经广泛的使用在各个领域，但是，面对规模和复杂度越来越高的分布式，这些技术也显示出了其局限性。 面向消息中间件(Messsage Oriented Middleware)较好的解决了以上的问题，发送者将若干的消息发送给消息服务器，消息服务器将消息存放在若干的队列之中，在合适的时候将消息转发给接收者。 重要">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-24T16:59:54.276Z">
+<meta property="og:updated_time" content="2017-11-27T06:16:40.858Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOF23-bridage">
-<meta name="twitter:description" content="GOF23-结构型模式-桥接模式一般用于商品分类核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度 案例台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影">
+<meta name="twitter:title" content="activiMQ">
+<meta name="twitter:description" content="消息中间件activiMQ为什么消息中间件会出现？CORBA,DCOM.RMI和RPC中间件已经广泛的使用在各个领域，但是，面对规模和复杂度越来越高的分布式，这些技术也显示出了其局限性。 面向消息中间件(Messsage Oriented Middleware)较好的解决了以上的问题，发送者将若干的消息发送给消息服务器，消息服务器将消息存放在若干的队列之中，在合适的时候将消息转发给接收者。 重要">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/24/GOF23-bridage/" title="GOF23-bridage" itemprop="url">GOF23-bridage</a>
+      <a href="/2017/11/26/activiMQ/" title="activiMQ" itemprop="url">activiMQ</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-24T13:44:10.000Z" itemprop="datePublished"> 发表于 2017-11-24</time>
+    <time datetime="2017-11-26T06:38:32.000Z" itemprop="datePublished"> 发表于 2017-11-26</time>
     
   </p>
 </header>
@@ -105,44 +105,52 @@
 		
 		</div>
 		
-		<p>GOF23-结构型模式-桥接模式<br>一般用于商品分类<br>核心：用于处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，是各个维度可以独立的扩展而不影响其他维度</p>
-<p>案例<br>台式电脑，笔记本电脑，联想台式电脑，神州台式电脑，联想笔记本电脑，神州笔记本电脑<br>现在就可以建立一个二维，x轴指的是商品分类，y轴指品牌分类，然后用一个桥梁把x,y轴连接起来，并且x,y增加产品可以随意的增加，他们也不会相互影响。<br><a id="more"></a><br>下面用代码实现<br>//品牌<br>public interface brand {<br>void sale();<br>}<br>class lenove implements brand{</p>
-<pre><code>@Override
-public void sale() {
-    System.out.print(&quot;卖联想&quot;);
+		<p>消息中间件activiMQ<br>为什么消息中间件会出现？<br>CORBA,DCOM.RMI和RPC中间件已经广泛的使用在各个领域，但是，面对规模和复杂度越来越高的分布式，这些技术也显示出了其局限性。<br> 面向消息中间件(Messsage Oriented Middleware)较好的解决了以上的问题，发送者将若干的消息发送给消息服务器，消息服务器将消息存放在若干的队列之中，在合适的时候将消息转发给接收者。<br> 重要 ：这种时候，发送和接收是异步的，发送者不必等待，两者的生命周期未必相同（因为消息发送者发送的消息存放在队列之中，发送者发送完消息，它死了，但是，它发送的消息依然存在），发送消息的时候，接收者不一定运行，接收消息的时候，发送消息者不一定运行。<br> <a id="more"></a><br> JMS(java messsage service)是访问消息中间件的接口，它并没有给予实现，实现消息中间件的被称为JMS Provider,已有的MOM有apache的activiMQ(message queue),阿里的rocketMQ，RibbitMQ,kafka等</p>
+<p> JMS术语<br> JMS 实现JMS接口的消息中间件<br> Provider(MessageProvider):消息提供者<br> Consummer(MessageConsummer):消息消费者<br> PTP(point to point):点对点的消息模型<br> Publish, Publish/SubPublish(发布/订阅消息模型)<br> Queue:队列目标<br> Topic : 主题目标<br> ConnectionFactory:连接工厂<br> Connection :JMS客户端到JMS Provider的连接<br> Destination:消息的目的地、<br> Session : 会话，一个发送或者接受的线程</p>
+<p> 消息格式定义<br> KMS定义了五种不同的消息正文格式，以及调用的消息类型，允许发送或者接收一些不同类型的数据。<br>  StreamMessage:原始的java数据流<br>  MapMessage :键-值对<br>  TextMessage :一个字符串对象<br>  ObjectMessage : 一个序列化的java对象<br>  ByteMessage : 一个未解释字节的数据流</p>
+<p>  activimq下载地址<br>  wwww.activemq.org/<br>  conf/activimq.xml:一般集群要用到这个<br>  conf/jetty.xml :可以到这里面看缓存的队列</p>
+<p>  下面看第一个入门级程序<br>  用activimq写一个hello word的程序<br>  1.建立ConnectionFactory公厂对象，需要输入用户名，密码，以及连接的地址，都使用默认即可，默认的端口为：tcp://localhost:61616<br>   2.使用ConnectionFactory创建一个Connection,使用Connection的start方法打开连接，Connection默认是关闭的。<br>   3.用Connection对象创建会话Session(上下文环境对象)，接收消息,参数1：是否开启事务，参数2：签收模式，一般为自动签收。<br>   4.通过Session创建Destination对象，用于表示一个客户端生产消息的目标和接收消息的来源。在PTP(point to point)模式中，Destination表示为Queue,在Pub/Sub模式中，Destination表示为Topic主题，在程序中可以多次的使用Queue和Topic<br>   5.通过Session来创建消息的发送者和接收者，即MessageProducer/MessageConsummer(生产者和消费者)<br>   6.通过即MessageProducer的setDeliveryMode方法来设置消息的持久化和非持久化。<br>   7.通过JMS的规范TextMessage来创建数据，并使用MessageProducer的send来发送消息，同理消费者通过recive来接收消息，最后不要忘记关闭Connection.</p>
+<p>  activemq的默认用户名和密码是admin,在user.xml可以修改密码，格式为key=value<br>  默认端口为8161<br>  windows里面的操作和linux里面的操作相似</p>
+<p>  下面先贴一个activemq的入门级hello world程序<br>  //程序分为消息发送者和消息接收者<br>  //消息发送者Producer<br>  import javax.jms.Connection;<br>import javax.jms.ConnectionFactory;<br>import javax.jms.Destination;<br>import javax.jms.Message;<br>import javax.jms.MessageConsumer;<br>import javax.jms.MessageProducer;<br>import javax.jms.Session;<br>import javax.jms.TextMessage;</p>
+<p>import org.apache.activemq.ActiveMQConnectionFactory;</p>
+<p>public class sender {</p>
+<p>public static void main(String[] args) throws Exception{<br>        //1.得到connectionFactory<br>    String url = “tcp://localhost:61616”;<br>    ConnectionFactory connectionFactory =<br>    new ActiveMQConnectionFactory(ActiveMQConnectionFactory.DEFAULT_USER,<br>            ActiveMQConnectionFactory.DEFAULT_PASSWORD, url);<br>    //2.得到Connection<br>    Connection connection = connectionFactory.createConnection();<br>    connection.start();<br>    //3.创建session会话<br>    //参数1，是否开启事务，参数2，签收模式，一般为自动签收<br>    Session session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);<br>    //4.创建Destination,这个就是存放消息的地方<br>    Destination destination = session.createQueue(“first”);<br>    //5.创建消息提供者<br>    MessageProducer producer = session.createProducer(destination);<br>    //创建TextMessage,JMS规范的一种数据类型<br>    for(int i=0;i&lt;10;i++){<br>    TextMessage textMessage = session.createTextMessage(“我是消息”+i);<br>    producer.send(textMessage);<br>    }</p>
+<pre><code>if(connection !=null){
+    connection.close();
+}
+}
+</code></pre><p>}</p>
+<p>//这里我把导入的包也写进来，是想告诉大家，activemqshiJMS规范的实现，import org.apache.activemq.ActiveMQConnectionFactory;这个包表明了我先现在使用的activimq。</p>
+<p>//消息接收者</p>
+<p>public class receiver {</p>
+<pre><code>public static void main(String[] args)throws Exception{
+
+    //1.得到connectionFactory
+    String url = &quot;tcp://localhost:61616&quot;;
+    ConnectionFactory connectionFactory = 
+    new ActiveMQConnectionFactory(ActiveMQConnectionFactory.DEFAULT_USER, 
+            ActiveMQConnectionFactory.DEFAULT_PASSWORD, url);
+    //2.得到Connection
+    Connection connection = connectionFactory.createConnection();
+    connection.start();
+    //3.创建session会话
+    //参数1，是否开启事务，参数2，签收模式，一般为自动签收
+    Session session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);
+    //4.创建Destination,这个就是存放消息的地方
+    Destination destination = session.createQueue(&quot;first&quot;);
+    //5.创建消息提供者
+    MessageConsumer consumer = session.createConsumer(destination);
+    //创建TextMessage,JMS规范的一种数据类型
+    while(true){
+        TextMessage msg = (TextMessage)consumer.receive();
+        System.out.println(&quot; &quot; + msg.getText());
+    }
+
 
 }
 </code></pre><p>}</p>
-<p>class shenzhou implements brand{</p>
-<pre><code>@Override
-public void sale() {
-    System.out.print(&quot;卖神州&quot;);
-
-
-}
-</code></pre><p>}</p>
-<p>//电脑<br>public class computer{<br>    protected brand b;<br>    public computer(brand b){<br>        this.b = b;<br>    }</p>
-<pre><code>public void sale(){
-    b.sale();
-}
-</code></pre><p>}<br>class destop extends computer{</p>
-<pre><code>public destop(brand b) {
-    super(b);
-    System.out.println(&quot;买台式&quot;);
-}
-</code></pre><p>}</p>
-<p>class latop extends computer{</p>
-<pre><code>public latop(brand b) {
-    super(b);
-    System.out.println(&quot;买笔记本&quot;);
-}
-</code></pre><p>}</p>
-<p>//测试类<br>public class Client {</p>
-<pre><code>public static void main(String[] args) {
- computer co= new destop(new lenove());
- co.sale();
-}
-</code></pre><p>}<br>这里就是通过接口brand来把品牌和样式机两个维度连接起来的，这样无论你是添加品牌还是添加电脑类型都对彼此不会有影响，这是组合的方式。。。。</p>
+<p>//接收者和发送者的代码也是大同小异，接收者不需要关闭connection,因为你在接收消息的时候肯定是运行的</p>
+<p>//上面的程序只是让大家明白下activemq简单的入门，开发中不会这么写，还有Destination我们是要动态指定的，这里我直接在发送者和接收者这里直接把Destination写死了，在实际中我们应该在setMsg的时候去设置到底该把消息存放到哪个队列或者主题。因为在实际开发中我们肯定不止一个队列或主题。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -155,7 +163,7 @@ public void sale() {
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/24/GOF23-bridage/" data-title="GOF23-bridage | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/26/activiMQ/" data-title="activiMQ | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -168,19 +176,11 @@ public void sale() {
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/25/GOF23-composite/" title="GOF23-composite">
-  <strong>上一篇：</strong><br/>
-  <span>
-  GOF23-composite</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/24/GOF23-proxy/"  title="GOF23-proxy">
+<a href="/2017/11/26/GOF23-observer/"  title="GOF23-observer">
  <strong>下一篇：</strong><br/> 
- <span>GOF23-proxy
+ <span>GOF23-observer
 </span>
 </a>
 </div>
