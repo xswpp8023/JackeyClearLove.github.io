@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>activeMQ-2 | Jackey丶S Blog</title>
+    <title>activeMQ-3 | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="activeMQ安全机制1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色admin : admin , admin用户(username)    密码 (password)      角色(rolename)这三个必须要按顺序写，否则会报错 2.activemq应该设置安全机制，只">
+    <meta name="description" content="activemq API详细讲解Connection值钱的用户名和密码都是在创建ActiveMQConnectionFactory()的时候指定的，其实在createConnection()的时候也可以指定，这样就可以创建多个Connection,每个Connection都对应着一个会话Session,在使用完Connection的时候，必须要关闭Connection,否则，Connection里">
 <meta property="og:type" content="article">
-<meta property="og:title" content="activeMQ-2">
-<meta property="og:url" content="http://yoursite.com/2017/11/27/activeMQ-2/index.html">
+<meta property="og:title" content="activeMQ-3">
+<meta property="og:url" content="http://yoursite.com/2017/11/27/activeMQ-3/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="activeMQ安全机制1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色admin : admin , admin用户(username)    密码 (password)      角色(rolename)这三个必须要按顺序写，否则会报错 2.activemq应该设置安全机制，只">
+<meta property="og:description" content="activemq API详细讲解Connection值钱的用户名和密码都是在创建ActiveMQConnectionFactory()的时候指定的，其实在createConnection()的时候也可以指定，这样就可以创建多个Connection,每个Connection都对应着一个会话Session,在使用完Connection的时候，必须要关闭Connection,否则，Connection里">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-27T08:41:59.348Z">
+<meta property="og:updated_time" content="2017-11-28T01:27:20.591Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="activeMQ-2">
-<meta name="twitter:description" content="activeMQ安全机制1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色admin : admin , admin用户(username)    密码 (password)      角色(rolename)这三个必须要按顺序写，否则会报错 2.activemq应该设置安全机制，只">
+<meta name="twitter:title" content="activeMQ-3">
+<meta name="twitter:description" content="activemq API详细讲解Connection值钱的用户名和密码都是在创建ActiveMQConnectionFactory()的时候指定的，其实在createConnection()的时候也可以指定，这样就可以创建多个Connection,每个Connection都对应着一个会话Session,在使用完Connection的时候，必须要关闭Connection,否则，Connection里">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/27/activeMQ-2/" title="activeMQ-2" itemprop="url">activeMQ-2</a>
+      <a href="/2017/11/27/activeMQ-3/" title="activeMQ-3" itemprop="url">activeMQ-3</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-27T06:24:07.000Z" itemprop="datePublished"> Published 2017-11-27</time>
+    <time datetime="2017-11-27T08:42:55.000Z" itemprop="datePublished"> Published 2017-11-27</time>
     
   </p>
 </header>
@@ -101,35 +101,21 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建四个用户"><span class="toc-number">1.</span> <span class="toc-text">创建四个用户</span></a></li></ol>
+			
 		
 		</div>
 		
-		<p>activeMQ安全机制<br>1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色<br>admin : admin , admin<br>用户(username)    密码 (password)      角色(rolename)<br>这三个必须要按顺序写，否则会报错</p>
-<p>2.activemq应该设置安全机制，只有符合条件的用户才能发送消息和获取消息，所以我们可以在activemq.xml里面添加安全配置<br>  在D:\sentu\activimq\apache-activemq-5.11.1\conf\activema.xml的123行添加配置（添加一个插件就好）<br>  <a id="more"></a><br>  如：<br>  <plugins><br>            <simpleauthenticationplugin><br>                <users><br>                    <authenticationuser username="admin" password="password" groups="admins,publishers,consumers"><br>                </authenticationuser></users><br>            </simpleauthenticationplugin><br>        </plugins><br>  这里的密码和jetty-realm.properties里面的用户名密码是不同的<br>  jetty-realm.properties里面的表示控制台的用户名和密码</p>
-<p>  这里在activemq里面设置的用户名和密码是java代码中创建ActiveMQConnectionFactory(“用户名”,”密码”,”链接URL”)<br>  在activemq中我们使用的用户名和密码都是ActiveMQConnectionFactory.DEFAULT,在activemq中添加了上述的代码，这个就必须把用户名和密码与配置文件中的用户名和密码对应，否则就报错。<br>  3.D:\sentu\activimq\apache-activemq-5.11.1\conf\login.config中 配置文件 用户 配置 PropertiesLoginModule：</p>
-<p>   activemq-domain {<br>    org.apache.activemq.jaas.PropertiesLoginModule required debug=true<br>    org.apache.activemq.jaas.properties.user=”users.properties”<br>    org.apache.activemq.jaas.properties.group=”groups.properties”;<br>};</p>
-<p>在conf中创建users.properties</p>
-<h1 id="创建四个用户"><a href="#创建四个用户" class="headerlink" title="创建四个用户"></a>创建四个用户</h1><p>admin=password<br>publisher=password<br>consumer=password<br>guest=password</p>
-<p>在conf中创建groups.properties</p>
-<p>#创建四个组并分配用户<br>admins=admin<br>publishers=admin,publisher<br>consumers=admin,publisher,consumer<br>guests=guest</p>
-<p>将该配置插入到activemq.xml中：</p>
-<pre><code>&lt;plugins&gt;
-    &lt;jaasAuthenticationPlugin configuration=&quot;activemq-domain&quot; /&gt;
-&lt;/plugins&gt;
-</code></pre><p>  配置启动参数，在dos里面运行<br>  D:\tools\apache-activemq-5.6.0-bin\apache-activemq-5.6.0\bin\win64&gt;activemq.bat -Djava.security.auth.login.config=D:/tools/apache-activemq-5.6.0-bin/apache-activemq-5.6.0/conf/login.config<br>  目录写你自己的</p>
-<p>#二,授限<br>可以对实际用户来授权，比如有些用户只有写队列的权限，有些则只有读的权限。<br>（一）、目的地级别授权</p>
-<p>JMS目的地的三种操作级别：<br>　　Read ：读取目的地消息权限<br>　　Write：发送消息到目的地权限<br>　　Admin：管理目的地的权限</p>
-<p>   plugins<br>    jaasAuthenticationPlugin configuration=”activemq-domain”<br>    authorizationPlugin<br>        map<br>            authorizationMap<br>                authorizationEntries<br>                    &lt;authorizationEntry topic=”topic.ch09” read=”consumers” write=”publishers” admin=”publishers”<br>                &lt;/authorizationEntries<br>            &lt;/authorizationMap<br>        &lt;/map<br>    &lt;/authorizationPlugin<br>/plugins<br>(不知道markdown怎么显示间括号)<br>这里consumers有写的权限，publishers有读的权限</p>
-<p>实际的安全机制也可以参考这篇博客<br><a href="http://" target="_blank" rel="external">https://www.cnblogs.com/jalja/p/7044968.html</a></p>
-<p>#三 持久化存储<br>activemq持久化存储默认的是khadb (khadb,leveldb,mysql,oracle),可以自由的切换<br>在D:\sentu\activimq\apache-activemq-5.11.1\conf\activemq.xml中<br>  persistenceAdapter&gt;<br>           kahaDB directory=”${activemq.data}/kahadb”/&gt;<br>        /persistenceAdapter&gt;<br>        这里可以看到默认是Khadb,切换为mysql,<br> persistenceAdapter&gt;<br>           jdbcpersistenceAdapter dataSource=”#mysql-ds”/&gt;<br>        /persistenceAdapter&gt;</p>
-<pre><code>   #mysql-ds这个表示引用下面的一个id为mysql-ds的bean
-   bean&gt;
-   (这里面写的就是连接数据库的一些字段，drivename,url,username,password等的一些连接参数)
-   bean/&gt;
-
-//如果没已使用Maven的话，那么需要在activemq中添加 dbcp和commons-pool两个jar包，这两个jar包直接可以在百度apache commons pool,apache dbcp直接下载添加导activemq的Lib里面，重新启动activemq即可。额，还有mysql驱动需要添加
-</code></pre><p>  消息发送者运行把数据持久化存储到mysql中，mysql会产生三个表，在msg表里面有数据，当我们的消费者运行得到数据后，mysql的msg表中的数据会被清除。</p>
+		<p>activemq API详细讲解<br>Connection<br>值钱的用户名和密码都是在创建ActiveMQConnectionFactory()的时候指定的，其实在createConnection()的时候也可以指定，这样就可以创建多个Connection,每个Connection都对应着一个会话Session,在使用完Connection的时候，必须要关闭Connection,否则，Connection里面的资源是无法被释放的。</p>
+<p>Session<br>Session是一个发送消息或者接收消息的线程，它可以创建消息存储的目的地Destination,MessageProdure,MessageConsummer,Message.<br><a id="more"></a><br>Session createSession(是否开启事务，签收模式);<br>不开启事务 ：Boolean.FAULSE<br>开启事务 ： Boolean.TRUE<br>开始事务后存在两种情况<br>事务成功与失败<br>成功 ;session.Commit();提交<br>失败 ;原先执行的事务都失效，回滚导开始执行的位置。 </p>
+<p>签收模式的三种形式：<br>Session.CLIENT_ACKNOWLEDGE ：签收一个已经消费的session的消息，会自动的签收这个session所有已经消费的消息。<br>Session.AUTO_ACKNOWLEDGE ：自动签收，当客户端receive或onMessage时，Session自动签收这条消息的收条。<br>Session.DUPS_OK_ACKNOWLEDGE ：这个签收不保证对传送消息的签收，但是降低了session的开销，缺点是 ： 消息容易重复，所有的客户端要能容忍消息的重复，才能使用。</p>
+<p>这种签收是怎么样的呢？<br>producer —-&gt; Queue/Topic —–&gt; Consummer<br>producer发送消息导 Queue/Topic ，Queue/Topic 推送消息给 Consummer<br>签收 ： 相当于 Consummer —&gt; Queue/Topic的一个过程<br>自动签收： Consummer —&gt; Queue/Topic是一个自动化的过程，不需要 我们管<br>手动签收 ： Consummer —&gt; Queue/Topic这个过程需要调用ACKNOWLEDGE方法， Queue/Topic才知道你是否签收了</p>
+<p>Session.DUPS_OK_ACKNOWLEDGE ：这个就把 Consummer —&gt; Queue/Topic这个过程取消了</p>
+<p>手动签收的时候，Consumer不支持事务提交，否则，手动签收会失败。</p>
+<p>持久化：     producer.setDeliveryMode(DeliveryMode.PERSISTENT);表示消费者不再也会给他留着<br>非持久化 ： producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT); 那么方法这发送完消息，消费者没有消费，我把activemq.bat关闭，再次打开，消息就会丢失，持久化则不会。</p>
+<p>这边博客很好的解释了 持久化(Queue和Topic)<br><a href="http://" target="_blank" rel="external">http://blog.csdn.net/w938706428/article/details/45153705</a></p>
+<p>优先级 ：优先级分为0-9个层次，  0-4为普通消息，  5-9为加急消息，在区间范围内，问哦认为优先级越大（数字越大），那么消息的重要程度越高。</p>
+<p>timeToLive(过期时间):消息默认是永不过期的，如果需要，那么可以设置过期时间，单位为毫秒。<br>当消息过期没有被消费，那么这么消息会被加入到DLQ(Bead Letter Queue)死信队列。</p>
+<p>MessageConsumer是如何接受消息的？<br><a href="http://" target="_blank" rel="external">http://blog.csdn.net/manzhizhen/article/details/52606716</a><br>这篇博客从源码分析了MessageConsumer接收消息的机制</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -142,7 +128,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/27/activeMQ-2/" data-title="activeMQ-2 | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/11/27/activeMQ-3/" data-title="activeMQ-3 | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -155,19 +141,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/27/activeMQ-3/" title="activeMQ-3">
-  <strong>上一篇：</strong><br/>
-  <span>
-  activeMQ-3</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/26/activiMQ/"  title="activiMQ">
+<a href="/2017/11/27/activeMQ-2/"  title="activeMQ-2">
  <strong>下一篇：</strong><br/> 
- <span>activiMQ
+ <span>activeMQ-2
 </span>
 </a>
 </div>
@@ -183,7 +161,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建四个用户"><span class="toc-number">1.</span> <span class="toc-text">创建四个用户</span></a></li></ol>
+ 
  
   </div>
 

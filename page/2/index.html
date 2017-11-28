@@ -86,6 +86,58 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/11/23/GOF23-Builder/" title="GOF23-Builder" itemprop="url">GOF23-Builder</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-22T17:06:16.000Z" itemprop="datePublished"> Published 2017-11-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>GOF23设计模式 创建型 之 建造者模式 (Builder)<br>建造者模式经常和工厂模式搭配使用的<br>工厂专门用于生产零件，建造者专门拿零件来装配<br>比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：<br>1.需要组装手机的零件<br>2.需要组装手机的顺序<br>  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品<br>  建造者模式往往用于构造一些复杂的问题<br>  优点：解耦了组合与零件建造</p>
+<p>  下面将以一个飞船的示例来展示来帮厨理解建造者模式<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2017/11/23/GOF23-Builder/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/11/22/GOF23-singleton/" title="GOF23 singleton" itemprop="url">GOF23 singleton</a>
   </h1>
   <p class="article-author">By
@@ -554,59 +606,6 @@
         <p class="article-more-link">
           
             <a href="/2017/11/02/IOStream/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/10/29/Exception/" title="Exception" itemprop="url">Exception</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-10-29T02:00:48.000Z" itemprop="datePublished"> Published 2017-10-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Exception<br>定义：运行期间出现的错误<br>异常是java提供的一种处理程序错误的一种机制<br>抛出异常：如果程序运行期间出现的异常，可以生成一个异常对象，这个异常对象封装了异常对象的信息并提交给java系统,这个过程称为异常的抛出<br>捕获异常：当java运行时系统发现异常,会寻找能处理这个异常的代码并把异常交给它处理，这个过程称为异常的捕获。<br>异常的树形图<br>1.异常的分类<br>Throwable : Error,Exception<br>Error表示JVM虚拟机里面的错误，程序员处理不了<br>Exception : 其他的异常，RuntimeException<br>RuntimeException:表示一些经常出现的异常，如 除以0，数组下标越界，等，可以对其不进行处理，当然也可以对其进行处理<br>其他的异常 ： 表示必须要处理的异常 ， 入 IOException<br>2.try{<br> …可能出现异常的代码块<br>}catch(some1Exception e){</p>
-<p>e.printStackTrance();//打印出错的和出错相关的堆栈信息<br>e.getMessage();//得到有关异常的信息<br>//一般来说使用printStackTrance的比较多</p>
-<p>}catch(some2Exception e){</p>
-<p>e.printStackTrance();<br>}finally{<br>//无论是否有异常，都会执行finally里面的代码,<br>//finally里面通常执行的是文件流的关闭，数据库的回滚等等进行资源的清除工作<br>}</p>
-
-        
-        
-        <p class="article-more-link">
           
        </p>
     </div>
