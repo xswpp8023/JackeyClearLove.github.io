@@ -86,6 +86,57 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/11/02/IOStream/" title="IOStream" itemprop="url">IOStream</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-02T02:43:38.000Z" itemprop="datePublished"> Published 2017-11-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>IOStream理解<br>IO流包括：字节流 （InputStream,OutputStream）<br> 字符流：（Writer,Reader）<br> 处理流： (BufferReader,BufferWriter)<br> 1.流是单向的，输入流（InputStream）只能用于读（Reader）<br>     输出流（OutputStream）只能用于写(Writer)<br> 2.字节流只能一个字节一个字节的读或者写(不能读写中文)，字符流(一个字符的读写，一个字符等于两个字节，可以读写中文)，他们的返回值都是INT类型的，输出的时候需要强转为字符串类型<br> 3.InputStream,OutputStream,Reader,Writer是所有流的祖宗，所有流都是继承他们（如：FileInputStream,FileOutputStream）<br> 4.BufferReader(Writer)相当于给原来的流（管道）上在包装了一层管道，因为BufferReader里面的readline方法很好用（直接读写一行），并且可以提升读写的效率。<br>  下面看看代码再来理解一下<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2017/11/02/IOStream/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/10/29/Exception/" title="Exception" itemprop="url">Exception</a>
   </h1>
   <p class="article-author">By
@@ -542,59 +593,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/09/30/first-blog/" title="first blog" itemprop="url">first blog</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-09-30T07:21:51.000Z" itemprop="datePublished"> Published 2017-09-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>  生命中总是有很多的第一次，这是我第一次公开的有了自己的个人博客，以前的学习内容总是记录在自己的笔记本(NotePad)上面的，很多的好东西也没有和大家一起来分享，也有很多的错误可能存在于笔记里面(自认为是对的)，现在开始我就开始慢慢整理，贴出来与大家分享，大神勿喷。。。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
   </nav>
 
 </div>

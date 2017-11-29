@@ -86,6 +86,120 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/11/28/mybatis-1/" title="mybatis-1" itemprop="url">mybatis-1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-28T01:56:44.000Z" itemprop="datePublished"> Published 2017-11-28</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>mybatis入门</p>
+<p>mybatis框架<br> SqlMapConfig<br> (配置数据源，运行环境，事务)<br>  [mapper1.xml,mapper2.xml….]</p>
+<p> SqlSessionFactory(会话工厂,用于创建SqlSession)</p>
+<p> SqlSession<br> (会话，用于操作数据库，增删改查)</p>
+<p> Excutor<br> (执行器，SqlSession内部就是通过这个来操作数据库的)</p>
+<p> mapped statement(底层封装对象)<br> [作用：对操作数据库存储封装，包括sql语句，输入参数，输出类型]</p>
+<p> mysql<br> 这就是mybatis宏观 上的框架</p>
+<p> 入门程序 ：<br> 需求：<br> 根据用户的id查询用户的信息<br> 根据用户名称模糊查询用户信息<br> 更新用户<br> 增加用户<br> 删除用户</p>
+<p>1.需要导入的包<br> mybatis-XXX.jar<br> mybatis的Lib下面所有的jar文件<br> mysql驱动<br>2.创建java project<br>3.创建sqlMapCofing.xml，在里面配置事务，数据源<br>4.创建mapper.xml(现在名字可以随意起)、在里面写sql语句<br>5.创建log4j.properties<br>5.写java程序<br>6.上面的配置文件都可以在mybatis.pdf里面找到</p>
+<p> 这个“#{}”，这个是mybatis里面的占位符，相当于mysql里面的 “?” 占位符</p>
+<p>  这里的id为statement的id，<br>因为最后会把输入参数，输出类型等的这些数据封装到mapped statement </p>
+<p>#{} 占位符<br>parameterType:输入参数类型<br>parameterMap:输入参数类型，前期用的这个，现在不用了<br>· #{id} : 表示要输入的参数，参数的名称为id,如果为简单数据类型，那么括号里面的参数可以随意定<br>resultType:输出类型，就死查询出来的这条数据是什么类型的，<br>那么我们查询出来的数据是数据库里面的一条记录，那么对应的就是java里面的一个对象，所以在这里<br>新建一个pojo,字段要和数据库里面的字段保持一致</p>
+<p>   <select id="findUserById" parametertype="int" resulttype="com.bl.pojo.User"><br>    SELECT * FROM employee WHERE id=#{id};<br>   </select><br></p>
+<p>$ : 用于sql拼接 ， $%{vaule}% , 表示会把输入的值加入到 %%中，%vaule%</p>
+<p>#自增主键获取<br>获取自增主键id<br> keyproperty=”id” :将查询到的主键设置到ParamType对象的对应的属性中<br> order=”AFTER” ：相对于insert语句来说，插入的顺序<br>selectKey keyproperty=”id” order=”AFTER” resultType”java.lang.Integer”&gt;<br>selct LAST_INSERT_ID()<br>selectKey/&gt;</p>
+<p>#非自增主键获取<br> 这里的order=BEFORE,因为id属性是通过UUID生成主键后再设置进sql语句中的<br>selectKey keyproperty=”id” order=”BEFORE” resultType”java.lang.String”&gt;<br>selct UUID()<br>selectKey/&gt;</p>
+<p>mybatis开发dao<br>1.原始的开发方法<br>2.mapper代理方法开发dao<br>  开发规范<br>  1.ParamType与接口输入参数相同<br>  2.resultType与java接口的返回值相同，如果没有resultType则是void<br>  3.id与java接口的方法名一致<br>  4.nameSpace是java接口的全类名（包+类）</p>
+<p>mybatis按照下面的顺序来加载属性<br>1.先加载properties定义的属性<br>2.在加载properties元素中resource或者url加载的属性，它会覆盖以加载的同名属性<br>3.最后加载paramType中的属性</p>
+<p>#setting 全局参数配置<br>这个需要的时候设置，不需要的时候不要乱设置，<br>这个主要是 ：mybatis运行时可以调整的一些参数，比如，开启一级，二级缓存</p>
+<p>#typeAliases 别名（重点）<br>系统默认的别名</p>
+<p>自定义别名<br> 单个别名的定义<br>  typeAliases&gt;<br> typeAlias type=”com.bl.po.User” alias=”user”/&gt;<br>/typeAliases&gt;<br>这里就把User类的别名定义为了user</p>
+<p>批量别名的定义<br>typeAliases&gt;<br> package=”com.bl.po”/&gt;<br>/typeAliases&gt;<br>系统自动定义别名<br>系统会把package包里面的类的别名定义为类名，首字母大写小写都可以</p>
+<p>#typeHandler<br>类型处理器，通过类型处理器，可以完成java导 jdbc类型的处理，一般系统默认支持的就狗我们使用了，不需要来自定义。</p>
+<p>#映射器mapper<br>加载单个的映射文件</p>
+<pre><code>mapper resource=&quot;conf/sqlmap/user.xml&quot;/&gt;
+</code></pre><p>通过接口加载mapper<br>mapper class=”com.bl.mapper.User”/&gt;<br>需要遵循的规范<br>1.mapper.xml和接口的文件名称一致<br>2.mapper.xml和对应的接口在同一目录下</p>
+<p>  mapper url=”file:/c:/….”/&gt;<br>  url里面放的就是xml文件的物理路径</p>
+<p>批量的加载mapper.xml文件<br>《package name=”包名”/&gt;<br>这样就会批量的来加载这个包下的mapper文件<br>遵循的规范<br>1.mapper.xml和接口的文件名称一致<br>2.mapper.xml和对应的接口在同一目录下<br>这个规范必须要遵循的</p>
+<p>以上都是sqlMapConfig.xml文件的讲述</p>
+<p>#mapper.xml文件</p>
+<p> ##输入类型<br> 输入类型是parameterType,这些类型可以是：简单数据类型，pojo,hashMap</p>
+<p>#mapper代理与pojo包装类开发<br>需求：查询数据库 标中name与email相同的记录<br>userMapper.xml<br> select id=”findUserList” parameterType=”com.bl.pojo.CustomVo” resultType=”com.bl.pojo.customIfo”&gt;<br>   SELECT *FROM employee WHERE NAME = #{cus.name} AND email =#{cus.email}<br>   /select&gt;</p>
+<p>   userMapper.java<br>   public interface userMapper {<br> public List<customifo> findUserList(CustomVo customVo)throws Exception;<br>}</customifo></p>
+<p>pojo和 扩展类以及包装类</p>
+<p>pojo<br>public class User {<br>private int id;<br>private String name;<br>private String email;<br>private Date hiredate;<br>private float salary;</p>
+<p>public int getId() {<br>    return id;<br>}<br>public void setId(int id) {<br>    this.id = id;<br>}<br>public String getName() {<br>    return name;<br>}<br>public void setName(String name) {<br>    this.name = name;<br>}<br>public String getEmail() {<br>    return email;<br>}<br>public void setEmail(String email) {<br>    this.email = email;<br>}<br>public Date getHiredate() {<br>    return hiredate;<br>}<br>public void setHiredate(Date hiredate) {<br>    this.hiredate = hiredate;<br>}<br>public float getSalary() {<br>    return salary;<br>}<br>public void setSalary(float salary) {<br>    this.salary = salary;<br>}<br>@Override<br>public String toString() {<br>    return “User [id=” + id + “, name=” + name + “, email=” + email</p>
+<pre><code>+ &quot;, hiredate=&quot; + hiredate + &quot;, salary=&quot; + salary + &quot;]&quot;;
+</code></pre><p>}</p>
+<p>}</p>
+<p>扩展类<br>public class customIfo extends User{<br>//用户扩展类，出了user里面属性，还可以定义其他我们所需要的属性。<br>}</p>
+<p>包装类<br>public class CustomVo {<br>    //包装类<br>    private customIfo cus;</p>
+<pre><code>public customIfo getCus() {
+    return cus;
+}
+
+public void setCus(customIfo cus) {
+    this.cus = cus;
+}
+</code></pre><p>}</p>
+<p>接口实现类<br>public class userMapperImpl implements userMapper{<br>    private static SqlSessionFactory sessionFactory ;<br>        static{<br>            try{<br>            String path = “conf/sqlMapConfig.xml”;<br>            InputStream inputStream = Resources.getResourceAsStream(path);<br>            sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);<br>            }catch(Exception w){<br>                w.printStackTrace();<br>            }<br>        }</p>
+<pre><code>@Override
+public List&lt;customIfo&gt; findUserList(CustomVo customVo) throws Exception {
+    SqlSession session = sessionFactory.openSession();
+    userMapper mapper = session.getMapper(userMapper.class);
+
+    CustomVo customVo1 = new  CustomVo();
+    customIfo cus1 = new customIfo();
+    cus1.setName(&quot;blld&quot;);
+    cus1.setEmail(&quot;243808244@qq.com&quot;);
+    customVo1.setCus(cus1);
+    List&lt;customIfo&gt; userList = mapper.findUserList(customVo1);
+
+    return userList;
+}
+</code></pre><p>}</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/11/27/activeMQ-3/" title="activeMQ-3" itemprop="url">activeMQ-3</a>
   </h1>
   <p class="article-author">By
@@ -545,61 +659,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/23/GOF23-adapter/" title="GOF23-adapter" itemprop="url">GOF23-adapter</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-23T14:26:55.000Z" itemprop="datePublished"> Published 2017-11-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>GOF23-结构型模式-适配器模式<br> 结构型模式 ：适配器模式 ，代理模式 ， 组合模式，桥接模式，外观模式，享元模式<br> 结构型模式的特点：从程序的结构上实现松耦合，从而扩大整体的类，用来解决更大的问题</p>
-<p> 定义 ：把一个类的接口转换为客户所需要的接口，适配器把原来不兼容的接口转换为兼容的接口，把原本由于接口不兼容而不能一起工作的哪些类可以一起工作。<br>  模式中的角色<br>  目标接口：客户所期待的接口，目标接口可以是具体或者抽象的类，也可以是接口。<br>  需要适配的类 ： 需要适配的类或是适配者类<br>  适配器 ：通过包装一个需要适配的类，把原接口转换为目标接口<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/11/23/GOF23-adapter/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>
