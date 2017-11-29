@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Jackey丶S Blog">
 <meta property="og:description" content="mybatis入门 mybatis框架 SqlMapConfig (配置数据源，运行环境，事务)  [mapper1.xml,mapper2.xml….]  SqlSessionFactory(会话工厂,用于创建SqlSession)  SqlSession (会话，用于操作数据库，增删改查)  Excutor (执行器，SqlSession内部就是通过这个来操作数据库的)  mapped sta">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-29T09:54:53.328Z">
+<meta property="og:updated_time" content="2017-11-29T09:58:48.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mybatis-1">
 <meta name="twitter:description" content="mybatis入门 mybatis框架 SqlMapConfig (配置数据源，运行环境，事务)  [mapper1.xml,mapper2.xml….]  SqlSessionFactory(会话工厂,用于创建SqlSession)  SqlSession (会话，用于操作数据库，增删改查)  Excutor (执行器，SqlSession内部就是通过这个来操作数据库的)  mapped sta">
@@ -110,8 +110,7 @@
 <p> SqlSessionFactory(会话工厂,用于创建SqlSession)</p>
 <p> SqlSession<br> (会话，用于操作数据库，增删改查)</p>
 <p> Excutor<br> (执行器，SqlSession内部就是通过这个来操作数据库的)</p>
-<p> mapped statement(底层封装对象)<br> [作用：对操作数据库存储封装，包括sql语句，输入参数，输出类型]</p>
-<p> mysql<br> 这就是mybatis宏观 上的框架</p>
+<p> mapped statement(底层封装对象)<br> [作用：对操作数据库存储封装，包括sql语句，输入参数，输出类型]<br> <a id="more"></a><br> mysql<br> 这就是mybatis宏观 上的框架</p>
 <p> 入门程序 ：<br> 需求：<br> 根据用户的id查询用户的信息<br> 根据用户名称模糊查询用户信息<br> 更新用户<br> 增加用户<br> 删除用户</p>
 <p>1.需要导入的包<br> mybatis-XXX.jar<br> mybatis的Lib下面所有的jar文件<br> mysql驱动<br>2.创建java project<br>3.创建sqlMapCofing.xml，在里面配置事务，数据源<br>4.创建mapper.xml(现在名字可以随意起)、在里面写sql语句<br>5.创建log4j.properties<br>5.写java程序<br>6.上面的配置文件都可以在mybatis.pdf里面找到</p>
 <p> 这个“#{}”，这个是mybatis里面的占位符，相当于mysql里面的 “?” 占位符</p>
