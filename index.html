@@ -102,26 +102,12 @@
         <p>#输出映射</p>
 <p>resultType<br>resultType中的sql语句中的字段必须与pojo里面的字段相同，如果不相同，那么查询出来的结果只是给你的属性赋初值。<br> resultType的返回类型决定了mybatis会调用那么查询函数(selectOne,selectList)</p>
 <p> resultMap<br> mybatis中使用resultMap返回类型来完成高级映射(一对一，一对多，多对一)<br> eg:<br> 还是上面的列子<br> select ParameterType=”User” resultMap=””&gt;<br> slect id _id ,name _name from emp ;</p>
-<p> pojo<br> public class User{<br>  private int id;<br>  private String name;<br> }<br>这里可以看出，pojo里面的属性和sql里面的字段是不同的，如果使用resultType的话，那么查询查来的id,name就是0，null  ,显然这样是错误的，并不是我们要的结果。因为sql片段中的字段和pojo里面的属性不同<br>  那么现在我想保持sql中的字段别名不变，可以使用resultMap<br>  1.自定义resultMap<br>  2.映射sql与pojo的字段与属性</p>
-<p>  id:对resultMap的唯一标识<br>  type:最终映射的java对象类型<br>  resultMap id=”useresultMap” type=”user”&gt;<br>  //这个是唯一标识符的映射<br>   id colum=”_id” properties=”id”/&gt;<br>   //普通属性的映射<br>   result colum=”_name” properties=”name” /&gt;<br>  /resultMap&gt;<br>  这就是resultMap简单的使用</p>
-<p>  #sql片段<br>  sql id=””&gt;<br>  sql代码<br>  sql/&gt;</p>
-<p>  id:sql的唯一标致符</p>
-<p>  经验：是基于单表来定义sql片段的，因为这样的重用性比较高<br>  sql片段里面不要包含where，如果sql片段里面定义了where，那么用这个片段的时候，就不能在定义where，那么可重用性就会降低。</p>
-<p>  引用sql片段<br>  include refid=”需要引用的 sql片段的id”/&gt;<br>  如果你引用的sql片段不再你所引用的mapper文件中而在其他的mapper文件中，那么需要在id之前加上namespace</p>
-<p>  #数据模型分析思路<br>  1.每张表记录的数据内容<br>   分模块对每张表记录的内容进行熟悉，相当于你在学习系统的需求(功能)的过程<br>  2.每张表重要的字段<br>    什么是重要的字段，<br>   非空字段，外键字段<br>  3.数据库级别，表与表之间 的关系<br>   也就是 外键之间的关系<br>  4.表与表之间的业务关系<br>   在分析表与表之间的业务关系的时候，一定要建立在某个业务意义基础之上</p>
-<p>案列：<br>订单<br> 现在有四个表<br> 用户表（user） 订单表(orders) 订单详情表（orderdetails） 商品表(items)</p>
-<p> 遵循上面的思路来分析四张表的对应关系（一对一，一对多，多对一，多对多）<br> 1.先画图记录四张表中的内容（内容就记录非空字段，外键）<br> 2.根据外键，分析那张表和那张表之间是否有关系<br> 3.先来分析有关系的表之间的关系，再分析没有关系的表之间的关系<br> 4.没有关系的表之间的关系分析：比如 user表 和 order有关系，order和items有关系，那么user可以通过中间建立的关系来分析user和items之间的关系。</p>
-<p>#写sql的方法，长的sql语句都是从短的sql语句开始的<br> 方法：<br>  1.确定查询的主表<br>  2.确定查询的关联表<br> 需求： 查询订单表，关联查询创建订单的用户信息<br> 那么现在以这个需求写sql语句<br> 主查询表 ：订单表<br> 关联查询表 ： 用户信息表</p>
-<p> 那么sql语句就应该这么写<br>  select *from orders(因为orders是主表，所以优先查询主表)<br>  然后决定使用内链接还是外连接</p>
-<p>  association,用于一对一查询中的扩展属性的映射<br>  一对一查询使用resultType比较简单</p>
-<p>  conllection<br>  出了一对一的时候都用这个做关联映射</p>
-<p>  延迟加载(懒加载)<br>  lazyLoading<br>  用resultMap<br>  association或者collecttion 中的select属性选择需要延迟加载的sql语句</p>
-<p>  mybatis一级缓存，二级缓存<br>  一级缓存<br>  sqlSession缓存，使用hashMap来存储缓存<br>  每个sqlSession的缓存都是独立的，相互不影响。</p>
-<p>  二级缓存<br>  二级缓存为 ：mapper缓存<br>  mapper缓存是多个sqlSession共用的，也就是可以跨sqlSession使用。<br>  比如我使用其他mapper文件里面的sql语句</p>
-
+<p> pojo<br> public class User{<br>  private int id;<br>  private String name;<br> }<br>这里可以看出，pojo里面的属性和sql里面的字段是不同的，如果使用resultType的话，那么查询查来的id,name就是0，null  ,显然这样是错误的，并不是我们要的结果。因为sql片段中的字段和pojo里面的属性不同<br>
         
         
         <p class="article-more-link">
+          
+            <a href="/2017/11/29/mybatis-2/#more">Read More</a>
           
        </p>
     </div>

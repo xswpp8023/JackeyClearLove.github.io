@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Jackey丶S Blog">
 <meta property="og:description" content="#输出映射 resultTyperesultType中的sql语句中的字段必须与pojo里面的字段相同，如果不相同，那么查询出来的结果只是给你的属性赋初值。 resultType的返回类型决定了mybatis会调用那么查询函数(selectOne,selectList)  resultMap mybatis中使用resultMap返回类型来完成高级映射(一对一，一对多，多对一) eg: 还是上面的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-01T09:52:55.985Z">
+<meta property="og:updated_time" content="2017-12-01T09:55:13.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mybatis-2">
 <meta name="twitter:description" content="#输出映射 resultTyperesultType中的sql语句中的字段必须与pojo里面的字段相同，如果不相同，那么查询出来的结果只是给你的属性赋初值。 resultType的返回类型决定了mybatis会调用那么查询函数(selectOne,selectList)  resultMap mybatis中使用resultMap返回类型来完成高级映射(一对一，一对多，多对一) eg: 还是上面的">
@@ -108,7 +108,7 @@
 		<p>#输出映射</p>
 <p>resultType<br>resultType中的sql语句中的字段必须与pojo里面的字段相同，如果不相同，那么查询出来的结果只是给你的属性赋初值。<br> resultType的返回类型决定了mybatis会调用那么查询函数(selectOne,selectList)</p>
 <p> resultMap<br> mybatis中使用resultMap返回类型来完成高级映射(一对一，一对多，多对一)<br> eg:<br> 还是上面的列子<br> select ParameterType=”User” resultMap=””&gt;<br> slect id _id ,name _name from emp ;</p>
-<p> pojo<br> public class User{<br>  private int id;<br>  private String name;<br> }<br>这里可以看出，pojo里面的属性和sql里面的字段是不同的，如果使用resultType的话，那么查询查来的id,name就是0，null  ,显然这样是错误的，并不是我们要的结果。因为sql片段中的字段和pojo里面的属性不同<br>  那么现在我想保持sql中的字段别名不变，可以使用resultMap<br>  1.自定义resultMap<br>  2.映射sql与pojo的字段与属性</p>
+<p> pojo<br> public class User{<br>  private int id;<br>  private String name;<br> }<br>这里可以看出，pojo里面的属性和sql里面的字段是不同的，如果使用resultType的话，那么查询查来的id,name就是0，null  ,显然这样是错误的，并不是我们要的结果。因为sql片段中的字段和pojo里面的属性不同<br><a id="more"></a><br>  那么现在我想保持sql中的字段别名不变，可以使用resultMap<br>  1.自定义resultMap<br>  2.映射sql与pojo的字段与属性</p>
 <p>  id:对resultMap的唯一标识<br>  type:最终映射的java对象类型<br>  resultMap id=”useresultMap” type=”user”&gt;<br>  //这个是唯一标识符的映射<br>   id colum=”_id” properties=”id”/&gt;<br>   //普通属性的映射<br>   result colum=”_name” properties=”name” /&gt;<br>  /resultMap&gt;<br>  这就是resultMap简单的使用</p>
 <p>  #sql片段<br>  sql id=””&gt;<br>  sql代码<br>  sql/&gt;</p>
 <p>  id:sql的唯一标致符</p>
