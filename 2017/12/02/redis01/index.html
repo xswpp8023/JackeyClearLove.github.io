@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="redis使用 redis的安装以及基本的命令操作    在linux上安装 利用sftp解压   tar -zxf redis-3.0.0redis是用c写的  编译之前要确定有gcc环境如果没有 yum install gcc-c++安装执行这个命令  会更新你的gcc环境没有安装：给你安装 gcc环境\编译   make安装到指定的目录   make install PREFIX=/usr/">
+    <meta name="description" content="redis使用 redis的安装以及基本的命令操作    在linux上安装 利用sftp解压   tar -zxf redis-3.0.0redis是用c写的  编译之前要确定有gcc环境如果没有 yum install gcc-c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis01">
 <meta property="og:url" content="http://yoursite.com/2017/12/02/redis01/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="redis使用 redis的安装以及基本的命令操作    在linux上安装 利用sftp解压   tar -zxf redis-3.0.0redis是用c写的  编译之前要确定有gcc环境如果没有 yum install gcc-c++安装执行这个命令  会更新你的gcc环境没有安装：给你安装 gcc环境\编译   make安装到指定的目录   make install PREFIX=/usr/">
+<meta property="og:description" content="redis使用 redis的安装以及基本的命令操作    在linux上安装 利用sftp解压   tar -zxf redis-3.0.0redis是用c写的  编译之前要确定有gcc环境如果没有 yum install gcc-c++">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-02T12:04:11.817Z">
+<meta property="og:updated_time" content="2017-12-02T12:09:14.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis01">
-<meta name="twitter:description" content="redis使用 redis的安装以及基本的命令操作    在linux上安装 利用sftp解压   tar -zxf redis-3.0.0redis是用c写的  编译之前要确定有gcc环境如果没有 yum install gcc-c++安装执行这个命令  会更新你的gcc环境没有安装：给你安装 gcc环境\编译   make安装到指定的目录   make install PREFIX=/usr/">
+<meta name="twitter:description" content="redis使用 redis的安装以及基本的命令操作    在linux上安装 利用sftp解压   tar -zxf redis-3.0.0redis是用c写的  编译之前要确定有gcc环境如果没有 yum install gcc-c++">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Jackey丶S Blog">Jackey丶S Blog</a></h1>
 				<h2 class="blog-motto">生命是一场需要经历酸甜苦辣洗礼的过程</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -69,7 +69,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -92,14 +92,14 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-02T12:01:36.000Z" itemprop="datePublished"> Published 2017-12-02</time>
+    <time datetime="2017-12-02T12:01:36.000Z" itemprop="datePublished"> 发表于 2017-12-02</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			
 		
@@ -107,7 +107,7 @@
 		
 		<p>redis使用</p>
 <p>redis的安装以及基本的命令操作</p>
-<p>   在linux上安装 利用sftp<br>解压<br>   tar -zxf redis-3.0.0<br>redis是用c写的<br>  编译之前要确定有gcc环境<br>如果没有<br> yum install gcc-c++<br>安装执行这个命令  会更新你的gcc环境<br>没有安装：给你安装 gcc环境<br>\<br>编译<br>   make<br>安装到指定的目录<br>   make install PREFIX=/usr/lcoal/redis<br>拷贝<br>   cp redis.conf /usr/local/redis/bin/<br>编辑配置文件<br>   vim redis.conf<br>把deamosize no 的no改为yes(应该是静默的意思)<br>   启动redis服务<br>  ./redis-server redis.conf<br>   查看服务是否启动<br>  ps -aux|grep redis<br>出现两行  则表示服务已经启动</p>
+<p>   在linux上安装 利用sftp<br>解压<br>   tar -zxf redis-3.0.0<br>redis是用c写的<br>  编译之前要确定有gcc环境<br>如果没有<br> yum install gcc-c++<br> <a id="more"></a><br>安装执行这个命令  会更新你的gcc环境<br>没有安装：给你安装 gcc环境<br>\<br>编译<br>   make<br>安装到指定的目录<br>   make install PREFIX=/usr/lcoal/redis<br>拷贝<br>   cp redis.conf /usr/local/redis/bin/<br>编辑配置文件<br>   vim redis.conf<br>把deamosize no 的no改为yes(应该是静默的意思)<br>   启动redis服务<br>  ./redis-server redis.conf<br>   查看服务是否启动<br>  ps -aux|grep redis<br>出现两行  则表示服务已经启动</p>
 <p>关闭服务<br> kill (ps里面的进程)eg 5112<br> 或者 redis-cli shutdown也可以关闭<br>同样也可以利用<br>ps -aux|grep redis查看服务是否关闭</p>
 <p> 客户端连接服务<br> ./redis 回车<br> 出现127.0.0.1：6379<br>我们这个改为自己虚拟机的ip<br> ./redis-cli -h 192.168.25.128 -p 6379<br>这样就会哦出现<br>192.168.25.128:6379&gt;<br>然后你就可以开始玩reids了</p>
 <p>   redis的基本命令<br>  redis 的5种基本数据类型<br> strings(字符串) hashs(哈希) lists(列表) sets(无序集合) sorted sets(有序集合<br>)<br>  String<br>  set str1 abc<br>  get str1<br>  返回结果abc<br>  keys <em>或 key “</em>“(查看所有的key)<br>  删除<br>  del str1<br>  若 不存在返回(integer) 0<br>  删除成功返回 (integer) 1<br>incr key1  原子+1<br>decr key1  原子-1<br>incrby key1 integer 原子+integer<br>decrby key1 integer 原子-integer  </p>
@@ -172,17 +172,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -193,7 +193,7 @@
   
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -215,11 +215,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -446,7 +446,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
