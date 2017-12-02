@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>mybatis-2 | Jackey丶S Blog</title>
+    <title>mysql-01 | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="#输出映射 resultTyperesultType中的sql语句中的字段必须与pojo里面的字段相同，如果不相同，那么查询出来的结果只是给你的属性赋初值。 resultType的返回类型决定了mybatis会调用那么查询函数(selectOne,selectList)  resultMap mybatis中使用resultMap返回类型来完成高级映射(一对一，一对多，多对一) eg: 还是上面的">
+    <meta name="description" content="mysql从基础到高级先来个基础的jdbc编程1.加载驱动程序2.得到sql链接connection3.执行sql4.遍历结果5.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mybatis-2">
-<meta property="og:url" content="http://yoursite.com/2017/11/29/mybatis-2/index.html">
+<meta property="og:title" content="mysql-01">
+<meta property="og:url" content="http://yoursite.com/2017/12/01/mysql-01/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="#输出映射 resultTyperesultType中的sql语句中的字段必须与pojo里面的字段相同，如果不相同，那么查询出来的结果只是给你的属性赋初值。 resultType的返回类型决定了mybatis会调用那么查询函数(selectOne,selectList)  resultMap mybatis中使用resultMap返回类型来完成高级映射(一对一，一对多，多对一) eg: 还是上面的">
+<meta property="og:description" content="mysql从基础到高级先来个基础的jdbc编程1.加载驱动程序2.得到sql链接connection3.执行sql4.遍历结果5.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-01T09:55:13.101Z">
+<meta property="og:updated_time" content="2017-12-02T11:12:13.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mybatis-2">
-<meta name="twitter:description" content="#输出映射 resultTyperesultType中的sql语句中的字段必须与pojo里面的字段相同，如果不相同，那么查询出来的结果只是给你的属性赋初值。 resultType的返回类型决定了mybatis会调用那么查询函数(selectOne,selectList)  resultMap mybatis中使用resultMap返回类型来完成高级映射(一对一，一对多，多对一) eg: 还是上面的">
+<meta name="twitter:title" content="mysql-01">
+<meta name="twitter:description" content="mysql从基础到高级先来个基础的jdbc编程1.加载驱动程序2.得到sql链接connection3.执行sql4.遍历结果5.">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/29/mybatis-2/" title="mybatis-2" itemprop="url">mybatis-2</a>
+      <a href="/2017/12/01/mysql-01/" title="mysql-01" itemprop="url">mysql-01</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-29T10:03:33.000Z" itemprop="datePublished"> 发表于 2017-11-29</time>
+    <time datetime="2017-12-01T10:19:16.000Z" itemprop="datePublished"> 发表于 2017-12-01</time>
     
   </p>
 </header>
@@ -105,25 +105,15 @@
 		
 		</div>
 		
-		<p>#输出映射</p>
-<p>resultType<br>resultType中的sql语句中的字段必须与pojo里面的字段相同，如果不相同，那么查询出来的结果只是给你的属性赋初值。<br> resultType的返回类型决定了mybatis会调用那么查询函数(selectOne,selectList)</p>
-<p> resultMap<br> mybatis中使用resultMap返回类型来完成高级映射(一对一，一对多，多对一)<br> eg:<br> 还是上面的列子<br> select ParameterType=”User” resultMap=””&gt;<br> slect id _id ,name _name from emp ;</p>
-<p> pojo<br> public class User{<br>  private int id;<br>  private String name;<br> }<br>这里可以看出，pojo里面的属性和sql里面的字段是不同的，如果使用resultType的话，那么查询查来的id,name就是0，null  ,显然这样是错误的，并不是我们要的结果。因为sql片段中的字段和pojo里面的属性不同<br><a id="more"></a><br>  那么现在我想保持sql中的字段别名不变，可以使用resultMap<br>  1.自定义resultMap<br>  2.映射sql与pojo的字段与属性</p>
-<p>  id:对resultMap的唯一标识<br>  type:最终映射的java对象类型<br>  resultMap id=”useresultMap” type=”user”&gt;<br>  //这个是唯一标识符的映射<br>   id colum=”_id” properties=”id”/&gt;<br>   //普通属性的映射<br>   result colum=”_name” properties=”name” /&gt;<br>  /resultMap&gt;<br>  这就是resultMap简单的使用</p>
-<p>  #sql片段<br>  sql id=””&gt;<br>  sql代码<br>  sql/&gt;</p>
-<p>  id:sql的唯一标致符</p>
-<p>  经验：是基于单表来定义sql片段的，因为这样的重用性比较高<br>  sql片段里面不要包含where，如果sql片段里面定义了where，那么用这个片段的时候，就不能在定义where，那么可重用性就会降低。</p>
-<p>  引用sql片段<br>  include refid=”需要引用的 sql片段的id”/&gt;<br>  如果你引用的sql片段不再你所引用的mapper文件中而在其他的mapper文件中，那么需要在id之前加上namespace</p>
-<p>  #数据模型分析思路<br>  1.每张表记录的数据内容<br>   分模块对每张表记录的内容进行熟悉，相当于你在学习系统的需求(功能)的过程<br>  2.每张表重要的字段<br>    什么是重要的字段，<br>   非空字段，外键字段<br>  3.数据库级别，表与表之间 的关系<br>   也就是 外键之间的关系<br>  4.表与表之间的业务关系<br>   在分析表与表之间的业务关系的时候，一定要建立在某个业务意义基础之上</p>
-<p>案列：<br>订单<br> 现在有四个表<br> 用户表（user） 订单表(orders) 订单详情表（orderdetails） 商品表(items)</p>
-<p> 遵循上面的思路来分析四张表的对应关系（一对一，一对多，多对一，多对多）<br> 1.先画图记录四张表中的内容（内容就记录非空字段，外键）<br> 2.根据外键，分析那张表和那张表之间是否有关系<br> 3.先来分析有关系的表之间的关系，再分析没有关系的表之间的关系<br> 4.没有关系的表之间的关系分析：比如 user表 和 order有关系，order和items有关系，那么user可以通过中间建立的关系来分析user和items之间的关系。</p>
-<p>#写sql的方法，长的sql语句都是从短的sql语句开始的<br> 方法：<br>  1.确定查询的主表<br>  2.确定查询的关联表<br> 需求： 查询订单表，关联查询创建订单的用户信息<br> 那么现在以这个需求写sql语句<br> 主查询表 ：订单表<br> 关联查询表 ： 用户信息表</p>
-<p> 那么sql语句就应该这么写<br>  select *from orders(因为orders是主表，所以优先查询主表)<br>  然后决定使用内链接还是外连接</p>
-<p>  association,用于一对一查询中的扩展属性的映射<br>  一对一查询使用resultType比较简单</p>
-<p>  conllection<br>  出了一对一的时候都用这个做关联映射</p>
-<p>  延迟加载(懒加载)<br>  lazyLoading<br>  用resultMap<br>  association或者collecttion 中的select属性选择需要延迟加载的sql语句</p>
-<p>  mybatis一级缓存，二级缓存<br>  一级缓存<br>  sqlSession缓存，使用hashMap来存储缓存<br>  每个sqlSession的缓存都是独立的，相互不影响。</p>
-<p>  二级缓存<br>  二级缓存为 ：mapper缓存<br>  mapper缓存是多个sqlSession共用的，也就是可以跨sqlSession使用。<br>  比如我使用其他mapper文件里面的sql语句</p>
+		<p>mysql从基础到高级<br>先来个基础的jdbc编程<br>1.加载驱动程序<br>2.得到sql链接connection<br>3.执行sql<br>4.遍历结果<br>5.<a id="more"></a><br>public class teatJDBC{<br>String driver=”com.jdbc.mysql.Driver”;<br>String username = “root”;<br>String password = “123456”;<br>Connection conn = null;<br>Statement sm = null;<br>Result rs = null;<br>String url = “jdbc:mysql//localhost:3306/test”<br>  public static void main(String args[])throws Exception{<br>  Class.forName(driver);<br>  conn = DriverManager.getConnection();<br>  sm = comm.createStatement();<br>  String sql = “select *from student”;<br>  rs = sm.excuteQuery(sql);<br>  while(rs.next()){<br>  System.out.println(rs.getString(“uname”));</p>
+<p>  rs.close();<br>  sm.close();<br>  conn.close();<br>  }<br>  }<br>}</p>
+<p>//上面的就是一个基本的数据库连接的最基础的写法,想想刚开始学的时候，小主可是一直在背这个步骤呢。</p>
+<p>2.事务处理<br> 定义： 用户定义的一个操作序列，这个操作要么做，要么不做，是一个不可分割的单位。<br> 事务通常以begin transaction开始，以commit或者rollback结束，即提交事务的所有操作。</p>
+<p> 3.sql优化<br>  尽量避免设置字段为null,<br>  尽量避免在sql语句中使用 !=,&gt;,&lt; ，否则引擎将放弃索引而进行全表扫描。<br>  in 和 not in 要谨慎使用，否则将引起全秒扫描<br>  select count(*) from table这样的语句将引起全表扫描，并没有任何的业务意义，一定要杜绝使用。</p>
+<p>  索引 ：索引并不是越多越好，索引固然可以提高查询的效率，但是Inert和updata时可能会重建索引，所以怎么建立索引要慎重考虑，一般索引不要超过6个，如果多的话，那么考虑一些不常用的列是否有必要建立索引。</p>
+<p>  对于只含数字信息的字段尽量不要使用字符型，这样会降低查询和连接的效率，增加存档的开销。这是因为引擎在处理查询和连接时，会逐个比较字符串中的每个字符，而数字只需要比较依次就好了。</p>
+<p>  一般用Not Exists替换not in,in,not in最好用在有限的集合里面。</p>
+<p>  当多个事务同时访问同一数据的时候，可能出现5类问题。<br>  1.脏读现象：A事务读取B事务尚未提交的数据，并在此基础上执行操作，而B事务执行回滚，那么A读取的数据就是脏数据。<br>  2.不可重复读：事务A读取原来已经读取过的数据，但是该数据已经被另一个已经提交的事务修改过了。<br>  3.幻读：事务A重新执行一个查询，返回一系列符合查询的条件的行，发现其中插入了被事务B提交的行。<br>  4.第一类丢失更新： 事务A撤销时，把已经提交的事务B的更新数据覆盖了。<br>  5.事务A覆盖事务B已经提交的数据，造成事务B所做的操作丢失。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -136,7 +126,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/29/mybatis-2/" data-title="mybatis-2 | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/12/01/mysql-01/" data-title="mysql-01 | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -149,19 +139,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/12/01/mysql-01/" title="mysql-01">
-  <strong>上一篇：</strong><br/>
-  <span>
-  mysql-01</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/28/mybatis-1/"  title="mybatis-1">
+<a href="/2017/11/29/mybatis-2/"  title="mybatis-2">
  <strong>下一篇：</strong><br/> 
- <span>mybatis-1
+ <span>mybatis-2
 </span>
 </a>
 </div>

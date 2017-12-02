@@ -86,6 +86,59 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/11/04/tomcat-1/" title="tomcat-1" itemprop="url">tomcat-1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-04T13:26:27.000Z" itemprop="datePublished"> 发表于 2017-11-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>bootstarp.jar //tomcat内核<br>startup.bat startup.sh shutdown.bat shutdown.sh分别我iwindows和linux下的启动批处理文件<br> 批处理：在.bat的文件里面编写的一些windows的命令（跳转，等），以后只要执行一次.bat文件,就可以把里面的内容全部执行完成而不用逐个的执行每个命令</p>
+<ol>
+<li>echo off -&gt; 执行命令的时候，不要在命令窗口显示命令本身  单句的用@也可以<br>比如<br>@dir<br>@ping localhost<br>等于<br>@echo off<br>dir<br>ping localhost<br>2.if[NOT] ERRORLEVEL number command 如果最后运行的程序返回一个等于或大于指定数字的退出代码，则执行后面的命令<br>if[NOT] string1==string2 command 如果指定的字符串匹配，那么就执行后面的命令<br>if[NOT] EXIST filename command 如果filename存在 就执行后面的命令<br>比如： if “%OS%”==“Windows_NT” setlocal<br>意思是如果OS等于Windows_NT的话，就执行setlocal命令<br>3.rem命令<br>对命令的注释或者对命令的功能的注释，以便于阅读，被rem注释的命令批处理文件不会运行<br>4.echo %0 %1 %2 表示命令行想批处理文件传递参数 %0 %1 %2分别代表这第1，2，3个参数<br>比如： echo aa bb cc 执行后为 aa bb cc 一直可以到9%<br>那么要取第十个怎么办？  我们可以利用shift命令<br>shift表示把参数后移一个位置 那么0%就可以代表1%的参数，以此推断，9%就可以代表第十个参数，还要秋后面的参数，可以继续执行shift命令<br>shift<br>echo %0 %1 %2<br>6.goto label 跳转到 label<br>在下面定义 :label 标签名随便定义 跳转后执行:label ，程序将执行下一行的命令</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/11/03/MultiThread/" title="MultiThread" itemprop="url">MultiThread</a>
   </h1>
   <p class="article-author">By
@@ -537,58 +590,6 @@
         <p> java后端面试<br>  校招面试面试官注重的点：<br>  1.基础<br>  2.编程能力</p>
 <p>1.String StringBuffer和StringBuilder的区别<br>   (1)在执行速度上，String<stringbuffer<stringbuilder 原因：string:字符串常量="" stringbuffer:字符串变量="" stringbuilder:字符串变量="" 上面可以看到string是字符串常量，其他的两个是字符串变量，我们可以看下面一个列子：="" string="" s="abcd;" +="" 1;="" system.out.println(s);="" result="abcd1" 可以看到，s的值是变化了的，但是jvm是这样解析这段代码的：首先创建一个变量s，在给它赋值为abcd,然后在创建变量来执行第二段代码，这样就是说，每次改变string，都需要重新创建对象，而以前的对象会被gc作为垃圾回收，而stringbuffer,stringbuilder是字符串变量，它可以改变变量，每次改变变量也不用重新创建对象，所以string<stringbuffer<stringbuilder.="" 那么我们在看下面这段代码="" "only="" a"="" "fun";="" stringbuffer="" buffer="new" stringbuffer("this="" is")="" .append("only="" a").append("fun");="" 执行后发现="" 速度=""> buffer<br>  其实这是JVM耍的一个把戏  String s = “this is” + “only a” + “fun”;就等于<br>  String s = “this is only a fun”;<br>  （2）线程安全<br>  StringBuffer:线程安全    StringBuilder:线程不安全<br>  虽然StringBuilder的速度比StringBuffer快，但是JVM不能保证StringBuilder在字符串缓冲区操作是线程安全的，但是大部分单线程下操作字符串缓冲区可以使用StringBuilder</stringbuffer<stringbuilder></p>
 <p>  总结：对于字符串不频繁的操作使用：String<br>   单线程下操作字符串缓冲区使用;StringBuilder<br>   多线程下操作字符串缓冲区使用：StringBuffer</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/10/03/JavaScript1/" title="JavaScript" itemprop="url">JavaScript</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-10-03T07:54:48.000Z" itemprop="datePublished"> 发表于 2017-10-03</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>JavaScript–JQuery</p>
-<p>JQuery基本选择器<br>类选择器<br>$(function(){<br>  $(“.class”).click(function(){<br>  $(“#id”).css(“Background”,”#000000”);<br>  $(“yuansu”).css(“Background”,”#000000”);<br>  })</p>
-<p>})</p>
 
         
         
