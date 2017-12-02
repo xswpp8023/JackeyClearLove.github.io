@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>activeMQ-2 | Jackey丶S Blog</title>
+    <title>redis01 | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="activeMQ安全机制1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色admin : admin , admin用户(username)    密码 (password)      角色(rolename)这三个必须要按顺序写，否则会报错 2.activemq应该设置安全机制，只">
+    <meta name="description" content="redis使用 redis的安装以及基本的命令操作    在linux上安装 利用sftp解压   tar -zxf redis-3.0.0redis是用c写的  编译之前要确定有gcc环境如果没有 yum install gcc-c++安装执行这个命令  会更新你的gcc环境没有安装：给你安装 gcc环境\编译   make安装到指定的目录   make install PREFIX=/usr/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="activeMQ-2">
-<meta property="og:url" content="http://yoursite.com/2017/11/27/activeMQ-2/index.html">
+<meta property="og:title" content="redis01">
+<meta property="og:url" content="http://yoursite.com/2017/12/02/redis01/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="activeMQ安全机制1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色admin : admin , admin用户(username)    密码 (password)      角色(rolename)这三个必须要按顺序写，否则会报错 2.activemq应该设置安全机制，只">
+<meta property="og:description" content="redis使用 redis的安装以及基本的命令操作    在linux上安装 利用sftp解压   tar -zxf redis-3.0.0redis是用c写的  编译之前要确定有gcc环境如果没有 yum install gcc-c++安装执行这个命令  会更新你的gcc环境没有安装：给你安装 gcc环境\编译   make安装到指定的目录   make install PREFIX=/usr/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-27T08:41:59.348Z">
+<meta property="og:updated_time" content="2017-12-02T12:04:11.817Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="activeMQ-2">
-<meta name="twitter:description" content="activeMQ安全机制1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色admin : admin , admin用户(username)    密码 (password)      角色(rolename)这三个必须要按顺序写，否则会报错 2.activemq应该设置安全机制，只">
+<meta name="twitter:title" content="redis01">
+<meta name="twitter:description" content="redis使用 redis的安装以及基本的命令操作    在linux上安装 利用sftp解压   tar -zxf redis-3.0.0redis是用c写的  编译之前要确定有gcc环境如果没有 yum install gcc-c++安装执行这个命令  会更新你的gcc环境没有安装：给你安装 gcc环境\编译   make安装到指定的目录   make install PREFIX=/usr/">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/27/activeMQ-2/" title="activeMQ-2" itemprop="url">activeMQ-2</a>
+      <a href="/2017/12/02/redis01/" title="redis01" itemprop="url">redis01</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-27T06:24:07.000Z" itemprop="datePublished"> Published 2017-11-27</time>
+    <time datetime="2017-12-02T12:01:36.000Z" itemprop="datePublished"> Published 2017-12-02</time>
     
   </p>
 </header>
@@ -101,35 +101,37 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建四个用户"><span class="toc-number">1.</span> <span class="toc-text">创建四个用户</span></a></li></ol>
+			
 		
 		</div>
 		
-		<p>activeMQ安全机制<br>1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色<br>admin : admin , admin<br>用户(username)    密码 (password)      角色(rolename)<br>这三个必须要按顺序写，否则会报错</p>
-<p>2.activemq应该设置安全机制，只有符合条件的用户才能发送消息和获取消息，所以我们可以在activemq.xml里面添加安全配置<br>  在D:\sentu\activimq\apache-activemq-5.11.1\conf\activema.xml的123行添加配置（添加一个插件就好）<br>  <a id="more"></a><br>  如：<br>  <plugins><br>            <simpleauthenticationplugin><br>                <users><br>                    <authenticationuser username="admin" password="password" groups="admins,publishers,consumers"><br>                </authenticationuser></users><br>            </simpleauthenticationplugin><br>        </plugins><br>  这里的密码和jetty-realm.properties里面的用户名密码是不同的<br>  jetty-realm.properties里面的表示控制台的用户名和密码</p>
-<p>  这里在activemq里面设置的用户名和密码是java代码中创建ActiveMQConnectionFactory(“用户名”,”密码”,”链接URL”)<br>  在activemq中我们使用的用户名和密码都是ActiveMQConnectionFactory.DEFAULT,在activemq中添加了上述的代码，这个就必须把用户名和密码与配置文件中的用户名和密码对应，否则就报错。<br>  3.D:\sentu\activimq\apache-activemq-5.11.1\conf\login.config中 配置文件 用户 配置 PropertiesLoginModule：</p>
-<p>   activemq-domain {<br>    org.apache.activemq.jaas.PropertiesLoginModule required debug=true<br>    org.apache.activemq.jaas.properties.user=”users.properties”<br>    org.apache.activemq.jaas.properties.group=”groups.properties”;<br>};</p>
-<p>在conf中创建users.properties</p>
-<h1 id="创建四个用户"><a href="#创建四个用户" class="headerlink" title="创建四个用户"></a>创建四个用户</h1><p>admin=password<br>publisher=password<br>consumer=password<br>guest=password</p>
-<p>在conf中创建groups.properties</p>
-<p>#创建四个组并分配用户<br>admins=admin<br>publishers=admin,publisher<br>consumers=admin,publisher,consumer<br>guests=guest</p>
-<p>将该配置插入到activemq.xml中：</p>
-<pre><code>&lt;plugins&gt;
-    &lt;jaasAuthenticationPlugin configuration=&quot;activemq-domain&quot; /&gt;
-&lt;/plugins&gt;
-</code></pre><p>  配置启动参数，在dos里面运行<br>  D:\tools\apache-activemq-5.6.0-bin\apache-activemq-5.6.0\bin\win64&gt;activemq.bat -Djava.security.auth.login.config=D:/tools/apache-activemq-5.6.0-bin/apache-activemq-5.6.0/conf/login.config<br>  目录写你自己的</p>
-<p>#二,授限<br>可以对实际用户来授权，比如有些用户只有写队列的权限，有些则只有读的权限。<br>（一）、目的地级别授权</p>
-<p>JMS目的地的三种操作级别：<br>　　Read ：读取目的地消息权限<br>　　Write：发送消息到目的地权限<br>　　Admin：管理目的地的权限</p>
-<p>   plugins<br>    jaasAuthenticationPlugin configuration=”activemq-domain”<br>    authorizationPlugin<br>        map<br>            authorizationMap<br>                authorizationEntries<br>                    &lt;authorizationEntry topic=”topic.ch09” read=”consumers” write=”publishers” admin=”publishers”<br>                &lt;/authorizationEntries<br>            &lt;/authorizationMap<br>        &lt;/map<br>    &lt;/authorizationPlugin<br>/plugins<br>(不知道markdown怎么显示间括号)<br>这里consumers有写的权限，publishers有读的权限</p>
-<p>实际的安全机制也可以参考这篇博客<br><a href="http://" target="_blank" rel="external">https://www.cnblogs.com/jalja/p/7044968.html</a></p>
-<p>#三 持久化存储<br>activemq持久化存储默认的是khadb (khadb,leveldb,mysql,oracle),可以自由的切换<br>在D:\sentu\activimq\apache-activemq-5.11.1\conf\activemq.xml中<br>  persistenceAdapter&gt;<br>           kahaDB directory=”${activemq.data}/kahadb”/&gt;<br>        /persistenceAdapter&gt;<br>        这里可以看到默认是Khadb,切换为mysql,<br> persistenceAdapter&gt;<br>           jdbcpersistenceAdapter dataSource=”#mysql-ds”/&gt;<br>        /persistenceAdapter&gt;</p>
-<pre><code>   #mysql-ds这个表示引用下面的一个id为mysql-ds的bean
-   bean&gt;
-   (这里面写的就是连接数据库的一些字段，drivename,url,username,password等的一些连接参数)
-   bean/&gt;
-
-//如果没已使用Maven的话，那么需要在activemq中添加 dbcp和commons-pool两个jar包，这两个jar包直接可以在百度apache commons pool,apache dbcp直接下载添加导activemq的Lib里面，重新启动activemq即可。额，还有mysql驱动需要添加
-</code></pre><p>  消息发送者运行把数据持久化存储到mysql中，mysql会产生三个表，在msg表里面有数据，当我们的消费者运行得到数据后，mysql的msg表中的数据会被清除。</p>
+		<p>redis使用</p>
+<p>redis的安装以及基本的命令操作</p>
+<p>   在linux上安装 利用sftp<br>解压<br>   tar -zxf redis-3.0.0<br>redis是用c写的<br>  编译之前要确定有gcc环境<br>如果没有<br> yum install gcc-c++<br>安装执行这个命令  会更新你的gcc环境<br>没有安装：给你安装 gcc环境<br>\<br>编译<br>   make<br>安装到指定的目录<br>   make install PREFIX=/usr/lcoal/redis<br>拷贝<br>   cp redis.conf /usr/local/redis/bin/<br>编辑配置文件<br>   vim redis.conf<br>把deamosize no 的no改为yes(应该是静默的意思)<br>   启动redis服务<br>  ./redis-server redis.conf<br>   查看服务是否启动<br>  ps -aux|grep redis<br>出现两行  则表示服务已经启动</p>
+<p>关闭服务<br> kill (ps里面的进程)eg 5112<br> 或者 redis-cli shutdown也可以关闭<br>同样也可以利用<br>ps -aux|grep redis查看服务是否关闭</p>
+<p> 客户端连接服务<br> ./redis 回车<br> 出现127.0.0.1：6379<br>我们这个改为自己虚拟机的ip<br> ./redis-cli -h 192.168.25.128 -p 6379<br>这样就会哦出现<br>192.168.25.128:6379&gt;<br>然后你就可以开始玩reids了</p>
+<p>   redis的基本命令<br>  redis 的5种基本数据类型<br> strings(字符串) hashs(哈希) lists(列表) sets(无序集合) sorted sets(有序集合<br>)<br>  String<br>  set str1 abc<br>  get str1<br>  返回结果abc<br>  keys <em>或 key “</em>“(查看所有的key)<br>  删除<br>  del str1<br>  若 不存在返回(integer) 0<br>  删除成功返回 (integer) 1<br>incr key1  原子+1<br>decr key1  原子-1<br>incrby key1 integer 原子+integer<br>decrby key1 integer 原子-integer  </p>
+<p>  hash<br>  hset hash1 field 1<br>  hash1 表示的是redis的key field1表示hash的key 1表示hash的value<br>  hget hash1 field1<br>  返回值为 1<br>  hgetall hash1<br>  返回hash1下面的所有的hash的key与value<br>  hdel hash1 field1<br>  删除hash的key为field的key</p>
+<p>list<br>   lpush list1 1 2 3 4 5 6<br>表示从左面开始添加<br>   lrange list1 0 -1<br>查看list1的所有值<br>6 5 4 3 2 1<br>rpush list1 a b c d e<br>从右边开始添加<br>lrange list1<br>a b c d e<br>lrange list 3 9<br>表示查询list1里面3-9数据<br>lpop list1<br>取出并移除第一个元素<br>rpop list1<br>去除并移除最后一个数据、<br>lrem list1 count value<br>删除count个value<br>lrem list1 3 1(表示删除list1里面的3个为1的value)<br>ltrim list1 start end<br>清空索引在start和end之外的元素,索引从0开始<br>eg 1 2 3 4 5 6 7 8<br>ltrim list1 2 4<br>返回ok<br>lrange list1 0 -1返回的结果为3 4 5</p>
+<p>sets<br>添加集合<br>sadd seta a b c d e f<br>sadd setb c d e g h k<br>求差集合<br>sdiff seta setb a-b<br>结果 a b f<br>sdiff setb seta<br>结果 g h k<br>交集<br>sinter seta setb<br>结果：c d e<br>并集<br>sunion seta setb<br>结果 a b c d e f g h k</p>
+<p>sorts sets(有序集合)<br>zadd<br>zrevrange<br>zscore key number</p>
+<p>expire key secod(设置key的过期时间)<br>ttl key (查看key的有效期)<br>正数：过期时间的倒计时<br>-1：永久有效<br>-2：无效的key<br>presist key  持久化</p>
+<p>redis的持久化<br>Rdb(快照形式，默认开启)  定期的把内存中的数据保存到磁盘中<br>aof形式 append only file 把所有对redis执行的命令（crud操作命令）保存导文件中、数据库恢复时，把所有的命令执行一遍</p>
+<p>redis集群</p>
+<p>在/usr/local/redis-cluster下copy 6个redis下面的bin<br>bin里面必须是空的  也就是不能有.rdb(快照形式) .aof(append only file)持久化的方式，若果有这个后缀的文件必须删除掉</p>
+<ol>
+<li><p>那么现在在 redis-cluster下面就有redis01 ….redis06  6个文件<br>修改redis01-redis06里面的redis.conf里面的port分别改为7001-7006<br>把注释的cluster  redis-cluster enable(在文件中被注释掉了) 放行<br>这样文件就修改好了<br>2.在redis-cluster下面创建一个start-allserver.sh<br>vim start-allserver.sh<br>cd redis01<br>./redis-server.sh redis.conf<br>cd ..<br>cd redis02<br>./redis-server.sh redis.conf<br>cd ..<br>cd redis03<br>./redis-server.sh redis.conf<br>cd ..<br>cd redis04<br>./redis-server.sh redis.conf<br>cd ..<br>cd redis05<br>./redis-server.sh redis.conf<br>cd ..<br>cd redis06<br>./redis-server.sh redis.conf<br>cd ..</p>
+<p>esc :wq保存</p>
+</li>
+</ol>
+<p>3../start-allserver.sh  启动这6个redis服务<br>ps aux|grep redis 查看进程这些服务是否已经被启动</p>
+<p>4.在/root/redis-3.0.0/src目录下把redis-trib.rb<br>cp 到 /usr/lcoal/redis-cluster这个目录下</p>
+<p>cp redis-trib.rb /usr/lcoal/redis-cluster -r</p>
+<p>5.运行这个文件需要安装ruby环境<br> yum install ruby<br> yum install rubygems<br>6.在windows中把redis-3.0.0.gem(这是一个第三方的jar文件)这个文件通过sftp传输到/root下<br>执行命令<br>   gem install redis-3.0.0  回车 选择yes</p>
+<ol>
+<li>./redis-trib.rb create –replicas 1 192.168.25.128:7001 192.168.25.128:7002 192.168.25.128:7003 192.168.25.128:7004<br>192.168.25.128:7005 192.168.25.128:7006  回车<br>系统就会为你搭建集群<br>上面这个命令的意思是<br>–replicas 1 表示每个主机有一个备份机<br>那么就有三个node  每个node都有1个备份集<br>所以搭建集群的时候需要偶数个redis<br>系统会为每个主机分配槽（slot 范围：0-16383）<br>slot的分配是根据 crc16算法为key计算出一个值<br>然后16384与这个值的余数就是各个槽的分配结果</li>
+</ol>
+<p>奇怪的是  分配完 问你是否同意对这么槽的分配<br>  妈的  不同意有毛办法啊  我又改不了<br> 只能yes</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -142,7 +144,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/27/activeMQ-2/" data-title="activeMQ-2 | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/12/02/redis01/" data-title="redis01 | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -155,19 +157,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/27/activeMQ-3/" title="activeMQ-3">
-  <strong>上一篇：</strong><br/>
-  <span>
-  activeMQ-3</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/26/activiMQ/"  title="activiMQ">
+<a href="/2017/12/01/mysql-01/"  title="mysql-01">
  <strong>下一篇：</strong><br/> 
- <span>activiMQ
+ <span>mysql-01
 </span>
 </a>
 </div>
@@ -183,7 +177,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建四个用户"><span class="toc-number">1.</span> <span class="toc-text">创建四个用户</span></a></li></ol>
+ 
  
   </div>
 
