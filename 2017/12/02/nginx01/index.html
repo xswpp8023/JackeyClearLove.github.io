@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>activeMQ-2 | Jackey丶S Blog</title>
+    <title>nginx01 | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="activeMQ安全机制1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色admin : admin , admin用户(username)    密码 (password)      角色(rolename)这三个必须要按顺序写，否则会报错 2.activemq应该设置安全机制，只">
+    <meta name="description" content="启动./nginx关闭./nginx -s stop/quit查看是否关闭ps aux|grep nginx重载配置文件./nginx -s reload nginx反向代理   正向代理：eg:在一个教室里面有老师和学生,学生的电脑是没有网的，但是老师的电脑有网，那么学生就可以通过老师的电脑去上网，这个过程中，学生发出请求，老师的电脑把学生的请求发出去，服务器得到结果，把结果返回给老师，老师再把">
 <meta property="og:type" content="article">
-<meta property="og:title" content="activeMQ-2">
-<meta property="og:url" content="http://yoursite.com/2017/11/27/activeMQ-2/index.html">
+<meta property="og:title" content="nginx01">
+<meta property="og:url" content="http://yoursite.com/2017/12/02/nginx01/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="activeMQ安全机制1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色admin : admin , admin用户(username)    密码 (password)      角色(rolename)这三个必须要按顺序写，否则会报错 2.activemq应该设置安全机制，只">
+<meta property="og:description" content="启动./nginx关闭./nginx -s stop/quit查看是否关闭ps aux|grep nginx重载配置文件./nginx -s reload nginx反向代理   正向代理：eg:在一个教室里面有老师和学生,学生的电脑是没有网的，但是老师的电脑有网，那么学生就可以通过老师的电脑去上网，这个过程中，学生发出请求，老师的电脑把学生的请求发出去，服务器得到结果，把结果返回给老师，老师再把">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-27T08:41:59.348Z">
+<meta property="og:updated_time" content="2017-12-02T12:11:57.430Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="activeMQ-2">
-<meta name="twitter:description" content="activeMQ安全机制1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色admin : admin , admin用户(username)    密码 (password)      角色(rolename)这三个必须要按顺序写，否则会报错 2.activemq应该设置安全机制，只">
+<meta name="twitter:title" content="nginx01">
+<meta name="twitter:description" content="启动./nginx关闭./nginx -s stop/quit查看是否关闭ps aux|grep nginx重载配置文件./nginx -s reload nginx反向代理   正向代理：eg:在一个教室里面有老师和学生,学生的电脑是没有网的，但是老师的电脑有网，那么学生就可以通过老师的电脑去上网，这个过程中，学生发出请求，老师的电脑把学生的请求发出去，服务器得到结果，把结果返回给老师，老师再把">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/27/activeMQ-2/" title="activeMQ-2" itemprop="url">activeMQ-2</a>
+      <a href="/2017/12/02/nginx01/" title="nginx01" itemprop="url">nginx01</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-27T06:24:07.000Z" itemprop="datePublished"> Published 2017-11-27</time>
+    <time datetime="2017-12-02T12:10:34.000Z" itemprop="datePublished"> Published 2017-12-02</time>
     
   </p>
 </header>
@@ -101,35 +101,19 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建四个用户"><span class="toc-number">1.</span> <span class="toc-text">创建四个用户</span></a></li></ol>
+			
 		
 		</div>
 		
-		<p>activeMQ安全机制<br>1.可以在D:\sentu\activimq\apache-activemq-5.11.1\conf\jetty-realm.properties里面增加用户密码角色<br>admin : admin , admin<br>用户(username)    密码 (password)      角色(rolename)<br>这三个必须要按顺序写，否则会报错</p>
-<p>2.activemq应该设置安全机制，只有符合条件的用户才能发送消息和获取消息，所以我们可以在activemq.xml里面添加安全配置<br>  在D:\sentu\activimq\apache-activemq-5.11.1\conf\activema.xml的123行添加配置（添加一个插件就好）<br>  <a id="more"></a><br>  如：<br>  <plugins><br>            <simpleauthenticationplugin><br>                <users><br>                    <authenticationuser username="admin" password="password" groups="admins,publishers,consumers"><br>                </authenticationuser></users><br>            </simpleauthenticationplugin><br>        </plugins><br>  这里的密码和jetty-realm.properties里面的用户名密码是不同的<br>  jetty-realm.properties里面的表示控制台的用户名和密码</p>
-<p>  这里在activemq里面设置的用户名和密码是java代码中创建ActiveMQConnectionFactory(“用户名”,”密码”,”链接URL”)<br>  在activemq中我们使用的用户名和密码都是ActiveMQConnectionFactory.DEFAULT,在activemq中添加了上述的代码，这个就必须把用户名和密码与配置文件中的用户名和密码对应，否则就报错。<br>  3.D:\sentu\activimq\apache-activemq-5.11.1\conf\login.config中 配置文件 用户 配置 PropertiesLoginModule：</p>
-<p>   activemq-domain {<br>    org.apache.activemq.jaas.PropertiesLoginModule required debug=true<br>    org.apache.activemq.jaas.properties.user=”users.properties”<br>    org.apache.activemq.jaas.properties.group=”groups.properties”;<br>};</p>
-<p>在conf中创建users.properties</p>
-<h1 id="创建四个用户"><a href="#创建四个用户" class="headerlink" title="创建四个用户"></a>创建四个用户</h1><p>admin=password<br>publisher=password<br>consumer=password<br>guest=password</p>
-<p>在conf中创建groups.properties</p>
-<p>#创建四个组并分配用户<br>admins=admin<br>publishers=admin,publisher<br>consumers=admin,publisher,consumer<br>guests=guest</p>
-<p>将该配置插入到activemq.xml中：</p>
-<pre><code>&lt;plugins&gt;
-    &lt;jaasAuthenticationPlugin configuration=&quot;activemq-domain&quot; /&gt;
-&lt;/plugins&gt;
-</code></pre><p>  配置启动参数，在dos里面运行<br>  D:\tools\apache-activemq-5.6.0-bin\apache-activemq-5.6.0\bin\win64&gt;activemq.bat -Djava.security.auth.login.config=D:/tools/apache-activemq-5.6.0-bin/apache-activemq-5.6.0/conf/login.config<br>  目录写你自己的</p>
-<p>#二,授限<br>可以对实际用户来授权，比如有些用户只有写队列的权限，有些则只有读的权限。<br>（一）、目的地级别授权</p>
-<p>JMS目的地的三种操作级别：<br>　　Read ：读取目的地消息权限<br>　　Write：发送消息到目的地权限<br>　　Admin：管理目的地的权限</p>
-<p>   plugins<br>    jaasAuthenticationPlugin configuration=”activemq-domain”<br>    authorizationPlugin<br>        map<br>            authorizationMap<br>                authorizationEntries<br>                    &lt;authorizationEntry topic=”topic.ch09” read=”consumers” write=”publishers” admin=”publishers”<br>                &lt;/authorizationEntries<br>            &lt;/authorizationMap<br>        &lt;/map<br>    &lt;/authorizationPlugin<br>/plugins<br>(不知道markdown怎么显示间括号)<br>这里consumers有写的权限，publishers有读的权限</p>
-<p>实际的安全机制也可以参考这篇博客<br><a href="http://" target="_blank" rel="external">https://www.cnblogs.com/jalja/p/7044968.html</a></p>
-<p>#三 持久化存储<br>activemq持久化存储默认的是khadb (khadb,leveldb,mysql,oracle),可以自由的切换<br>在D:\sentu\activimq\apache-activemq-5.11.1\conf\activemq.xml中<br>  persistenceAdapter&gt;<br>           kahaDB directory=”${activemq.data}/kahadb”/&gt;<br>        /persistenceAdapter&gt;<br>        这里可以看到默认是Khadb,切换为mysql,<br> persistenceAdapter&gt;<br>           jdbcpersistenceAdapter dataSource=”#mysql-ds”/&gt;<br>        /persistenceAdapter&gt;</p>
-<pre><code>   #mysql-ds这个表示引用下面的一个id为mysql-ds的bean
-   bean&gt;
-   (这里面写的就是连接数据库的一些字段，drivename,url,username,password等的一些连接参数)
-   bean/&gt;
-
-//如果没已使用Maven的话，那么需要在activemq中添加 dbcp和commons-pool两个jar包，这两个jar包直接可以在百度apache commons pool,apache dbcp直接下载添加导activemq的Lib里面，重新启动activemq即可。额，还有mysql驱动需要添加
-</code></pre><p>  消息发送者运行把数据持久化存储到mysql中，mysql会产生三个表，在msg表里面有数据，当我们的消费者运行得到数据后，mysql的msg表中的数据会被清除。</p>
+		<p>启动<br>./nginx<br>关闭<br>./nginx -s stop/quit<br>查看是否关闭<br>ps aux|grep nginx<br>重载配置文件<br>./nginx -s reload</p>
+<p>nginx反向代理</p>
+<p>  正向代理：eg:在一个教室里面有老师和学生,学生的电脑是没有网的，但是老师的电脑有网，那么学生就可以通过老师的电脑去上网，这个过程中，学生发出请求，老师的电脑把学生的请求发出去，服务器得到结果，把结果返回给老师，老师再把结果返回给学生。nginx做的就是一个请求转发的作用。<br>  <a id="more"></a><br>  反向代理：<br>server{<br>  upstream baidu{<br>  server 192.168.176.132:8080;<br>}<br> listen 80<br> hostname www.baidu.com<br>location /{<br>  proxy_pass baidu<br>  index index.html index.html<br>}</p>
+<p>}</p>
+<p>server{<br>  upstream jd{<br>  server 192.168.176.132:8081;<br>}<br> listen 80<br> hostname www.jd.com<br>location /{<br>  proxy_pass jd<br>  index index.html index.html<br>}</p>
+<p>}<br>用户请求–》nginx区分访问的是www.baidu.com还是www.jd.com<br>  如果访问的是www.baidu.com<br>那么proxy_pass代理会找到upstream baidu然后访问192.168.176.132:8080<br>8080端口的tomcat把返回的页面给nginx,nginx再把页面(结果)给用户</p>
+<p>   负载均衡：给upstream里面添加tomcat服务器  ./nginx -s reload<br>   用户每次访问  就会轮询这个域名里面的每个服务器<br>   新服务器和老服务器的问题<br>   新服务器的性能好   老服务器的性能较差<br>   那么我们可以在nginx的upstream里面设置权重<br>  权重越高   被访问到的概率越大</p>
+<p>高可用<br>   keepalived+nginx<br>   keepalived通过询问nginx的心跳来判断nginx是否还活着<br>   若果宕机，keepalived就会把宕机的ip地址绑定导自己身上<br>   然后充当主机的角色<br>   如果主机修好之后，主机就会把备用机的ip拿过来，继续工作</p>
+<p>nginx可以做的事情<br>   访问静态资源<br>   反向代理<br>   负载均衡（轮询，权重）<br>   高可用</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -142,7 +126,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/27/activeMQ-2/" data-title="activeMQ-2 | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/12/02/nginx01/" data-title="nginx01 | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -155,19 +139,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/27/activeMQ-3/" title="activeMQ-3">
-  <strong>上一篇：</strong><br/>
-  <span>
-  activeMQ-3</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/26/activiMQ/"  title="activiMQ">
+<a href="/2017/12/02/redis01/"  title="redis01">
  <strong>下一篇：</strong><br/> 
- <span>activiMQ
+ <span>redis01
 </span>
 </a>
 </div>
@@ -183,7 +159,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建四个用户"><span class="toc-number">1.</span> <span class="toc-text">创建四个用户</span></a></li></ol>
+ 
  
   </div>
 
