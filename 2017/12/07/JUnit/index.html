@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>GOF23-Builder | Jackey丶S Blog</title>
+    <title>JUnit | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
+    <meta name="description" content="keep bar the greep,to kepp code clean.JUnit单元测试什么是单元测试？比如：我写了个类，我要确定这个类是否正确，那么就需要测试一下，比如public class t{  public int add(int a,int b){  return a+b; }  //测试就是你调用这个类的add方法，然后给a,b赋值，如果测试出来的与我们想要的结果相同，那么测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GOF23-Builder">
-<meta property="og:url" content="http://yoursite.com/2017/11/23/GOF23-Builder/index.html">
+<meta property="og:title" content="JUnit">
+<meta property="og:url" content="http://yoursite.com/2017/12/07/JUnit/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
+<meta property="og:description" content="keep bar the greep,to kepp code clean.JUnit单元测试什么是单元测试？比如：我写了个类，我要确定这个类是否正确，那么就需要测试一下，比如public class t{  public int add(int a,int b){  return a+b; }  //测试就是你调用这个类的add方法，然后给a,b赋值，如果测试出来的与我们想要的结果相同，那么测试">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-23T02:52:52.457Z">
+<meta property="og:updated_time" content="2017-12-07T17:43:20.900Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOF23-Builder">
-<meta name="twitter:description" content="GOF23设计模式 创建型 之 建造者模式 (Builder)建造者模式经常和工厂模式搭配使用的工厂专门用于生产零件，建造者专门拿零件来装配比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：1.需要组装手机的零件2.需要组装手机的顺序  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品  建造者模式往往用于构造一些">
+<meta name="twitter:title" content="JUnit">
+<meta name="twitter:description" content="keep bar the greep,to kepp code clean.JUnit单元测试什么是单元测试？比如：我写了个类，我要确定这个类是否正确，那么就需要测试一下，比如public class t{  public int add(int a,int b){  return a+b; }  //测试就是你调用这个类的add方法，然后给a,b赋值，如果测试出来的与我们想要的结果相同，那么测试">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/23/GOF23-Builder/" title="GOF23-Builder" itemprop="url">GOF23-Builder</a>
+      <a href="/2017/12/07/JUnit/" title="JUnit" itemprop="url">JUnit</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-22T17:06:16.000Z" itemprop="datePublished"> 發表於 2017-11-23</time>
+    <time datetime="2017-12-07T15:36:08.000Z" itemprop="datePublished"> 發表於 2017-12-07</time>
     
   </p>
 </header>
@@ -105,75 +105,35 @@
 		
 		</div>
 		
-		<p>GOF23设计模式 创建型 之 建造者模式 (Builder)<br>建造者模式经常和工厂模式搭配使用的<br>工厂专门用于生产零件，建造者专门拿零件来装配<br>比如：现在要组装一个安卓手机，简单的组装安卓手机需要两个步骤：<br>1.需要组装手机的零件<br>2.需要组装手机的顺序<br>  总结：相同的组装顺序，不同的零件，组装出来的不一定是同一个商品，零件相同，组装顺序不同，组装出来的东西不一定是同一个商品<br>  建造者模式往往用于构造一些复杂的问题<br>  优点：解耦了组合与零件建造</p>
-<p>  下面将以一个飞船的示例来展示来帮厨理解建造者模式<br>  <a id="more"></a><br>  分析：以上面的步骤来说，需要建造飞船组建的接口和组合飞船组件的接口<br>  //以下是飞船需要制造的组件<br>  //飞船引擎<br>  public class Engine {</p>
-<pre><code>private String name;
-public Engine(String name){
-    this.name = name;
-}
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
+		<p>keep bar the greep,to kepp code clean.<br>JUnit单元测试<br>什么是单元测试？<br>比如：我写了个类，我要确定这个类是否正确，那么就需要测试一下，<br>比如<br>public class t{</p>
+<p> public int add(int a,int b){<br>  return a+b;<br> }</p>
+<p> //测试就是你调用这个类的add方法，然后给a,b赋值，如果测试出来的与我们想要的结果相同，那么测试成功，证明我们写的程序是正确的。<br>}<br><a id="more"></a><br>现在写一个简单的方法测试<br>还用上面的列子<br>public class T {</p>
+<pre><code>public int add(int a,int b){
+    return a+b;
 }
 </code></pre><p>}</p>
-<p>//飞船逃逸舱<br>public class escapeCapsule {</p>
-<pre><code>private String name;
-public escapeCapsule(String name){
-    this.name = name;
-}
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
+<p>//测试<br>import static org.junit.Assert.*;</p>
+<p>public class TTest {</p>
+<pre><code>@Test
+public void testAdd() {
+    fail(&quot;Not yet implemented&quot;);
+    int z = new T().add(3, 5);
+    assertEquals(8, z);
 }
 </code></pre><p>}</p>
-<p>//飞船轮胎</p>
-<p>public class planTyre {<br>    private String name;<br>    public planTyre(String name){<br>        this.name = name;<br>    }<br>    public String getName() {<br>        return name;<br>    }<br>    public void setName(String name) {<br>        this.name = name;<br>    }</p>
-<p>}</p>
-<p>//飞船的整体部分<br>public class AirShip {<br>Engine engine;<br>escapeCapsule escapecapsule;<br>planTyre plantyre;<br>public Engine getEngine() {<br>    return engine;<br>}<br>public void setEngine(Engine engine) {<br>    this.engine = engine;<br>}<br>public escapeCapsule getEscapecapsule() {<br>    return escapecapsule;<br>}<br>public void setEscapecapsule(escapeCapsule escapecapsule) {<br>    this.escapecapsule = escapecapsule;<br>}<br>public planTyre getPlantyre() {<br>    return plantyre;<br>}<br>public void setPlantyre(planTyre plantyre) {<br>    this.plantyre = plantyre;<br>}</p>
-<p>}</p>
-<p>//飞船组件制造接口<br>public interface AirShipBuilder {<br>    Engine buildeEngine();<br>    escapeCapsule buildeescapeCapsule();<br>    planTyre buildeplanTyre();<br>}</p>
-<p>//飞船组件组合接口<br>public interface AirShipCombination {<br>    AirShip combineAirShip();</p>
-<p>}</p>
-<p>//实现飞船制造接口<br>public class blAirShipBuilder implements AirShipBuilder{</p>
-<pre><code>@Override
-public Engine buildeEngine() {
-    System.out.println(&quot;飞船引擎&quot;);
-    return new Engine(&quot;飞船引擎&quot;);
-}
-
-@Override
-public escapeCapsule buildeescapeCapsule() {
-    System.out.println(&quot;飞船逃逸仓&quot;);
-    return new escapeCapsule(&quot;飞船逃逸仓&quot;);
-}
-
-@Override
-public planTyre buildeplanTyre() {
-    System.out.println(&quot;飞船轮胎&quot;);
-    return new planTyre(&quot;飞船轮胎&quot;);
-}
-</code></pre><p>}</p>
-<p>//实现飞船组合接口<br>//这个就是飞船组装的顺序，由我们自己定义<br>public class blAirShipCombine implements AirShipCombination{<br>    private blAirShipBuilder blAirshipBuilder;<br> public blAirShipCombine(blAirShipBuilder blAirshipBuilder){<br>     this.blAirshipBuilder = blAirshipBuilder;<br> }<br>    @Override<br>    public AirShip combineAirShip() {<br>        Engine engine = blAirshipBuilder.buildeEngine();<br>        escapeCapsule escapecapsule= blAirshipBuilder.buildeescapeCapsule();<br>        planTyre plantyre=blAirshipBuilder.buildeplanTyre();</p>
-<pre><code>    AirShip air = new AirShip();
-    air.setEngine(engine);
-    air.setEscapecapsule(escapecapsule);
-    air.setPlantyre(plantyre);
-    return air;
-}
-</code></pre><p>}</p>
-<p>//测试客户端<br>public class Client {</p>
-<pre><code>public static void main(String[] args) {
-    blAirShipBuilder b1 = new blAirShipBuilder();
-    blAirShipCombine bb= new blAirShipCombine(b1);
-    bb.combineAirShip();
-}
-</code></pre><p>}</p>
-<p>//输出结果<br>飞船引擎<br>飞船逃逸仓<br>飞船轮胎</p>
-<p>这就是我们飞船组装的顺序，先飞船引擎，再飞船逃逸仓，最后飞船轮胎。<br>在这里我们可以随意的指定飞船各个组件的优略性，可以随意的指定飞船组装的顺序<br>性能不一，组装顺序不同，那么制造出来的产品那就不一样。</p>
+<p>//import static org.junit.Assert.*; 这个不是一个包，是静态引入的方法，<br>assert断言，就是判断的意思。</p>
+<p>JUnit4里面出来了新的断言<br>assertThat<br>用了这个断言，那么一切的测试都是可以搞定的<br>这个属于hamcrest静态方法里面的<br>具体各个都有什么断言，可以参考具体的API文档<br> assertThat(n,allOf(greatThan(1),lessThan(1)));//n必须满足allOf里面的所有条件才算通过。<br> assertThat(n,anyOf(greatThan(1),lessThan(1)))//满足其中的任何一个条件。<br> assertThat(n,anything());//n是什么值都可以测试通过。<br> assertThat(n,is(1));//n是不是1，是1就通过<br> assertThat(n,not(1));n是不是 不是1，n不是1，测试通过</p>
+<p> assertThat(n,containString(“fff”));//n是不是包含fff这个字符串<br> assertThat(n,endWith(“bb”));//n是不是以bb结尾</p>
+<p> assertThat里面定义中代码的作用和英文的意思很切近，如果英文稍微可以，多看看，多测试测试还是没有太大的问题的。<br>  这些都是一些基础，实用性的比如测试struts,Spring等一些项目中遇到的问题，但是要去测试这些复杂的问题，基础还是很重要。</p>
+<p>  Failure:表示测试错误。<br>  error ；表示程序本身错误。</p>
+<p>  #JUnit Annotation<br>  @Test(expected=java.lang.Excetion,timeout=100)//表示这个方法是一个测试方法,expected表示期望干什么，这里写的期望抛异常，那么如果有异常，测试依然可以通过。<br>  timeout表示你期望这个方法在多少毫秒内执行完成，这个可以用于测试效率。</p>
+<p>@Ignore 表示本次测试不测试这个方法。（比如在项目中，某个模块还没有写完，条件还不能满足，那么我们可以使用这个注解暂时忽略不测试这个方法）</p>
+<p>@before 所有的方法执行值钱都要执行这个方法<br>@After 所有的方法执行之后都要执行这个方法<br>public class T{<br> @before<br> public void before(){<br> System.out.println(“before”);<br> }<br> @Test<br> public void tt(){<br> …..<br> }</p>
+<p>  @Test<br> public void bb(){<br> …..<br> }<br> @After<br> public void before(){<br> System.out.println(“after”);<br> }<br>}</p>
+<p>//结果<br>before<br>after<br>before<br>after</p>
+<p>//应用，比如我执行测试方法里面的代码需要先打开某个文件，执行完后需要关闭某个文件</p>
+<p>@beforeClass //所有测试开始之前运行<br>@afterClass  //所有测试执行结束之后运行</p>
+<p>这两个注解的方法必须是static的，否则不能运行。<br>应用，：当我们需要在测试之前搭建很耗时的环境，加载配置文件的时候。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -186,7 +146,7 @@ public planTyre buildeplanTyre() {
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/23/GOF23-Builder/" data-title="GOF23-Builder | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/12/07/JUnit/" data-title="JUnit | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -199,19 +159,11 @@ public planTyre buildeplanTyre() {
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/23/GOF23-adapter/" title="GOF23-adapter">
-  <strong>上一篇：</strong><br/>
-  <span>
-  GOF23-adapter</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/22/GOF23-singleton/"  title="GOF23 singleton">
+<a href="/2017/12/02/nginx01/"  title="nginx01">
  <strong>下一篇：</strong><br/> 
- <span>GOF23 singleton
+ <span>nginx01
 </span>
 </a>
 </div>
