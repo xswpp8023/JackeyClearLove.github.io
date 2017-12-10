@@ -1,0 +1,467 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>mysql-03 | Jackey丶S Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Jackey">
+    
+
+    
+    <meta name="description" content="#索引的设计与使用索引是数据库用来提升性能的常用工具所有mysql的类型都可以都可以被索引，对相关的列使用索引来提搞SELECT的操作性能。 每种存储引擎对每个表支持的索引至少16个。MyISAM和InnoDB引擎创建创建的默认索引为BTREE索引。mysql支持的索引 ：BTREE索引，全文索引（FULLTEXT），前缀索引 创建索引：create index indexname on tabl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql-03">
+<meta property="og:url" content="http://yoursite.com/2017/12/10/mysql-03/index.html">
+<meta property="og:site_name" content="Jackey丶S Blog">
+<meta property="og:description" content="#索引的设计与使用索引是数据库用来提升性能的常用工具所有mysql的类型都可以都可以被索引，对相关的列使用索引来提搞SELECT的操作性能。 每种存储引擎对每个表支持的索引至少16个。MyISAM和InnoDB引擎创建创建的默认索引为BTREE索引。mysql支持的索引 ：BTREE索引，全文索引（FULLTEXT），前缀索引 创建索引：create index indexname on tabl">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-10T05:46:40.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql-03">
+<meta name="twitter:description" content="#索引的设计与使用索引是数据库用来提升性能的常用工具所有mysql的类型都可以都可以被索引，对相关的列使用索引来提搞SELECT的操作性能。 每种存储引擎对每个表支持的索引至少16个。MyISAM和InnoDB引擎创建创建的默认索引为BTREE索引。mysql支持的索引 ：BTREE索引，全文索引（FULLTEXT），前缀索引 创建索引：create index indexname on tabl">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Jackey丶S Blog" title="Jackey丶S Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Jackey丶S Blog">Jackey丶S Blog</a></h1>
+				<h2 class="blog-motto">生命是一场需要经历酸甜苦辣洗礼的过程</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/tags">tags</a></li>
+					
+						<li><a href="/categories">categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/12/10/mysql-03/" title="mysql-03" itemprop="url">mysql-03</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-12-09T16:14:02.000Z" itemprop="datePublished"> Published 2017-12-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
+		<p>#索引的设计与使用<br>索引是数据库用来提升性能的常用工具<br>所有mysql的类型都可以都可以被索引，对相关的列使用索引来提搞SELECT的操作性能。</p>
+<p>每种存储引擎对每个表支持的索引至少16个。<br>MyISAM和InnoDB引擎创建创建的默认索引为BTREE索引。<br>mysql支持的索引 ：BTREE索引，全文索引（FULLTEXT），前缀索引</p>
+<p>创建索引：<br>create index indexname on tablename;<br>删除索引：<br>DROP index indexname on tablename;</p>
+<p>#设计索引的原则<br>1.搜索的索引列，不一定是所要选择的列。换句话说，最适合做索引的列是出现在where子句中或者连接子句中指定的列，而不是出现在SELECT关键字后的列。<br>2.使用唯一索引，考虑列中值的分布。也就是索引列的基数越大越好。比如，存放生日的列中就是各种不同的日期值，如过选择性别作为索引，那么性别中的值也就是 男 女 不详，那么不管你搜索那个值，都会出来三分之一的结果。<br>3.不要过度的使用索引，不要什么都使用索引，每个额外的索引都会占用额外的磁盘空间，并会降低写的操作，在更新表内容时，索引必须进行更新，有时还需要重构。所以索引越多，所花费的时间会越长，如果一个索引很少使用或者不用，那么会减缓表的修改速度。</p>
+<p>BTREE和HASH索引<br>HASH索引使用：<br>1.用于使用=或者&lt;=&gt;等式比较<br>2.优化器不能使用HASH索引来加速ORDER BY操作</p>
+<p>BTREE索引：<br>在使用比较运算符时，都可以使用BTREE索引，如：&lt;,&gt;,=,like,!=,&lt;&gt;</p>
+<p>for example:<br>下列查询适用于BTREE和HASH索引。<br>select <em> from t where key<em> = 1 or key</em> in (2,3,6);<br>下列查询只适合用BTREE索引：<br>select </em>from where key<em> &gt;1 and key</em> &lt; 10;<br>select *from where key<em> like “%abc%” or key</em> between ‘lisa’ and ‘sla’;</p>
+<p>可以使用“explain sql”语句来查看sql语句的详细信息。<br>当使用&lt;,&gt;,!=等并使用HASH索引时，发现实际上会全表扫描。</p>
+<p>引擎支持的索引<br>MyISAM   BTREE<br>InnoDB   BTREE<br>MEMORY   HASH/BTREE</p>
+<p>索引的速度<br>HASH &gt; BTREE，但是HASH索引有很多的限制，只能在=,&lt;=&gt;,in中使用。</p>
+<p>#视图<br>视图：视图是一种虚拟存在的表。视图在数据库中并不实际存在。<br>视图相对于普通表的优势<br>1.简单：对于使用视图的用户，并不需要关心视图对应的表的结构，关联条件，筛选条件，使用视图的用户来说已经是过滤好的结果集（比如关联联表查询，结果表已经创建好了）<br>2.安全：用户只能访问视图已经定义好的结果集。对于表的权限并不能规定到某行某列，而视图可以做到。<br>3.数据独立：一旦视图的结构规定好了，那么表结构对用户的影响，源表的列的增加与修改对于视图没有影响。</p>
+<p>视图的创建与修改：<br>create or replace view viewname as<br>select s.name,s.age from student s,teacher t where s.id = t.id;<br><a id="more"></a><br>mysql创建视图有一定的限制：<br>视图的更新行和视图中查询的定义有关<br>以下的视图是不能更新的<br>聚合函数：SUM,COUNT,HAVING,MIN,MAX等<br>常量视图<br>JOIN<br>from一个不能更新的视图<br>聚合函数<br>select sum(salary) from emp;<br>常量视图<br>create or replace view pi as<br>select 3.1415926 as pi;<br>select中包含子查询<br>select (select name from emp) from emp where id=1;</p>
+<p>对于from后的子查询更新问题<br>可以先对子查询创建一个视图，在对该视图在创建查询，就可以解决<br>eg:<br>select <em>from (select </em> from emp) where id=2;这个查询语句，他的视图是不能更新的。<br> 解决：<br> 先对子句创建查询<br> create or replace view t as<br> select *from emp;<br> 在对该视图创建新的视图<br> create or replace view w as<br> select name from t where id = 1;<br> 这样视图就可以更新了。</p>
+<p> #删除视图<br> 用户一次删除一个或者多个视图，首先要有该视图的DROP权限<br> DROP VIEW VIEW_NAME;</p>
+<p> #查看视图<br> show tables;<br> 使用show table status[from db_name][like ‘pattern’]不但可以<br> 查看某个视图的定义<br> show create view view_name \G(\G的意思是让结果竖排显示)<br> 通过查看系统表information_schema.views也可以查看视图的相关信息。</p>
+<p> #存储过程和函数<br> 存储过程：事先经过编译并存储在数据库中的一段sql语句的集合。调用存储过程和函数可以简化开发人员的很多工作。<br>  存储过程和函数的区别： 函数必须要有返回值，存储过程没有。<br>  存储过程可以使用in ,out ,inout,函数只能使用in.</p>
+<p>  ###存储过程和函数的相关操作<br>  创建存储过程和函数都需要有create routine权限。<br>  修改或者删除存储过程需要有alter routine权限<br>  执行存储过程和函数需要有execute权限</p>
+<p>  创建，修改存储过程和函数<br>  create procedure pro_name([proc_parameter])<br>  [characteristic..]routine_body</p>
+<p>  create function fun_name([func_parameter])<br>  return type<br>  [characteristic..]routine_body</p>
+<p>  创建一个过程，开始DELIMITER命令将结束符修改，这样 “ ; “ 就不会被mysql解释为结束符。<br>  eg:<br>  DELIMITER $$<br>  CREATE producer p(IN name varchar(10),IN age int)<br>  BEGIN<br>  slect name from emp;<br>  select age from emp;<br>  end $$</p>
+<p>  DELIMITER ;</p>
+<p>  #触发器<br>  mysql5.0.2版本开始支持触发器<br>  含义 ： 在满足条件时触发，并执行触发器中定义的语句集合。<br>  创建触发器<br>  create tigger tigger_name tigger_time<br>  tigger_event on tbl_name row<br>  tigger_statement<br>  注意 ：触发器只能定义在永久表上，不能定义在临时表上。<br>  参数解释<br>  tigger_name :触发器的名字。<br>  tigger_time :触发的时机，分为before,after;before表示在检查约束之前触发，after 表示在检查约束之后触发。<br>  tigger_event :触发的事件，如：update,insert<br>  tigger_statement :定义的sql语句。</p>
+<p>  创建一个触发器实例：<br>  delimiter $$<br>  create tigger test_tigger<br>  after(before) insert on film <a href="用[]扩起来的是固定的">for each row begin</a><br>  insert into file_text(file_id,title,descri) values(new.film,new.title,new.descri);<br>  end;<br>  $$<br>  delimiter ;<br>这个触发器的意思是：在想film表插入数据之前（之后）会像film_text表中也插入相应的记录。</p>
+<p>注意：<br>如若在表film中存在 1001，name这条记录，那么现在继续想file表插入同样的记录，那么触发的动作时<br>before insert<br>before update<br>after update</p>
+<p>如果向表中插入不同的记录<br>那么会触发的动作为：<br>before insert<br>before after<br>这两个动作<br>其实按照逻辑思维，我们也可以想到，插入同样的记录，那么表示我们有插入动作，但是因为表中的id是相同的，那么插入表的相同的记录肯定会更新，触发的肯定会有更新动作。</p>
+<p>同理，插入不同的记录，原先在表里的记录并不会改变，这时候就只是触发了插入之前和之后的动作。</p>
+<p>删除触发器<br>一次只能删除一个触发器<br>DROP TIGGER TIGGER_NAME</p>
+<p>查看触发器<br>show tiggers \G</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2017/12/10/mysql-03/" data-title="mysql-03 | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/12/08/mysql-02/"  title="mysql-02">
+ <strong>下一篇：</strong><br/> 
+ <span>mysql-02
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Jackey">Jackey</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

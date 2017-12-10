@@ -86,6 +86,68 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/12/10/mysql-03/" title="mysql-03" itemprop="url">mysql-03</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-12-09T16:14:02.000Z" itemprop="datePublished"> Published 2017-12-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>#索引的设计与使用<br>索引是数据库用来提升性能的常用工具<br>所有mysql的类型都可以都可以被索引，对相关的列使用索引来提搞SELECT的操作性能。</p>
+<p>每种存储引擎对每个表支持的索引至少16个。<br>MyISAM和InnoDB引擎创建创建的默认索引为BTREE索引。<br>mysql支持的索引 ：BTREE索引，全文索引（FULLTEXT），前缀索引</p>
+<p>创建索引：<br>create index indexname on tablename;<br>删除索引：<br>DROP index indexname on tablename;</p>
+<p>#设计索引的原则<br>1.搜索的索引列，不一定是所要选择的列。换句话说，最适合做索引的列是出现在where子句中或者连接子句中指定的列，而不是出现在SELECT关键字后的列。<br>2.使用唯一索引，考虑列中值的分布。也就是索引列的基数越大越好。比如，存放生日的列中就是各种不同的日期值，如过选择性别作为索引，那么性别中的值也就是 男 女 不详，那么不管你搜索那个值，都会出来三分之一的结果。<br>3.不要过度的使用索引，不要什么都使用索引，每个额外的索引都会占用额外的磁盘空间，并会降低写的操作，在更新表内容时，索引必须进行更新，有时还需要重构。所以索引越多，所花费的时间会越长，如果一个索引很少使用或者不用，那么会减缓表的修改速度。</p>
+<p>BTREE和HASH索引<br>HASH索引使用：<br>1.用于使用=或者&lt;=&gt;等式比较<br>2.优化器不能使用HASH索引来加速ORDER BY操作</p>
+<p>BTREE索引：<br>在使用比较运算符时，都可以使用BTREE索引，如：&lt;,&gt;,=,like,!=,&lt;&gt;</p>
+<p>for example:<br>下列查询适用于BTREE和HASH索引。<br>select <em> from t where key<em> = 1 or key</em> in (2,3,6);<br>下列查询只适合用BTREE索引：<br>select </em>from where key<em> &gt;1 and key</em> &lt; 10;<br>select *from where key<em> like “%abc%” or key</em> between ‘lisa’ and ‘sla’;</p>
+<p>可以使用“explain sql”语句来查看sql语句的详细信息。<br>当使用&lt;,&gt;,!=等并使用HASH索引时，发现实际上会全表扫描。</p>
+<p>引擎支持的索引<br>MyISAM   BTREE<br>InnoDB   BTREE<br>MEMORY   HASH/BTREE</p>
+<p>索引的速度<br>HASH &gt; BTREE，但是HASH索引有很多的限制，只能在=,&lt;=&gt;,in中使用。</p>
+<p>#视图<br>视图：视图是一种虚拟存在的表。视图在数据库中并不实际存在。<br>视图相对于普通表的优势<br>1.简单：对于使用视图的用户，并不需要关心视图对应的表的结构，关联条件，筛选条件，使用视图的用户来说已经是过滤好的结果集（比如关联联表查询，结果表已经创建好了）<br>2.安全：用户只能访问视图已经定义好的结果集。对于表的权限并不能规定到某行某列，而视图可以做到。<br>3.数据独立：一旦视图的结构规定好了，那么表结构对用户的影响，源表的列的增加与修改对于视图没有影响。</p>
+<p>视图的创建与修改：<br>create or replace view viewname as<br>select s.name,s.age from student s,teacher t where s.id = t.id;<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2017/12/10/mysql-03/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/12/08/mysql-02/" title="mysql-02" itemprop="url">mysql-02</a>
   </h1>
   <p class="article-author">By
@@ -533,57 +595,6 @@
         <p class="article-more-link">
           
             <a href="/2017/11/27/activeMQ-2/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/26/activiMQ/" title="activiMQ" itemprop="url">activiMQ</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-26T06:38:32.000Z" itemprop="datePublished"> Published 2017-11-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>消息中间件activiMQ<br>为什么消息中间件会出现？<br>CORBA,DCOM.RMI和RPC中间件已经广泛的使用在各个领域，但是，面对规模和复杂度越来越高的分布式，这些技术也显示出了其局限性。<br> 面向消息中间件(Messsage Oriented Middleware)较好的解决了以上的问题，发送者将若干的消息发送给消息服务器，消息服务器将消息存放在若干的队列之中，在合适的时候将消息转发给接收者。<br> 重要 ：这种时候，发送和接收是异步的，发送者不必等待，两者的生命周期未必相同（因为消息发送者发送的消息存放在队列之中，发送者发送完消息，它死了，但是，它发送的消息依然存在），发送消息的时候，接收者不一定运行，接收消息的时候，发送消息者不一定运行。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/11/26/activiMQ/#more">Read More</a>
           
        </p>
     </div>
