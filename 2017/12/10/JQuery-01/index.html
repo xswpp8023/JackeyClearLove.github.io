@@ -4,23 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Jackey丶S Blog</title>
+    <title>JQuery-01 | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="begin still forward">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jackey丶S Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="JQuery基础JQuery倡导写得少，做的多。JQuery库的下载（www.JQuery.com）就可以下载最新的JQuery库JQuery的使用先说javaScript的写法 html页面的加载方式是由上到下顺序加载的 简单的写 head script type=”text/javascript” src=”jquery.js” script  script head body input i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JQuery-01">
+<meta property="og:url" content="http://yoursite.com/2017/12/10/JQuery-01/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="begin still forward">
+<meta property="og:description" content="JQuery基础JQuery倡导写得少，做的多。JQuery库的下载（www.JQuery.com）就可以下载最新的JQuery库JQuery的使用先说javaScript的写法 html页面的加载方式是由上到下顺序加载的 简单的写 head script type=”text/javascript” src=”jquery.js” script  script head body input i">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-12T18:37:04.967Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jackey丶S Blog">
-<meta name="twitter:description" content="begin still forward">
+<meta name="twitter:title" content="JQuery-01">
+<meta name="twitter:description" content="JQuery基础JQuery倡导写得少，做的多。JQuery库的下载（www.JQuery.com）就可以下载最新的JQuery库JQuery的使用先说javaScript的写法 html页面的加载方式是由上到下顺序加载的 简单的写 head script type=”text/javascript” src=”jquery.js” script  script head body input i">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -78,12 +79,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2017/12/10/JQuery-01/" title="JQuery-01" itemprop="url">JQuery-01</a>
@@ -97,9 +96,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p>JQuery基础<br>JQuery倡导写得少，做的多。<br>JQuery库的下载（www.JQuery.com）就可以下载最新的JQuery库<br>JQuery的使用<br>先说javaScript的写法<br> html页面的加载方式是由上到下顺序加载的<br> 简单的写<br> head<br> script type=”text/javascript” src=”jquery.js”<br> script</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
+		<p>JQuery基础<br>JQuery倡导写得少，做的多。<br>JQuery库的下载（www.JQuery.com）就可以下载最新的JQuery库<br>JQuery的使用<br>先说javaScript的写法<br> html页面的加载方式是由上到下顺序加载的<br> 简单的写<br> head<br> script type=”text/javascript” src=”jquery.js”<br> script</p>
 <p> script<br> head<br> body<br> input id=”t” name=”t1” vaule=”ttt”<br> body<br>如果直接在script里面写js代码，那么js代码是加载不出来的，除非吧js代码挪到body中html文档代码的下面<br>所以需要在script里面这样写<br>window.onLoad(){<br>….js代码<br>}<br>这个window.onload的作用就是等body里面的代码全部在家完毕，在加载script里面的代码。</p>
 <p>那么现在有一个问题，如果我的body里面有很多的图片，那么等这么多的图片加载完，我的js代码才能执行，很是影响效率，这里假设的还是js代码顺利的执行完。</p>
 <p>然而，JQuery出现了，它为我们解决这这一问题<br>JQuery的加载方式是只要你的body里面的文档代码刚加载完，我就可以执行我对应的JQuery代码，这样就大大的提高了其中的效率。<br>JQuery的写法<br>1.JQuery(function(){</p>
@@ -154,14 +160,9 @@ public static void main(String args[]){
 <p> ##包裹节点<br> JQuery中通过包裹某个节点，是其增加响应的功能.主要的方法有<br> wrap(heml) //这个是包裹文本节点<br> wrapInner(html) //包裹此节点的内部元素（包括文本内容）</p>
 <p> ##遍历元素<br> 在传统的js中，要实现遍历元素需要获得总长度然后for循环去遍历，或者用for(var i in elements){}去遍历。而在JQuery中则不用那么麻烦，直接用each()方法即可。<br> -each(callback)  //callback回调函数<br> 注意： callback是一个函数，该函数内部有一个形参index,此形参为遍历元素的序号(index 从0开始)。如果需要访问属性可以通过index,配合this关键字使用。<br> $(“input”).each(function(index){<br> this//表示选择器选中的元素<br> this.val;<br> })<br> body&gt;<br> input value=’name’&gt; input&gt;<br> input value=’name’&gt; input&gt;<br> input value=’name’&gt; input&gt;<br> body/&gt;</p>
 <p> ##删除元素<br> DOM操作时，删除多余或者指定的页面元素是非常必要的。JQuery提供了2中可以删除元素的方法：remove()和empty(),严格来说，empty()方法是清空元素节点和后代节点<br> removw(expr)<br> 注意： 这里的 expr为可选项，表示过滤删除的意思，可匹配选择器，如果不加参数则表示删除当前元素节点。所以JQuery的remove()方法还是十分强大灵活的。<br> 这个删除很强大。里面添加的过滤条件可以让我们随心所欲的做很多东西。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 
@@ -169,517 +170,44 @@ public static void main(String args[]){
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://yoursite.com/2017/12/10/JQuery-01/" data-title="JQuery-01 | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/12/10/mysql-03/" title="mysql-03" itemprop="url">mysql-03</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-09T16:14:02.000Z" itemprop="datePublished"> Published 2017-12-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>#索引的设计与使用<br>索引是数据库用来提升性能的常用工具<br>所有mysql的类型都可以都可以被索引，对相关的列使用索引来提搞SELECT的操作性能。</p>
-<p>每种存储引擎对每个表支持的索引至少16个。<br>MyISAM和InnoDB引擎创建创建的默认索引为BTREE索引。<br>mysql支持的索引 ：BTREE索引，全文索引（FULLTEXT），前缀索引</p>
-<p>创建索引：<br>create index indexname on tablename;<br>删除索引：<br>DROP index indexname on tablename;</p>
-<p>#设计索引的原则<br>1.搜索的索引列，不一定是所要选择的列。换句话说，最适合做索引的列是出现在where子句中或者连接子句中指定的列，而不是出现在SELECT关键字后的列。<br>2.使用唯一索引，考虑列中值的分布。也就是索引列的基数越大越好。比如，存放生日的列中就是各种不同的日期值，如过选择性别作为索引，那么性别中的值也就是 男 女 不详，那么不管你搜索那个值，都会出来三分之一的结果。<br>3.不要过度的使用索引，不要什么都使用索引，每个额外的索引都会占用额外的磁盘空间，并会降低写的操作，在更新表内容时，索引必须进行更新，有时还需要重构。所以索引越多，所花费的时间会越长，如果一个索引很少使用或者不用，那么会减缓表的修改速度。</p>
-<p>BTREE和HASH索引<br>HASH索引使用：<br>1.用于使用=或者&lt;=&gt;等式比较<br>2.优化器不能使用HASH索引来加速ORDER BY操作</p>
-<p>BTREE索引：<br>在使用比较运算符时，都可以使用BTREE索引，如：&lt;,&gt;,=,like,!=,&lt;&gt;</p>
-<p>for example:<br>下列查询适用于BTREE和HASH索引。<br>select <em> from t where key<em> = 1 or key</em> in (2,3,6);<br>下列查询只适合用BTREE索引：<br>select </em>from where key<em> &gt;1 and key</em> &lt; 10;<br>select *from where key<em> like “%abc%” or key</em> between ‘lisa’ and ‘sla’;</p>
-<p>可以使用“explain sql”语句来查看sql语句的详细信息。<br>当使用&lt;,&gt;,!=等并使用HASH索引时，发现实际上会全表扫描。</p>
-<p>引擎支持的索引<br>MyISAM   BTREE<br>InnoDB   BTREE<br>MEMORY   HASH/BTREE</p>
-<p>索引的速度<br>HASH &gt; BTREE，但是HASH索引有很多的限制，只能在=,&lt;=&gt;,in中使用。</p>
-<p>#视图<br>视图：视图是一种虚拟存在的表。视图在数据库中并不实际存在。<br>视图相对于普通表的优势<br>1.简单：对于使用视图的用户，并不需要关心视图对应的表的结构，关联条件，筛选条件，使用视图的用户来说已经是过滤好的结果集（比如关联联表查询，结果表已经创建好了）<br>2.安全：用户只能访问视图已经定义好的结果集。对于表的权限并不能规定到某行某列，而视图可以做到。<br>3.数据独立：一旦视图的结构规定好了，那么表结构对用户的影响，源表的列的增加与修改对于视图没有影响。</p>
-<p>视图的创建与修改：<br>create or replace view viewname as<br>select s.name,s.age from student s,teacher t where s.id = t.id;<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/12/10/mysql-03/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/12/10/mysql-03/"  title="mysql-03">
+ <strong>下一篇：</strong><br/> 
+ <span>mysql-03
+</span>
+</a>
 </div>
 
-</footer>
+</nav>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/12/08/mysql-02/" title="mysql-02" itemprop="url">mysql-02</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-08T03:06:42.000Z" itemprop="datePublished"> Published 2017-12-08</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>mysql基础</p>
-<p>mysql运算符</p>
-<p>1.算数运算符：+，-，*，/，%（加减乘除取余）<br>2.逻辑运算符：&amp;&amp;(and),||(或),!(非) 逻辑与（一假则假），逻辑或（一真则真），逻辑非（真为假，假为真）<br>3.比较运算符 : &lt;, &gt; , = ( &lt;=&gt; ), !=(&lt;&gt;) , between…and , IN ,not in , is null , is not null , like , regexp或rlike<br>  &lt; :小于  eg : 1 &lt; 2</p>
-<blockquote>
-<p>: 大于 ed :2 &gt; 1<br>  = : 等于 eg: 2=2,不能比较为null的值<br>  &lt;=&gt; : 类似于等于 ，可以比较为null的值 eg : null &lt;=&gt; null<br>  &lt;&gt; : 不等于，不能用于比较null值<br>  between..and.. : 位于什么和什么之间， a between b and c  ,eg : 2 between 1 and 3 ，返回值为ture.<br>  in : 在什么集合之中，  eg: 1 in (1,2,3)<br>  not in :不在集合之中 1 not in (2,3,4)<br>  is null :为空 ，<br>  is not null : 不为空<br>  like : 模糊匹配 ， eg : select 12345 like ‘%123%’<br>  regexp : 正则表达式匹配 eg ； select str regexp str_path;<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/12/08/mysql-02/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
 	
-</div>
 
-</footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/12/07/JUnit/" title="JUnit" itemprop="url">JUnit</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-07T15:36:08.000Z" itemprop="datePublished"> Published 2017-12-07</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>keep bar the greep,to kepp code clean.<br>JUnit单元测试<br>什么是单元测试？<br>比如：我写了个类，我要确定这个类是否正确，那么就需要测试一下，<br>比如<br>public class t{</p>
-<p> public int add(int a,int b){<br>  return a+b;<br> }</p>
-<p> //测试就是你调用这个类的add方法，然后给a,b赋值，如果测试出来的与我们想要的结果相同，那么测试成功，证明我们写的程序是正确的。<br>}<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/12/07/JUnit/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/12/02/nginx01/" title="nginx01" itemprop="url">nginx01</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-02T12:10:34.000Z" itemprop="datePublished"> Published 2017-12-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>启动<br>./nginx<br>关闭<br>./nginx -s stop/quit<br>查看是否关闭<br>ps aux|grep nginx<br>重载配置文件<br>./nginx -s reload</p>
-<p>nginx反向代理</p>
-<p>  正向代理：eg:在一个教室里面有老师和学生,学生的电脑是没有网的，但是老师的电脑有网，那么学生就可以通过老师的电脑去上网，这个过程中，学生发出请求，老师的电脑把学生的请求发出去，服务器得到结果，把结果返回给老师，老师再把结果返回给学生。nginx做的就是一个请求转发的作用。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/12/02/nginx01/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/12/02/redis01/" title="redis01" itemprop="url">redis01</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-02T12:01:36.000Z" itemprop="datePublished"> Published 2017-12-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>redis使用</p>
-<p>redis的安装以及基本的命令操作</p>
-<p>   在linux上安装 利用sftp<br>解压<br>   tar -zxf redis-3.0.0<br>redis是用c写的<br>  编译之前要确定有gcc环境<br>如果没有<br> yum install gcc-c++<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/12/02/redis01/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/12/01/mysql-01/" title="mysql-01" itemprop="url">mysql-01</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-01T10:19:16.000Z" itemprop="datePublished"> Published 2017-12-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>mysql从基础到高级<br>先来个基础的jdbc编程<br>1.加载驱动程序<br>2.得到sql链接connection<br>3.执行sql<br>4.遍历结果<br>5.
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/12/01/mysql-01/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/29/mybatis-2/" title="mybatis-2" itemprop="url">mybatis-2</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-29T10:03:33.000Z" itemprop="datePublished"> Published 2017-11-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>#输出映射</p>
-<p>resultType<br>resultType中的sql语句中的字段必须与pojo里面的字段相同，如果不相同，那么查询出来的结果只是给你的属性赋初值。<br> resultType的返回类型决定了mybatis会调用那么查询函数(selectOne,selectList)</p>
-<p> resultMap<br> mybatis中使用resultMap返回类型来完成高级映射(一对一，一对多，多对一)<br> eg:<br> 还是上面的列子<br> select ParameterType=”User” resultMap=””&gt;<br> slect id _id ,name _name from emp ;</p>
-<p> pojo<br> public class User{<br>  private int id;<br>  private String name;<br> }<br>这里可以看出，pojo里面的属性和sql里面的字段是不同的，如果使用resultType的话，那么查询查来的id,name就是0，null  ,显然这样是错误的，并不是我们要的结果。因为sql片段中的字段和pojo里面的属性不同<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/11/29/mybatis-2/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/28/mybatis-1/" title="mybatis-1" itemprop="url">mybatis-1</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-28T01:56:44.000Z" itemprop="datePublished"> Published 2017-11-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>mybatis入门</p>
-<p>mybatis框架<br> SqlMapConfig<br> (配置数据源，运行环境，事务)<br>  [mapper1.xml,mapper2.xml….]</p>
-<p> SqlSessionFactory(会话工厂,用于创建SqlSession)</p>
-<p> SqlSession<br> (会话，用于操作数据库，增删改查)</p>
-<p> Excutor<br> (执行器，SqlSession内部就是通过这个来操作数据库的)</p>
-<p> mapped statement(底层封装对象)<br> [作用：对操作数据库存储封装，包括sql语句，输入参数，输出类型]<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/11/28/mybatis-1/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/27/activeMQ-3/" title="activeMQ-3" itemprop="url">activeMQ-3</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-27T08:42:55.000Z" itemprop="datePublished"> Published 2017-11-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>activemq API详细讲解<br>Connection<br>值钱的用户名和密码都是在创建ActiveMQConnectionFactory()的时候指定的，其实在createConnection()的时候也可以指定，这样就可以创建多个Connection,每个Connection都对应着一个会话Session,在使用完Connection的时候，必须要关闭Connection,否则，Connection里面的资源是无法被释放的。</p>
-<p>Session<br>Session是一个发送消息或者接收消息的线程，它可以创建消息存储的目的地Destination,MessageProdure,MessageConsummer,Message.<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/11/27/activeMQ-3/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
-  </nav>
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -810,12 +338,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -886,4 +491,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
