@@ -86,6 +86,55 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/12/13/JQuery-02/" title="JQuery-02" itemprop="url">JQuery-02</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-12-12T18:38:53.000Z" itemprop="datePublished"> Published 2017-12-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/12/10/JQuery-01/" title="JQuery-01" itemprop="url">JQuery-01</a>
   </h1>
   <p class="article-author">By
@@ -100,64 +149,12 @@
     <div class="article-content">
         
         <p>JQuery基础<br>JQuery倡导写得少，做的多。<br>JQuery库的下载（www.JQuery.com）就可以下载最新的JQuery库<br>JQuery的使用<br>先说javaScript的写法<br> html页面的加载方式是由上到下顺序加载的<br> 简单的写<br> head<br> script type=”text/javascript” src=”jquery.js”<br> script</p>
-<p> script<br> head<br> body<br> input id=”t” name=”t1” vaule=”ttt”<br> body<br>如果直接在script里面写js代码，那么js代码是加载不出来的，除非吧js代码挪到body中html文档代码的下面<br>所以需要在script里面这样写<br>window.onLoad(){<br>….js代码<br>}<br>这个window.onload的作用就是等body里面的代码全部在家完毕，在加载script里面的代码。</p>
-<p>那么现在有一个问题，如果我的body里面有很多的图片，那么等这么多的图片加载完，我的js代码才能执行，很是影响效率，这里假设的还是js代码顺利的执行完。</p>
-<p>然而，JQuery出现了，它为我们解决这这一问题<br>JQuery的加载方式是只要你的body里面的文档代码刚加载完，我就可以执行我对应的JQuery代码，这样就大大的提高了其中的效率。<br>JQuery的写法<br>1.JQuery(function(){</p>
-<p>});<br>2.$(document).ready(function(){<br>//这个代码对JQuery执行的时机解释的很明了<br>//就是文档准备好，我就执行function函数<br>});<br>3.$(function{<br>//这种方式是我们经常使用的方式<br>//但是有时”$”符号很容易引起冲突，当可能会引起冲突的时候，我们可以用JQuery(function(){}来代替$(function(){});<br>});</p>
-<p>#JQuery与DOM操作之间的相互转换<br> 现有标签<br> input id=”t” name=”t1” value=”tt”/&gt;</p>
-<p> 现在来取input中的值<br> 用DOM<br> var t = document.getElementById(“t1”);<br> t.value;<br> DOM转换为JQuery<br> var $t = $(t);//只需要在DOM对象外用$()包起来就可以</p>
-<p> $(function(){<br> //这是一个JQuery对象<br>  var $t = $(“#t1”);<br>  $t.val;<br>  //JQuery对象转换为DOM对象<br>  方法一：var t = $t[0];<br>  t.value;<br>  方法二：<br>  var t =$t.get(0);<br>  t.value;<br> });</p>
-<p> #JQuery的编程方式<br> JQuery是采用链式编程的方式，什么是链式编程，下面用java代码来简单的了解下<br>public class test {</p>
-<pre><code>public static test m1(){
-    return null;
-}
-
-public static test m2(){
-    return null;
-}
-
-public static void main(String args[]){
-    test.m1().m2();
-}
-</code></pre><p>}</p>
-<p>//这个就是一个简单的链式编程，test类里面的方法返回的都是test类型，所以调用的时候可以一直用 “ . “的方式一直调用，形成了一条编程链。</p>
-<p>#JQuery选择器<br>JQuery选择器可以分为四类：<br>1.基本选择器<br>2.层次选择器<br>3.表单选择器<br>4.过滤选择器（<br>   简单过滤选择器<br>   内容过滤选择器<br>   可见性过滤选择器<br>   属性过滤选择器<br>   子元素过滤选择器<br>   表单对象属性过滤选择器<br>   ）</p>
-<p>##基本选择器<br> . 类选择器<br> “ # “ id选择器 $(‘#name’)<br> elment 元素选择器 集合 $(‘element’)</p>
-<ul>
-<li><p>匹配所有的元素 集合 $(‘*’)<br>selector1-selectorN:将所有选择器匹配到的元素合并后一起返回。<br>$(‘.calss , #id’)<br>还有就是包含<br>$(‘.class span’).css(display,block);//就是展示的span元素必须是.class下面的</p>
-<p>##层次选择器<br>一般层次选择器和表单选择器都是查看着使用，基本选择器是最常用的。<br>意义：通过DOM对象中的层次关系来获取元素，通常包括 后代，父子，相邻，兄弟关系。通过其中某类的关系，可以方便的定位元素。</p>
-<p>ancestor descendant 根据祖先元素匹配所有的后代元素。 集合<br>parent &gt; child 根据父元素匹配所有的子元素。  集合<br>prev + next 匹配所有紧接在prev元素后面的相邻元素 集合<br>prev + siblings 匹配prev元素之后的所有兄弟元素。 集合</p>
-<p>div id=”div1”&gt;left div&gt;<br>div id=”div2”&gt;<br>span id=”span1”&gt;span1 span/&gt;<br>span id=”span2”&gt;span2 span/&gt;<br>div/&gt;<br>span id=”span3”&gt;span3 span/&gt;<br>div id=”div3”&gt;left1 div&gt;<br>div id=”div4”&gt;left2 div&gt;<br>div id=”div5”&gt;left3 div&gt;</p>
-<p>ancestor descendant：这个就相当于包含关系，<br>比如 $(‘#div2 span’) :这个选择的就是div2下所span</p>
-</li>
-</ul>
-<p>  parent &gt; child ：匹配子元素<br>  eg : $(‘#div2 &gt; span’) : 匹配div2下的子元素（只匹配一层）</p>
-<p>   prev + next： 这个就是选择下一个元素，它可以分为两个<br>    第一个： $(‘#div2 span’)。next ,这个是选择div2下的span（这个span必须是兄弟元素或者说是相邻元素）<br>    第二个 ： $(‘#div2 + span’).next : 这个相对上面的就严格了，它规定span元素必须要在div2的下面，否则不会被选择。</p>
-<p>  prev + siblings：这个就是匹配除了自己的所有的兄弟元素<br>  eg: $(‘div2’).sibling(‘div,span’)： 他会匹配所有的(div 和 span)兄弟元素</p>
-<p>  $(div2 ~ div) :匹配div2后面的所有div元素</p>
-<p> 一般层次选择器用的还是比较少的。</p>
-<p>#过滤选择器</p>
-<p> ##简单选择器<br> 过滤选择器根据某类过滤规则进行元素匹配，书写都是一（：）开始，简单过滤选择器是过滤选择器中最常用的一种。<br> :firt 选择第一个元素<br> last 选择最后一个元素<br> not(selector) 匹配除了给定选择器之外的元素 集合<br> odd  :even 索引 从0开始，索引值为奇（偶数）数的元素  集合<br> :eq（index） 索引从0开始，获取指定索引值的元素<br> :gt(index) 索引从零开始，获取大于给定索引值的元素<br> :lt(index) 索引从零开始，获取小于给定索引值的元素<br> :header 获取所有标题元素，如h1,h2等<br> :animated 获取正在执行动画的元素<br>注意： “ : “ 与关键字之间不能有空格</p>
-<p>##内容过滤选择器<br>:contains(text) 获取包含给定文本的元素<br> :empry 获取空文本的元素<br> :has(selector) 获取含有选择器匹配元素的元素<br> :parent 获取含有子元素（文本）的元素</p>
-<p>##可见性选择器<br>:hideen 获取所有不可见的元素或者type为hidden的元素<br>:visiable 索取所有可见的元素</p>
-<p>##属性过滤选择器<br>属性过滤选择器在过滤选择器里面是最常用的<br>[attribute]  获取包含给定属性的元素<br>[attribute = value] 获取给与给定属性值相等的元素<br>[attribute !=value] 获取与给定属性值不等的元素<br>[attribute^=value]  获取与给定属性值开始的元素<br>[attribute$=value] 获取与给定属性值结尾的元素<br>[attribute*=value] 获取与给定属性值是以包含value值的元素<br>[selector1][selector2][selector3] 获取满足多个条件的复合属性的元素</p>
-<p>##子元素过滤选择器<br>:nth-child(eq|even|odd|index)  索引从1开始，获取每个父元素下特定位置的元素<br>:first-child 获取父元素下的第一个孩子<br>:last-child 获取父元素下的最后一个孩子<br>:only-child 获取每个父元素下只有一个子元素的元素</p>
-<p>#表单对象属性过滤选择器<br>enable 对象可用<br>disable 对象不可用<br>checked 被选中<br>selected  被选中的状态<br>$(#form input:enable) //基本就是这样的用法。</p>
-<p>#表单选择器</p>
-<p>:input 所有input ,textare,select<br>:text 单行文本 元素集合<br>:password 密码文本 元素集合<br>:radio 圆选按钮 元素集合<br>:checkbox 复选框 元素集合<br>:submit 提交按钮 元素集合<br>:image 图片 元素集合<br>:reset 重置按钮 元素集合<br>:file 文件域 元素集合</p>
-<p>#JQuery操作DOM<br> 在访问页面的时候，需要与页面中的元素进行交互式操作。在操作中，元素的访问的频繁，最常用的。其主要包括对元素的属性，内容，值，css等的操作。<br> 1.访问元素<br> 2.创建节点元素<br> 3.插入节点<br> 4.复制节点<br> 5.替换节点<br> 6.包裹节点<br> 7.遍历元素<br> 8.删除元素</p>
-<p> ##访问元素<br> JQuery中操作元素的属性用 attr()方法，根据参数的不同用于不同的处理。<br> attr(name)<br> attr(name,value)<br> attr(json)<br> attr(name function)<br> removeAttr()<br> 元素的内容操作<br> html() : 调用此方法获得标签内文本的内容<br> html(val) : 改变标签被文本内容（可加html标签）<br> text() :获取文本内容<br> text(val) : 改变文本内容。<br> JQuery通过val()方法获取元素的值<br> 元素值的操作<br> val() :获取元素的值<br> val(val) : 设置元素的值<br> 元素样式的操作<br> css(name,value) //直接设置样式<br> addClass(class) //增加css类别<br> tooggleClass(class) //切换类别<br> removeClass(class) //删除类别<br> 注：要移除元素的所有类别即可用$(*).removeClass();</p>
-<p> ##创建节点元素<br> 创建元素节点，如果用js的话，必须这样写：document.CreateElement();<br> 但是用JQuery的话，可以采用函数$(html)来完成元素的构建<br> 形如： var myDir = $(“div id=’test’ title=’createElement&gt; div/&gt;;<br> 由此可见，JQuery创建元素非常简单，包括元素的属性也可以一起动态的创建出来。</p>
-<p> ##插入节点<br> JQuery插入节点分为内部插入节点和外部插入节点两类<br> 内部插入节点<br> append(content)<br> append(function) //注意function必须要有返回值且为字符串<br> appendTo(content)<br> 外部插入节点<br> after(content)<br> after(function)  //注意function必须要有返回值且为字符串<br> before(content)<br> before(function) //注意function必须要有返回值且为字符串<br> insertBefore(content)<br> insertAfter(content)</p>
-<p> ##复制节点<br> 在页面中，有时候需要将某个节点复制到另一个节点后，可以通过Clone()方法实现。<br>  $(*).clone(blooean);<br>  克隆会把事件也复制过去</p>
-<p> ##替换节点<br> JQuery中元素的替换主要有两种方式：<br>  replaceWith()和replaceALL()<br>  两者唯一的区别在于replaceWith()是用括号中的内容替换指定的元素，<br>  replaceAll是指定的元素被括号中的内容替换<br>   -targerElement.replaceWith(<em>);<br>   $(</em>).replaceAll(targetElement);<br>   $(“#p1”).replaceWith(“元素标签的内容”);<br>   $(“元素标签的内容”).replaceAll(“#p1”);<br>   注意： 一旦完成替换，则原来被替换的元素全部消失。</p>
-<p> ##包裹节点<br> JQuery中通过包裹某个节点，是其增加响应的功能.主要的方法有<br> wrap(heml) //这个是包裹文本节点<br> wrapInner(html) //包裹此节点的内部元素（包括文本内容）</p>
-<p> ##遍历元素<br> 在传统的js中，要实现遍历元素需要获得总长度然后for循环去遍历，或者用for(var i in elements){}去遍历。而在JQuery中则不用那么麻烦，直接用each()方法即可。<br> -each(callback)  //callback回调函数<br> 注意： callback是一个函数，该函数内部有一个形参index,此形参为遍历元素的序号(index 从0开始)。如果需要访问属性可以通过index,配合this关键字使用。<br> $(“input”).each(function(index){<br> this//表示选择器选中的元素<br> this.val;<br> })<br> body&gt;<br> input value=’name’&gt; input&gt;<br> input value=’name’&gt; input&gt;<br> input value=’name’&gt; input&gt;<br> body/&gt;</p>
-<p> ##删除元素<br> DOM操作时，删除多余或者指定的页面元素是非常必要的。JQuery提供了2中可以删除元素的方法：remove()和empty(),严格来说，empty()方法是清空元素节点和后代节点<br> removw(expr)<br> 注意： 这里的 expr为可选项，表示过滤删除的意思，可匹配选择器，如果不加参数则表示删除当前元素节点。所以JQuery的remove()方法还是十分强大灵活的。<br> 这个删除很强大。里面添加的过滤条件可以让我们随心所欲的做很多东西。</p>
-
+<p> script<br> head<br> body<br> input id=”t” name=”t1” vaule=”ttt”<br> body<br>如果直接在script里面写js代码，那么js代码是加载不出来的，除非吧js代码挪到body中html文档代码的下面<br>所以需要在script里面这样写<br>
         
         
         <p class="article-more-link">
+          
+            <a href="/2017/12/10/JQuery-01/#more">Read More</a>
           
        </p>
     </div>
@@ -595,58 +592,6 @@ public static void main(String args[]){
         <p class="article-more-link">
           
             <a href="/2017/11/28/mybatis-1/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/27/activeMQ-3/" title="activeMQ-3" itemprop="url">activeMQ-3</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-27T08:42:55.000Z" itemprop="datePublished"> Published 2017-11-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>activemq API详细讲解<br>Connection<br>值钱的用户名和密码都是在创建ActiveMQConnectionFactory()的时候指定的，其实在createConnection()的时候也可以指定，这样就可以创建多个Connection,每个Connection都对应着一个会话Session,在使用完Connection的时候，必须要关闭Connection,否则，Connection里面的资源是无法被释放的。</p>
-<p>Session<br>Session是一个发送消息或者接收消息的线程，它可以创建消息存储的目的地Destination,MessageProdure,MessageConsummer,Message.<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/11/27/activeMQ-3/#more">Read More</a>
           
        </p>
     </div>

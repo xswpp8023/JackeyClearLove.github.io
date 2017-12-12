@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Jackey丶S Blog">
 <meta property="og:description" content="JQuery基础JQuery倡导写得少，做的多。JQuery库的下载（www.JQuery.com）就可以下载最新的JQuery库JQuery的使用先说javaScript的写法 html页面的加载方式是由上到下顺序加载的 简单的写 head script type=”text/javascript” src=”jquery.js” script  script head body input i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-12T18:37:04.967Z">
+<meta property="og:updated_time" content="2017-12-12T18:39:45.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JQuery-01">
 <meta name="twitter:description" content="JQuery基础JQuery倡导写得少，做的多。JQuery库的下载（www.JQuery.com）就可以下载最新的JQuery库JQuery的使用先说javaScript的写法 html页面的加载方式是由上到下顺序加载的 简单的写 head script type=”text/javascript” src=”jquery.js” script  script head body input i">
@@ -106,7 +106,7 @@
 		</div>
 		
 		<p>JQuery基础<br>JQuery倡导写得少，做的多。<br>JQuery库的下载（www.JQuery.com）就可以下载最新的JQuery库<br>JQuery的使用<br>先说javaScript的写法<br> html页面的加载方式是由上到下顺序加载的<br> 简单的写<br> head<br> script type=”text/javascript” src=”jquery.js”<br> script</p>
-<p> script<br> head<br> body<br> input id=”t” name=”t1” vaule=”ttt”<br> body<br>如果直接在script里面写js代码，那么js代码是加载不出来的，除非吧js代码挪到body中html文档代码的下面<br>所以需要在script里面这样写<br>window.onLoad(){<br>….js代码<br>}<br>这个window.onload的作用就是等body里面的代码全部在家完毕，在加载script里面的代码。</p>
+<p> script<br> head<br> body<br> input id=”t” name=”t1” vaule=”ttt”<br> body<br>如果直接在script里面写js代码，那么js代码是加载不出来的，除非吧js代码挪到body中html文档代码的下面<br>所以需要在script里面这样写<br><a id="more"></a><br>window.onLoad(){<br>….js代码<br>}<br>这个window.onload的作用就是等body里面的代码全部在家完毕，在加载script里面的代码。</p>
 <p>那么现在有一个问题，如果我的body里面有很多的图片，那么等这么多的图片加载完，我的js代码才能执行，很是影响效率，这里假设的还是js代码顺利的执行完。</p>
 <p>然而，JQuery出现了，它为我们解决这这一问题<br>JQuery的加载方式是只要你的body里面的文档代码刚加载完，我就可以执行我对应的JQuery代码，这样就大大的提高了其中的效率。<br>JQuery的写法<br>1.JQuery(function(){</p>
 <p>});<br>2.$(document).ready(function(){<br>//这个代码对JQuery执行的时机解释的很明了<br>//就是文档准备好，我就执行function函数<br>});<br>3.$(function{<br>//这种方式是我们经常使用的方式<br>//但是有时”$”符号很容易引起冲突，当可能会引起冲突的时候，我们可以用JQuery(function(){}来代替$(function(){});<br>});</p>
@@ -185,6 +185,14 @@ public static void main(String args[]){
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2017/12/13/JQuery-02/" title="JQuery-02">
+  <strong>上一篇：</strong><br/>
+  <span>
+  JQuery-02</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2017/12/10/mysql-03/"  title="mysql-03">
