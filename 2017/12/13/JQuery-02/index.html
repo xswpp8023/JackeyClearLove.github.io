@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="begin still forward">
+    <meta name="description" content="JQuery事件机制在JQuery01中讲了jquery选择器，jquery操作dom,那么这讲来看看jquery的事件机制，jquery动画，jquery的与ajax的使用，jquery插件的使用。 #JQuery事件机制JQuery在事件写法上，和传统的js有些异同，JQuery往往不再时件名前面家 ‘on’字如：onClick,onblur,onfocus,onunload,ondbclic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JQuery-02">
 <meta property="og:url" content="http://yoursite.com/2017/12/13/JQuery-02/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="begin still forward">
+<meta property="og:description" content="JQuery事件机制在JQuery01中讲了jquery选择器，jquery操作dom,那么这讲来看看jquery的事件机制，jquery动画，jquery的与ajax的使用，jquery插件的使用。 #JQuery事件机制JQuery在事件写法上，和传统的js有些异同，JQuery往往不再时件名前面家 ‘on’字如：onClick,onblur,onfocus,onunload,ondbclic">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-12T18:38:53.280Z">
+<meta property="og:updated_time" content="2017-12-13T18:47:54.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JQuery-02">
-<meta name="twitter:description" content="begin still forward">
+<meta name="twitter:description" content="JQuery事件机制在JQuery01中讲了jquery选择器，jquery操作dom,那么这讲来看看jquery的事件机制，jquery动画，jquery的与ajax的使用，jquery插件的使用。 #JQuery事件机制JQuery在事件写法上，和传统的js有些异同，JQuery往往不再时件名前面家 ‘on’字如：onClick,onblur,onfocus,onunload,ondbclic">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -105,7 +105,54 @@
 		
 		</div>
 		
-		  
+		<p>JQuery事件机制<br>在JQuery01中讲了jquery选择器，jquery操作dom,那么这讲来看看jquery的事件机制，jquery动画，jquery的与ajax的使用，jquery插件的使用。</p>
+<p>#JQuery事件机制<br>JQuery在事件写法上，和传统的js有些异同，JQuery往往不再时件名前面家 ‘on’字<br>如：onClick,onblur,onfocus,onunload,ondbclick,onmouseover,onkeypress等<br>JQuery统统去掉’on’<br><a id="more"></a><br>JQuery在传统的事件上新加事件如hover,toogle bind…</p>
+<p>#JQuery动画</p>
+<p> ##隐藏与显示<br>  JQuery中，对于元素的隐藏和显示添加了动画效果<br>  show()表示让某个元素显示 ，可加参数<br>  show(‘slow’,’normal’,’fast’)表示显示速度快慢的三种方式，或者指定毫秒显示，如：show(2000);表示2秒逐渐显示出来<br>  hide()表示让某个参数隐藏，同样也有参数控制隐藏的快慢，毫秒数。</p>
+<p> ##toggle<br> toogle(毫秒数,函数一，函数二);</p>
+<p> ##淡入淡出<br>  JQuery实现淡入淡出或者调整透明度的效果非常方便，三个方法供我们选择使用。<br>  fadeIn(arg) //注：arg表示淡入淡出所需要的时间（毫秒数）<br>  fadeOut(arg)<br>  fadeTo(arg1,arg2);<br>  注：arg1表示所需的时间（毫秒数），arg2表示透明度（0-1之间的小数）</p>
+<p> ##滑动效果<br> JQuery实现滑入滑出的效果非常方便，亦有三个方法供我们使用<br> slidDown(ms);<br> slidUp(ms);<br> slidToggle(ms);<br> 注：同样也可以设置ms（毫秒数）</p>
+<p>#JQuery与ajax<br>JQuery完美的结合了Ajax技术，而且增加了许多细节，这样我们利用JQuery去实现异步交互会非常的方便，快捷，好用。<br>JQuery中也给我们提供了对于获取类型文件的处理方式，即：<br>-全局函数 ：$.get(url,[data],[callback],[type]);<br>-全局函数： $.post(url,[data],[callback],[type]);<br>-对于第四个参数type表示文件类型，如html,xml,js,json,text等。<br>-这个方法在JQuery开发中经常采用<br>-当然最常用的还是ajax()方法  </p>
+<p>$(function(){</p>
+<pre><code>        $(&apos;#btn&apos;).click(function(){
+            //get方式提交表单:
+            //三个参数 1:url 2:参数 3:callback 
+            var datas = $(&apos;#myform&apos;).serialize();
+            /*
+            $.get(&apos;TestServlet?method=get&apos; ,datas , function(data){
+                    alert(data);
+            });
+            */
+            /*
+            $.post(&apos;TestServlet?method=post&apos; ,datas , function(data){
+                    alert(data);
+            });
+            */ 
+
+            // ajax方法 options (json)
+            $.ajax({
+                    type:&apos;post&apos; ,
+                    url:&apos;TestServlet?method=ajax&apos; , 
+                    async: true , //异步 
+                    cache: false , //清除缓存  ,
+                    //timeout:3000 ,
+                    data:{
+                        username: $(&apos;#myform&apos;).find(&apos;input[name=username]&apos;).val(),
+                        password: $(&apos;#myform&apos;).find(&apos;input[name=password]&apos;).val(),
+                        id: $(&apos;#myform&apos;).find(&apos;input[name=id]&apos;).val()
+                    } ,
+                    dataType:&apos;text&apos; ,   //json
+                    success:function(data){
+                            var data = $.parseJSON(data);
+                            alert(data.message);
+                    }
+            });
+        });
+
+});
+</code></pre><p>以上是JQuery结合ajax的范例，基本上get,post用的很少，JQuery.ajax()普遍用的比较多。<br>html页面就是一个表单中放了两个input,分别为uname和password</p>
+<p>#JQuery插件的使用</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
