@@ -48,7 +48,7 @@
 				<h1 class="site-name"><a href="/" title="Jackey丶S Blog">Jackey丶S Blog</a></h1>
 				<h2 class="blog-motto">生命是一场需要经历酸甜苦辣洗礼的过程</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -68,7 +68,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -86,6 +86,80 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/12/14/EasyUI-01/" title="EasyUI-01" itemprop="url">EasyUI-01</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
+		
+  <p class="article-time">
+    <time datetime="2017-12-14T10:12:53.000Z" itemprop="datePublished"> 发表于 2017-12-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>JQueryEasyUI讲解<br>在说JQuery之前，先说个更改Eclipse中jsp模板的方法<br>在Eclipse中依次windows–perference-web-jsp file-edit-template-new jsp file(html)这个选项–选中edit,然后把你想更改的模板粘贴进去，apply之后重建jsp都是你自己自定义的模板了。</p>
+<p> 初识EasyUI<br> jqueryEasyUI的目录<br>  。demo 插件实例<br>  。local 国际化js文件<br>  。plugins各种组建js文件<br>  。themes样式文件<br> 如何使用jquryEasyUI,需要导入5个文件<br>  。easyui css<br>  .icon.css<br>  .jquery-1.7.2.min.js<br>  jquery.easyui.min.js<br>  easyui-lang-zh_CN.js</p>
+<p> 注意jquery.easyui.min.js要放到jquery-1.7.2.min.js文件下面，因为easyui是基于jquery的，否则会出问题 </p>
+<p>easyui初步认识</p>
+<p>##简单的消息框<br>  $.messager.alert(‘Warning’,’The warning message’);   </p>
+<p>  $.messager.confirm(‘Confirm’,’Are you sure you want to delete record?’,function(r){<br>     if (r){<br>          alert(‘确定’);<br>     }else{<br>     alert(“取消”);<br>     }<br> });<br>//这个是easyui提供给我们简单的消息框，这个和js中的alert是不同的，通过测试，alert()会阻止后面的消息执行，也就说如果alert后，如果不点击确定按钮，那么后面的程序是一直处于等待状态的，但是esayui的messager.alert不会阻止程序的执行。<br>当然还有其他的消息框，比如输入，右下角弹出提示框（过段时间自动消失），等</p>
+<p>##基础组件(panel,window,dialog)<br>理解jquery组建之间的关系<br>理解jquery的两种写法<br>理解动态加载组建的方法，但不推荐使用<br> 动态加载easyuiloader.js<br> jquery paeser.js解析标签里的class值<br>一定要学会查看api文档以及培养调试bug的能力</p>
+<p>从api中就可以看到，panel是个顶层容器，window依赖yupanel,dialog依赖于window,这里的依赖就相当于java中的继承，也就是子类拥有父类的所有方法。那么就可以想象，dialog其实是可以使用panel和window的所有的属性的（那么dialog就很强大），但是使用什么 还是要根据具体的场景去使用相应的组建，具体怎么使用，可以参考api文档，里面就写的非常清楚。</p>
+<p>组建的写法：<br>第一：纯html<br>第二：js或者js和html结合，都是可以的<br>引入只需要 class=”easy-panel[window或dialog]”</p>
+<p>动态加载组建：<br> easyloader.load(‘messager’,fn(){})<br>messager:指定的模块，如window<br>fn:回调函数<br>动态加载就是你想在家那个模块，就把那个模块引进来，并不会把全部的js,css给你事先加载进来。</p>
+<p>#提交表单<br> 在easyui中提交表单有三种方法。<br> 第一：传统的ajax提交<br> $(“#myfoem”).ajax({<br>  type:post,<br>  url:”userServlet”, //form提交的路径<br>  sync:true,<br>  catch:false,<br>  data:$(“#foem”).serilize(), //需要提交的数据<br>  dataType:”text”, //预期服务器的数据类型<br>  success:function(data){<br>  var res = $.parseJSON();//转换字符串为js脚本</p>
+<p>   $.messager({//用户操作成功提示<br>   title:”提示信息”,<br>   msg:”res.ok”//服务器返回的json数据<br>   });<br>  }</p>
+<p> });</p>
+<p> 第二种:自动提交表单<br> $(“#myform”).form(“submit”,{<br> url:”servlet”,<br> onsubmit(function(){<br>  //提交表单前做的一些验证<br>  //默认返回true,如果返回false则阻止表单的提交<br>  if(!$(“#myform”).valdate){<br>  $.messager({<br>   title:”提示”,<br>   msg:”请在表单中正确填写信息”<br>  });</p>
+<p>  success:function(data){<br>  //对服务器返回的数据做一些处理<br>  }<br>  }<br>  return false;<br> });<br> };<br> //第三种：手动提交表单</p>
+<p>$(“#myform”).form({<br> url:”servlet”,<br> onsubmit(function(){<br>  //提交表单前做的一些验证<br>  //默认返回true,如果返回false则阻止表单的提交<br>  if(!$(“#myform”).valdate){<br>  $.messager({<br>   title:”提示”,<br>   msg:”请在表单中正确填写信息”<br>  });</p>
+<p>  success:function(data){<br>  //对服务器返回的数据做一些处理<br>  }<br>  }<br>  return false;<br> });</p>
+<p> $(“#myform”).submit();//这个就是必须手动的调用submit方法，才能提交表单。<br> };</p>
+<p> ##按回车提交表单<br> 这是一个按回车之后触发的事件，就是当键盘的键弹起的时候，检查是否是回车键，是的话，提交表单，当然按照情景也可以做其他的事情<br>  $(“#myform”).find(“input”).on(“keyup”,function(event){<br>   if(event.keyCode == 13){//13就是键盘上回车对应的数字<br>    $(“#myform”).submit(); //当然，这个用的自然是手动提交表单了。<br>   }<br>  })</p>
+<p>#layout布局<br>这里布局的div就不写了，在api里面直接可以cv,在这里就说一些使用过程中常见的问题吧。<br>第一：layout是依赖于panel和resizable的，在开发中一些layout中没有的特性，都可以在他的依赖中去找。<br>第二：api中提供的布局是按照左西右东，上北下南的方式来指定的，我们传统的布局就是只是左边，上边和中间，那么只需要注释掉右边和下边就可以了。<br> 但是，这里需要强调的是，center是不可以注释掉的，如果center注释掉的话，布局就会出现问题。（因为center这个并不是用region上北下南这些去定位的，是定制做的）<br>第三：layout中的href属性，需要注意的是 href=”xx.jsp” ， href只是吧xx.jsp中的body中的内容给你拉取过来，起的的它不管。</p>
+<p>##tabs选项卡/标签<br> 这个很简单,需要几个标签，添加几个div即可，api中写的很清楚。</p>
+<p>##Accordion  手风琴<br>这个也和你简单，哈哈，里面定义的也是div，需要几个就可以自己去定义，具体的情况还是要按开发的具体场景去定义。</p>
+<p>布局的结合使用。<br>场景分析：<br>layout :作为打的布局，也就是i整体布局，在这个布局里面除了center不能注释外，其他的根据可以根据你想要的布局去定义。<br>tabs和Accordion 都是作为layout中的子布局来使用的（通俗来说就是把 tabs和Accordion 放到 layout里面。）<br>一般使用的方法： 点击Accordion中的选项，在layout中的center(可以自己设置)中显示tabs 1…tabs n.<br>结合这个可以做一个小demo来测试下。</p>
+<p>##combox的应用场景<br>1.城市联动<br>2.自动搜索</p>
+<p>##editdatagrid<br>使用新增加一行的时候，必须要配合<br>editor:{<br>                                            type:’validatebox’ ,<br>                                            options:{<br>                                                required:true ,<br>                                                missingMessage:’描述必填!’<br>                                            }<br>的editor来使用，否则在beginEdit的时候，编辑框是不能输入的<br>,在新增一行进行输入的时候，需要先需要所有选中的行，然后取得行号，在进行beginEdit操作，不选择需要所有选中的行也可以操作，只是界面会不美观。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/12/13/JQuery-02/" title="JQuery-02" itemprop="url">JQuery-02</a>
   </h1>
   <p class="article-author">By
@@ -93,7 +167,7 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-12T18:38:53.000Z" itemprop="datePublished"> Published 2017-12-13</time>
+    <time datetime="2017-12-12T18:38:53.000Z" itemprop="datePublished"> 发表于 2017-12-13</time>
     
   </p>
 </header>
@@ -145,7 +219,7 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-10T05:49:47.000Z" itemprop="datePublished"> Published 2017-12-10</time>
+    <time datetime="2017-12-10T05:49:47.000Z" itemprop="datePublished"> 发表于 2017-12-10</time>
     
   </p>
 </header>
@@ -197,7 +271,7 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-09T16:14:02.000Z" itemprop="datePublished"> Published 2017-12-10</time>
+    <time datetime="2017-12-09T16:14:02.000Z" itemprop="datePublished"> 发表于 2017-12-10</time>
     
   </p>
 </header>
@@ -259,7 +333,7 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-08T03:06:42.000Z" itemprop="datePublished"> Published 2017-12-08</time>
+    <time datetime="2017-12-08T03:06:42.000Z" itemprop="datePublished"> 发表于 2017-12-08</time>
     
   </p>
 </header>
@@ -314,7 +388,7 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-07T15:36:08.000Z" itemprop="datePublished"> Published 2017-12-07</time>
+    <time datetime="2017-12-07T15:36:08.000Z" itemprop="datePublished"> 发表于 2017-12-07</time>
     
   </p>
 </header>
@@ -367,7 +441,7 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-02T12:10:34.000Z" itemprop="datePublished"> Published 2017-12-02</time>
+    <time datetime="2017-12-02T12:10:34.000Z" itemprop="datePublished"> 发表于 2017-12-02</time>
     
   </p>
 </header>
@@ -420,7 +494,7 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-02T12:01:36.000Z" itemprop="datePublished"> Published 2017-12-02</time>
+    <time datetime="2017-12-02T12:01:36.000Z" itemprop="datePublished"> 发表于 2017-12-02</time>
     
   </p>
 </header>
@@ -473,7 +547,7 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-01T10:19:16.000Z" itemprop="datePublished"> Published 2017-12-01</time>
+    <time datetime="2017-12-01T10:19:16.000Z" itemprop="datePublished"> 发表于 2017-12-01</time>
     
   </p>
 </header>
@@ -524,7 +598,7 @@
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-29T10:03:33.000Z" itemprop="datePublished"> Published 2017-11-29</time>
+    <time datetime="2017-11-29T10:03:33.000Z" itemprop="datePublished"> 发表于 2017-11-29</time>
     
   </p>
 </header>
@@ -565,72 +639,16 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/28/mybatis-1/" title="mybatis-1" itemprop="url">mybatis-1</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-28T01:56:44.000Z" itemprop="datePublished"> Published 2017-11-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>mybatis入门</p>
-<p>mybatis框架<br> SqlMapConfig<br> (配置数据源，运行环境，事务)<br>  [mapper1.xml,mapper2.xml….]</p>
-<p> SqlSessionFactory(会话工厂,用于创建SqlSession)</p>
-<p> SqlSession<br> (会话，用于操作数据库，增删改查)</p>
-<p> Excutor<br> (执行器，SqlSession内部就是通过这个来操作数据库的)</p>
-<p> mapped statement(底层封装对象)<br> [作用：对操作数据库存储封装，包括sql语句，输入参数，输出类型]<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/11/28/mybatis-1/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -641,7 +659,7 @@
   
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -663,11 +681,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -706,7 +724,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
 		
 		<a href="/about" target="_blank" title="Jackey">Jackey</a>
 		
@@ -817,7 +835,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

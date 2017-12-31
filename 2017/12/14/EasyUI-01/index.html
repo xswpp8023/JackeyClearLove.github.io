@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>JavaScript | Jackey丶S Blog</title>
+    <title>EasyUI-01 | Jackey丶S Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jackey">
     
 
     
-    <meta name="description" content="JavaScript–JQuery JQuery基本选择器类选择器$(function(){  $(“.class”).click(function(){  $(“#id”).css(“Background”,”#000000”);  $(“yuansu”).css(“Background”,”#000000”);  }) })">
+    <meta name="description" content="JQueryEasyUI讲解在说JQuery之前，先说个更改Eclipse中jsp模板的方法在Eclipse中依次windows–perference-web-jsp file-edit-template-new jsp file(html)这个选项–选中edit,然后把你想更改的模板粘贴进去，apply之后重建jsp都是你自己自定义的模板了。  初识EasyUI jqueryEasyUI的目录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript">
-<meta property="og:url" content="http://yoursite.com/2017/10/03/JavaScript1/index.html">
+<meta property="og:title" content="EasyUI-01">
+<meta property="og:url" content="http://yoursite.com/2017/12/14/EasyUI-01/index.html">
 <meta property="og:site_name" content="Jackey丶S Blog">
-<meta property="og:description" content="JavaScript–JQuery JQuery基本选择器类选择器$(function(){  $(“.class”).click(function(){  $(“#id”).css(“Background”,”#000000”);  $(“yuansu”).css(“Background”,”#000000”);  }) })">
+<meta property="og:description" content="JQueryEasyUI讲解在说JQuery之前，先说个更改Eclipse中jsp模板的方法在Eclipse中依次windows–perference-web-jsp file-edit-template-new jsp file(html)这个选项–选中edit,然后把你想更改的模板粘贴进去，apply之后重建jsp都是你自己自定义的模板了。  初识EasyUI jqueryEasyUI的目录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-03T08:08:59.630Z">
+<meta property="og:updated_time" content="2017-12-31T18:18:56.789Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript">
-<meta name="twitter:description" content="JavaScript–JQuery JQuery基本选择器类选择器$(function(){  $(“.class”).click(function(){  $(“#id”).css(“Background”,”#000000”);  $(“yuansu”).css(“Background”,”#000000”);  }) })">
+<meta name="twitter:title" content="EasyUI-01">
+<meta name="twitter:description" content="JQueryEasyUI讲解在说JQuery之前，先说个更改Eclipse中jsp模板的方法在Eclipse中依次windows–perference-web-jsp file-edit-template-new jsp file(html)这个选项–选中edit,然后把你想更改的模板粘贴进去，apply之后重建jsp都是你自己自定义的模板了。  初识EasyUI jqueryEasyUI的目录">
 
     
     <link rel="alternative" href="/atom.xml" title="Jackey丶S Blog" type="application/atom+xml">
@@ -85,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/10/03/JavaScript1/" title="JavaScript" itemprop="url">JavaScript</a>
+      <a href="/2017/12/14/EasyUI-01/" title="EasyUI-01" itemprop="url">EasyUI-01</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Jackey" target="_blank" itemprop="author">Jackey</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-03T07:54:48.000Z" itemprop="datePublished"> 发表于 2017-10-03</time>
+    <time datetime="2017-12-14T10:12:53.000Z" itemprop="datePublished"> 发表于 2017-12-14</time>
     
   </p>
 </header>
@@ -105,9 +105,31 @@
 		
 		</div>
 		
-		<p>JavaScript–JQuery</p>
-<p>JQuery基本选择器<br>类选择器<br>$(function(){<br>  $(“.class”).click(function(){<br>  $(“#id”).css(“Background”,”#000000”);<br>  $(“yuansu”).css(“Background”,”#000000”);<br>  })</p>
-<p>})</p>
+		<p>JQueryEasyUI讲解<br>在说JQuery之前，先说个更改Eclipse中jsp模板的方法<br>在Eclipse中依次windows–perference-web-jsp file-edit-template-new jsp file(html)这个选项–选中edit,然后把你想更改的模板粘贴进去，apply之后重建jsp都是你自己自定义的模板了。</p>
+<p> 初识EasyUI<br> jqueryEasyUI的目录<br>  。demo 插件实例<br>  。local 国际化js文件<br>  。plugins各种组建js文件<br>  。themes样式文件<br> 如何使用jquryEasyUI,需要导入5个文件<br>  。easyui css<br>  .icon.css<br>  .jquery-1.7.2.min.js<br>  jquery.easyui.min.js<br>  easyui-lang-zh_CN.js</p>
+<p> 注意jquery.easyui.min.js要放到jquery-1.7.2.min.js文件下面，因为easyui是基于jquery的，否则会出问题 </p>
+<p>easyui初步认识</p>
+<p>##简单的消息框<br>  $.messager.alert(‘Warning’,’The warning message’);   </p>
+<p>  $.messager.confirm(‘Confirm’,’Are you sure you want to delete record?’,function(r){<br>     if (r){<br>          alert(‘确定’);<br>     }else{<br>     alert(“取消”);<br>     }<br> });<br>//这个是easyui提供给我们简单的消息框，这个和js中的alert是不同的，通过测试，alert()会阻止后面的消息执行，也就说如果alert后，如果不点击确定按钮，那么后面的程序是一直处于等待状态的，但是esayui的messager.alert不会阻止程序的执行。<br>当然还有其他的消息框，比如输入，右下角弹出提示框（过段时间自动消失），等</p>
+<p>##基础组件(panel,window,dialog)<br>理解jquery组建之间的关系<br>理解jquery的两种写法<br>理解动态加载组建的方法，但不推荐使用<br> 动态加载easyuiloader.js<br> jquery paeser.js解析标签里的class值<br>一定要学会查看api文档以及培养调试bug的能力</p>
+<p>从api中就可以看到，panel是个顶层容器，window依赖yupanel,dialog依赖于window,这里的依赖就相当于java中的继承，也就是子类拥有父类的所有方法。那么就可以想象，dialog其实是可以使用panel和window的所有的属性的（那么dialog就很强大），但是使用什么 还是要根据具体的场景去使用相应的组建，具体怎么使用，可以参考api文档，里面就写的非常清楚。</p>
+<p>组建的写法：<br>第一：纯html<br>第二：js或者js和html结合，都是可以的<br>引入只需要 class=”easy-panel[window或dialog]”</p>
+<p>动态加载组建：<br> easyloader.load(‘messager’,fn(){})<br>messager:指定的模块，如window<br>fn:回调函数<br>动态加载就是你想在家那个模块，就把那个模块引进来，并不会把全部的js,css给你事先加载进来。</p>
+<p>#提交表单<br> 在easyui中提交表单有三种方法。<br> 第一：传统的ajax提交<br> $(“#myfoem”).ajax({<br>  type:post,<br>  url:”userServlet”, //form提交的路径<br>  sync:true,<br>  catch:false,<br>  data:$(“#foem”).serilize(), //需要提交的数据<br>  dataType:”text”, //预期服务器的数据类型<br>  success:function(data){<br>  var res = $.parseJSON();//转换字符串为js脚本</p>
+<p>   $.messager({//用户操作成功提示<br>   title:”提示信息”,<br>   msg:”res.ok”//服务器返回的json数据<br>   });<br>  }</p>
+<p> });</p>
+<p> 第二种:自动提交表单<br> $(“#myform”).form(“submit”,{<br> url:”servlet”,<br> onsubmit(function(){<br>  //提交表单前做的一些验证<br>  //默认返回true,如果返回false则阻止表单的提交<br>  if(!$(“#myform”).valdate){<br>  $.messager({<br>   title:”提示”,<br>   msg:”请在表单中正确填写信息”<br>  });</p>
+<p>  success:function(data){<br>  //对服务器返回的数据做一些处理<br>  }<br>  }<br>  return false;<br> });<br> };<br> //第三种：手动提交表单</p>
+<p>$(“#myform”).form({<br> url:”servlet”,<br> onsubmit(function(){<br>  //提交表单前做的一些验证<br>  //默认返回true,如果返回false则阻止表单的提交<br>  if(!$(“#myform”).valdate){<br>  $.messager({<br>   title:”提示”,<br>   msg:”请在表单中正确填写信息”<br>  });</p>
+<p>  success:function(data){<br>  //对服务器返回的数据做一些处理<br>  }<br>  }<br>  return false;<br> });</p>
+<p> $(“#myform”).submit();//这个就是必须手动的调用submit方法，才能提交表单。<br> };</p>
+<p> ##按回车提交表单<br> 这是一个按回车之后触发的事件，就是当键盘的键弹起的时候，检查是否是回车键，是的话，提交表单，当然按照情景也可以做其他的事情<br>  $(“#myform”).find(“input”).on(“keyup”,function(event){<br>   if(event.keyCode == 13){//13就是键盘上回车对应的数字<br>    $(“#myform”).submit(); //当然，这个用的自然是手动提交表单了。<br>   }<br>  })</p>
+<p>#layout布局<br>这里布局的div就不写了，在api里面直接可以cv,在这里就说一些使用过程中常见的问题吧。<br>第一：layout是依赖于panel和resizable的，在开发中一些layout中没有的特性，都可以在他的依赖中去找。<br>第二：api中提供的布局是按照左西右东，上北下南的方式来指定的，我们传统的布局就是只是左边，上边和中间，那么只需要注释掉右边和下边就可以了。<br> 但是，这里需要强调的是，center是不可以注释掉的，如果center注释掉的话，布局就会出现问题。（因为center这个并不是用region上北下南这些去定位的，是定制做的）<br>第三：layout中的href属性，需要注意的是 href=”xx.jsp” ， href只是吧xx.jsp中的body中的内容给你拉取过来，起的的它不管。</p>
+<p>##tabs选项卡/标签<br> 这个很简单,需要几个标签，添加几个div即可，api中写的很清楚。</p>
+<p>##Accordion  手风琴<br>这个也和你简单，哈哈，里面定义的也是div，需要几个就可以自己去定义，具体的情况还是要按开发的具体场景去定义。</p>
+<p>布局的结合使用。<br>场景分析：<br>layout :作为打的布局，也就是i整体布局，在这个布局里面除了center不能注释外，其他的根据可以根据你想要的布局去定义。<br>tabs和Accordion 都是作为layout中的子布局来使用的（通俗来说就是把 tabs和Accordion 放到 layout里面。）<br>一般使用的方法： 点击Accordion中的选项，在layout中的center(可以自己设置)中显示tabs 1…tabs n.<br>结合这个可以做一个小demo来测试下。</p>
+<p>##combox的应用场景<br>1.城市联动<br>2.自动搜索</p>
+<p>##editdatagrid<br>使用新增加一行的时候，必须要配合<br>editor:{<br>                                            type:’validatebox’ ,<br>                                            options:{<br>                                                required:true ,<br>                                                missingMessage:’描述必填!’<br>                                            }<br>的editor来使用，否则在beginEdit的时候，编辑框是不能输入的<br>,在新增一行进行输入的时候，需要先需要所有选中的行，然后取得行号，在进行beginEdit操作，不选择需要所有选中的行也可以操作，只是界面会不美观。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -120,7 +142,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/10/03/JavaScript1/" data-title="JavaScript | Jackey丶S Blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/12/14/EasyUI-01/" data-title="EasyUI-01 | Jackey丶S Blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -133,19 +155,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/10/09/face-to-face-exams/" title="face to face exams">
-  <strong>上一篇：</strong><br/>
-  <span>
-  face to face exams</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/09/30/test/"  title="test">
+<a href="/2017/12/13/JQuery-02/"  title="JQuery-02">
  <strong>下一篇：</strong><br/> 
- <span>test
+ <span>JQuery-02
 </span>
 </a>
 </div>
